@@ -11,6 +11,7 @@ class Auth extends CI_Controller {
 	public function index() {
 		$session = $this->session->userdata('status');
 		$data['page'] = "login";
+		$data['title'] = "Login";
 		if ($session == '') {
 			$this->load->view('login', $data);
 		} else {
