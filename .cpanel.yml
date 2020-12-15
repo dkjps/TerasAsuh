@@ -1,0 +1,5 @@
+
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home/ublearni/terasasuh
+    - /bin/cp -R application $DEPLOYPATH

@@ -36,12 +36,13 @@ $id = $this->uri->segment(3);
                   <div class="form-group col-md-12">
                     <button type="submit" class="btn btn-primary" name="submit">Simpan</button>
                   </div>
-                </div>
+                </form>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </section>
-  </div>
-  <?php $this->load->view('admin/footer'); ?>
+    </div>
+  </section>
+</div>
+<?php $this->load->view('admin/footer'); ?>

@@ -72,10 +72,6 @@ class Pelatihan extends AUTH_Controller {
 		}
 	}
 
-	public function tampil() {
-		$data['pelatihan'] = $this->GeneralApiModel->getAllMaster('masterdata_pelatihan')->result();
-		$this->load->view('pelatihan/daftar_pelatihan', $data);
-	}
 
 	public function tampilDaftarKelas() {
 		$data['dataPegawai'] = $this->M_pegawai->select_all();

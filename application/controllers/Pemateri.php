@@ -26,34 +26,11 @@ class Pemateri extends AUTH_Controller {
 
 	public function tambahPemateri(){
 		$data['page'] = "pemateri";
-		$data['judul'] = "Tambah Pemateri";
-		$data['deskripsi'] = "Tambah Pemateri TerasAsuh sesuai kebutuhan";
+		$data['title'] = "Tambah Pemateri";
 
-<<<<<<< HEAD
 		$this->template->views('pemateri/pemateri_add', $data);
-=======
-		$data['page'] = "tambahPelatihan";
-		$data['judul'] = "Tambah Data Pemateri";
-		$data['deskripsi'] = "Tambah data pelatihan TerasAsuh sesuai kebutuhan";
-
-		$data['modal_tambah_pegawai'] = show_my_modal('modals/modal_tambah_pegawai', 'tambah-pegawai', $data);
-		$this->template->views('pemateri/pemateri_add');
->>>>>>> 82b56451b359369ef43a9003fc161f8ad79575bb
 	}
 
-	public function tambahJadwal(){
-        $data['userdata'] = $this->userdata;
-		$data['dataPegawai'] = $this->M_pegawai->select_all();
-		$data['dataPosisi'] = $this->M_posisi->select_all();
-		$data['dataKota'] = $this->M_kota->select_all();
-
-		$data['page'] = "tambahPelatihan";
-		$data['judul'] = "Tambah Jadwal Pemateri Pelatihan";
-		$data['deskripsi'] = "Tambah data pelatihan TerasAsuh sesuai kebutuhan";
-
-		$data['modal_tambah_pegawai'] = show_my_modal('modals/modal_tambah_pegawai', 'tambah-pegawai', $data);
-		$this->template->views('pemateri/pemateri_addJadwal');
-	}
 
 	// public function tampil() {
 	// 	$data['dataPegawai'] = $this->M_pegawai->select_all();

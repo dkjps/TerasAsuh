@@ -9,8 +9,7 @@ class Kelas extends AUTH_Controller {
 
 	public function index() {
 		$data['page'] = "kelas";
-		$data['judul'] = "Daftar Kelas";
-		$data['deskripsi'] = "Daftar kelas pada pelatihan TerasAsuh";
+		$data['title'] = "Daftar Kelas";
 		$data['detail'] = $this->GeneralApiModel->getAllTransactional('kelas_pelatihan')->result();
 
 		$this->template->views('kelas/daftar_kelas', $data);
@@ -18,13 +17,12 @@ class Kelas extends AUTH_Controller {
 
 	public function detailKelas($id_kelas) {
 		$data['page'] = "kelas";
-		$data['judul'] = "Detail Kelas";
-		$data['deskripsi'] = "";
+		$data['title'] = "Detail Kelas";
 
 		$data['detail'] = $this->GeneralApiModel->getWhereTransactional(array('id_kelas'=>$id_kelas),'kelas_pelatihan')->row();
 		$data['materi'] = $this->GeneralApiModel->getWhereTransactional(array('id_kelas'=>$id_kelas),'detail_kelas_pemateri')->result();
 		$data['pemateri'] = $this->GeneralApiModel->getKelasPemateri($id_kelas);
-		$this->template->views('kelas/detail_kelas', $data);
+		$this->load->view('kelas/detail_kelas', $data);
 	}
 
 
@@ -48,7 +46,7 @@ class Kelas extends AUTH_Controller {
 		}
 		$data['page'] = "kelas";
 		$data['action'] = "tambah";
-		$data['judul'] = "Tambah Kelas";
+		$data['title'] = "Tambah Kelas";
 		$data['deskripsi'] = "Tambah kelas pelatihan TerasAsuh sesuai kebutuhan";
 
 		$data['pelatihan'] = $this->GeneralApiModel->getAllMaster('masterdata_pelatihan')->result();
@@ -74,12 +72,12 @@ class Kelas extends AUTH_Controller {
 				redirect(base_url("kelas"));
 			}
 		}
+		$data['pelatihan'] = $this->GeneralApiModel->getAllMaster('masterdata_pelatihan')->result();
 		$data['page'] = "kelas";
 		$data['action'] = "ubah";
-		$data['judul'] = "Ubah Kelas";
-		$data['deskripsi'] = "Ubah kelas pelatihan TerasAsuh sesuai kebutuhan";
+		$data['title'] = "Ubah Kelas ";
 
-		$data['pelatihan'] = $this->GeneralApiModel->getAllMaster('masterdata_pelatihan')->result();
+
 		$data['detail'] = $this->GeneralApiModel->getWhereTransactional(array('id'=>$id_kelas),'transactional_kelas')->row();
 		$this->template->views('kelas/kelas_add', $data);
 	}
@@ -93,11 +91,6 @@ class Kelas extends AUTH_Controller {
 		}
 	}
 
-	public function tampil() {
-		$data['dataPegawai'] = $this->M_pegawai->select_all();
-		$this->load->view('pelatihan/data_tabel', $data);
-	}
-
 	public function tambahMateri(){
 		$data['page'] = "materi";
 		$data['judul'] = "Tambah Materi";
@@ -108,8 +101,7 @@ class Kelas extends AUTH_Controller {
 
 	public function tambahJadwal($id_kelas){
 		$data['page'] = "materi";
-		$data['judul'] = "Tambah Jadwal";
-		$data['deskripsi'] = "Tambah data materi TerasAsuh sesuai kebutuhan";
+		$data['title'] = "Tambah Jadwal";
 
 		$data['kelas'] = $this->GeneralApiModel->getWhereTransactionalOrdered(array('1'=>1), 'nama', 'ASC', 'transactional_kelas')->result();
 		$data['materi'] = $this->GeneralApiModel->getWhereMasterOrdered(array('1'=>1), 'judul', 'ASC', 'masterdata_materi')->result();

@@ -60,30 +60,30 @@ $route['dashboard'] = 'AdminController/lihatAdmin';
 $route['admin/dashboard'] = 'AdminController/lihatAdmin';
 $route['admin/dashboard-data'] = 'AdminController/dashboard';
 //MHS - COURSE Admin Routes
-$route['admin/master/master-panitia'] = 'PanitiaController/halamanMasterPanitia';
-$route['admin/master/master-panitia/daftar-panitia'] = 'PanitiaController/getDatatableMasterPanitia';
-$route['admin/master/master-pelatihan'] = 'PelatihanController/halamanMasterPelatihan';
-$route['admin/master/master-pelatihan/tambah-pelatihan'] = 'PelatihanController/tambahMasterPelatihan';
-$route['admin/master/master-pelatihan/edit-pelatihan'] = 'PelatihanController/editMasterPelatihan';
-$route['admin/master/master-pelatihan/hapus-pelatihan'] = 'PelatihanController/hapusMasterPelatihan';
-$route['admin/master/master-pelatihan/daftar-pelatihan'] = 'PelatihanController/getDatatableMasterPelatihan';
-$route['admin/master/master-peserta'] = 'PesertaController/halamanMasterPeserta';
-$route['admin/master/master-peserta/daftar-peserta'] = 'PesertaController/getDatatableMasterPeserta';
-$route['admin/master/master-kader'] = 'KaderController/halamanMasterKader';
-$route['admin/master/master-kader/daftar-kader'] = 'KaderController/getDatatableMasterKader';
-$route['admin/master/master-keluarga-binaan'] = 'KeluargaBinaanController/halamanMasterKeluargaBinaan';
-$route['admin/master/master-keluarga-binaan/daftar-keluarga-binaan'] = 'KeluargaBinaanController/getDatatableMasterKeluargaBinaan';
-$route['admin/master/master-kelas/detail-kelas/(:num)'] = 'Kelas/detailMasterPelatihan/$1';
+$route['admin/master/master-panitia'] = 'old/PanitiaController/halamanMasterPanitia';
+$route['admin/master/master-panitia/daftar-panitia'] = 'old/PanitiaController/getDatatableMasterPanitia';
+$route['admin/master/master-pelatihan'] = 'old/PelatihanController/halamanMasterPelatihan';
+$route['admin/master/master-pelatihan/tambah-pelatihan'] = 'old/PelatihanController/tambahMasterPelatihan';
+$route['admin/master/master-pelatihan/edit-pelatihan'] = 'old/PelatihanController/editMasterPelatihan';
+$route['admin/master/master-pelatihan/hapus-pelatihan'] = 'old/PelatihanController/hapusMasterPelatihan';
+$route['admin/master/master-pelatihan/daftar-pelatihan'] = 'old/PelatihanController/getDatatableMasterPelatihan';
+$route['admin/master/master-peserta'] = 'old/PesertaController/halamanMasterPeserta';
+$route['admin/master/master-peserta/daftar-peserta'] = 'old/PesertaController/getDatatableMasterPeserta';
+$route['admin/master/master-kader'] = 'old/KaderController/halamanMasterKader';
+$route['admin/master/master-kader/daftar-kader'] = 'old/KaderController/getDatatableMasterKader';
+$route['admin/master/master-keluarga-binaan'] = 'old/KeluargaBinaanController/halamanMasterKeluargaBinaan';
+$route['admin/master/master-keluarga-binaan/daftar-keluarga-binaan'] = 'old/KeluargaBinaanController/getDatatableMasterKeluargaBinaan';
+$route['admin/master/master-kelas/detail-kelas/(:num)'] = 'old/Kelas/detailMasterPelatihan/$1';
 
-$route['admin/pelatihan/pelatihan-panitia'] = 'PanitiaController/halamanPelatihanPanitia';
-$route['admin/pelatihan/pelatihan-pretest'] = 'SoalController/halamanPelatihanPretest';
-$route['admin/pelatihan/pelatihan-postest'] = 'SoalController/halamanPelatihanPostest';
+$route['admin/pelatihan/pelatihan-panitia'] = 'old/PanitiaController/halamanPelatihanPanitia';
+$route['admin/pelatihan/pelatihan-pretest'] = 'old/SoalController/halamanPelatihanPretest';
+$route['admin/pelatihan/pelatihan-postest'] = 'old/SoalController/halamanPelatihanPostest';
 
-$route['admin/skrining'] = 'SkriningController/halamanSkrining';
+$route['admin/skrining'] = 'old/SkriningController/halamanSkrining';
 
-$route['admin/aktivitas'] = 'AktivitasController/halamanAktivitas';
+$route['admin/aktivitas'] = 'old/AktivitasController/halamanAktivitas';
 
 //Operator Routes
-$route['operator/dashboard'] = 'OperatorController/lihatOperator';
+$route['operator/dashboard'] = 'old/OperatorController/lihatOperator';
 //MHS - COURSE Panitia Operator
-$route['operator/materi'] = 'MateriController/halamanMateri';
+$route['operator/materi'] = 'old/MateriController/halamanMateri';

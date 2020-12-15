@@ -58,9 +58,24 @@ if ($this->uri->segment(3) == "master-pelatihan") { ?>
 <?php } elseif ($this->uri->segment(3) == "master-keluarga-binaan"){?>
   <script src="<?php echo base_url(); ?>assets/js/admin/master-keluargabinaan-datatable.js"></script>
 <?php }?>
+<script src="https://cdn.datatables.net/fixedcolumns/3.3.2/js/dataTables.fixedColumns.min.js" type="text/javascript"></script>
 <script type="text/javascript">
-  $('#table-pelatihan').DataTable();
-  $('#list-data').DataTable();
+  $('#table-pelatihan').DataTable({
+    "info": false,
+    "autoWidth": false
+  });
+  $('#list-data').DataTable({
+    "info": false,
+    "autoWidth": false
+  });
+  $('#list-materi').DataTable({
+    "info": false,
+    "autoWidth": false
+  });
+  $('#list-pemateri').DataTable({
+    "info": false,
+    "autoWidth": false
+  });
 
   function konfirmasiHapus(link){
     $('#btnYa').attr('href', link);

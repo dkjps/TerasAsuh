@@ -1,5 +1,11 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
+if (empty($page)) {
+  $page = 'master';
+}
+if (empty($menu)) {
+  $menu = 'master';
+}
 ?>
       <div class="main-sidebar sidebar-style-2">
         <aside id="sidebar-wrapper">
@@ -11,9 +17,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           </div>
           <ul class="sidebar-menu">
             <li class="menu-header">Dashboard</li>
-            <li class="<?php echo $this->uri->segment(2) == 'dashboard' ? 'active' : ''; ?>"><a class="nav-link" href="<?php echo base_url(); ?>admin/dashboard"><i class="fas fa-fire"></i> <span>Dashboard</span></a></li>
+            <li class="<?php echo $menu == 'dashboard' ? 'active' : ''; ?>"><a class="nav-link" href="<?php echo base_url(); ?>admin/dashboard"><i class="fas fa-fire"></i> <span>Dashboard</span></a></li>
             <li class="menu-header">Main Menu</li>
-            <li class="dropdown <?php echo $this->uri->segment(2) == 'master' ? 'active' : ''; ?>">
+            <li class="dropdown <?php echo $menu == 'master' ? 'active' : ''; ?>">
               <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-globe-asia"></i> <span>Data Master</span></a>
               <ul class="dropdown-menu">
                 <li class="<?php echo $page == 'panitia' ? 'active' : ''; ?>"><a class="nav-link" href="<?php echo base_url(); ?>admin/master/master-panitia">Data Panitia</a></li>

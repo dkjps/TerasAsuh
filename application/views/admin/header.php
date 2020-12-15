@@ -41,6 +41,11 @@ if ($this->uri->segment(2) == "" || $this->uri->segment(2) == "dashboard") { ?>
   gtag('config', 'UA-94034622-3');
 </script>
 <!-- /END GA -->
+
+    <style>
+      .DTFC_LeftBodyLiner{overflow-y:unset !important}
+      .DTFC_RightBodyLiner{overflow-y:unset !important}
+    </style>
 </head>
 <?php
 // if ($this->uri->segment(1) == "admin") {
