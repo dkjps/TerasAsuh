@@ -11,11 +11,12 @@ class AdminController extends CI_Controller {
 
     public function lihatAdmin() {
 		$data = array(
-			'title' => "Dashboard"
+			'title' => "Dashboard",
+			'page' => 'dashboard'
 		);
 		$this->load->view('admin/dashboard', $data);
 	}
-	
+
 	public function dashboard(){
 		$url = $this->api.'/dashboard';
 		$request = $this->ClientModel->requestDataGet($url);

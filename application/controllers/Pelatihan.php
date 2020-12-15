@@ -20,8 +20,8 @@ class Pelatihan extends AUTH_Controller {
 
 	public function detailPelatihan($id) {
 		$data['page'] = "pelatihan";
-		$data['title'] = "Detail $pelatihan->nama";
 		$pelatihan = $this->GeneralApiModel->getWhereMaster(array('id'=>$id),'masterdata_pelatihan')->row();
+		$data['title'] = "Detail $pelatihan->nama";
 
 		$data['detail'] = $this->GeneralApiModel->getWhereTransactional(array('id_pelatihan'=>$id),'kelas_pelatihan')->result();
 		$this->load->view('pelatihan/detail_pelatihan', $data);
