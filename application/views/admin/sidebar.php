@@ -28,6 +28,8 @@ if (empty($menu)) {
                 <li class="<?php echo $page == 'kelas' ? 'active' : ''; ?>"><a class="nav-link" href="<?php echo base_url(); ?>kelas">Data Kelas</a></li>
                 <li class="<?php echo $page == 'kader' ? 'active' : ''; ?>"><a class="nav-link" href="<?php echo base_url(); ?>admin/master/master-kader">Data Kader</a></li>
                 <li class="<?php echo $page == 'keluarga-binaan' ? 'active' : ''; ?>"><a class="nav-link" href="<?php echo base_url(); ?>admin/master/master-keluarga-binaan">Data Keluarga Binaan</a></li>
+                <li class="<?php echo $page == 'materi' ? 'active' : ''; ?>"><a class="nav-link" href="<?php echo base_url("Materi"); ?>">Data Materi</a></li>
+                <li class="<?php echo $page == 'sub-materi' ? 'active' : ''; ?>"><a class="nav-link" href="<?php echo base_url("SubMateri"); ?>">Data Sub Materi</a></li>
               </ul>
             </li>
             <li class="dropdown <?php echo $this->uri->segment(2) == 'pelatihan' ? 'active' : ''; ?>">

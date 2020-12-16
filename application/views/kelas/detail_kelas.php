@@ -42,11 +42,11 @@ $caption = array('Belum Buka', 'Daftar', 'Jalan', 'Selesai');
                 <div class="form-row">
                   <div class="form-group col-md-2">
                     <label for="inputNamaPelatihan">Jumlah Materi</label>
-                    <span class="form-control"><?=(!empty($detail)?$detail->jumlah_materi:'')?></span>
+                    <span class="form-control"><?=(!empty($detail->jumlah_materi)?$detail->jumlah_materi:'0')?></span>
                   </div>
                   <div class="form-group col-md-2">
                     <label for="inputTanggalPelatihan">Jumlah Pemateri</label>
-                    <span class="form-control"><?=(!empty($detail)?$detail->jumlah_pemateri:'')?></span>
+                    <span class="form-control"><?=(!empty($detail->jumlah_pemateri)?$detail->jumlah_pemateri:'0')?></span>
                   </div>
                   <div class="form-group col-md-4">
                     <label for="inputTanggalPelatihan">Tanggal Buka</label>
@@ -118,7 +118,7 @@ $caption = array('Belum Buka', 'Daftar', 'Jalan', 'Selesai');
                     <div class="tab-pane" id="tab_pemateri">
                       <!-- tablePemateri -->
                       <div class="col col-md-12" style="z-index:999;">
-                        <a href="<?php echo base_url('Pemateri/tambahPemateri'); ?>" class="btn btn-primary float-right" style="margin-top:10px; margin-bottom:5px;"><i class="glyphicon glyphicon-plus-sign"></i>  Tambah Pemateri</a>
+                        <!-- <a href="<?php echo base_url('Pemateri/tambahPemateri'); ?>" class="btn btn-primary float-right" style="margin-top:10px; margin-bottom:5px;"><i class="glyphicon glyphicon-plus-sign"></i>  Tambah Pemateri</a> -->
                       </div>
 
                       <div class="col col-md-12">
@@ -127,12 +127,11 @@ $caption = array('Belum Buka', 'Daftar', 'Jalan', 'Selesai');
                             <thead>
                               <tr>
                                 <th>#</th>
-                                <th>ID Pemateri</th>
+                                <!-- <th>ID Pemateri</th> -->
                                 <th>Nama Pemateri</th>
                                 <th>Provinsi</th>
                                 <th>Total Materi</th>
                                 <!-- <th>Topik Diampu</th> -->
-                                <th style="text-align: center;">Aksi</th>
                               </tr>
                             </thead>
                             <tbody id="daftar-pemateri">
@@ -142,14 +141,9 @@ $caption = array('Belum Buka', 'Daftar', 'Jalan', 'Selesai');
                                 ?>
                                 <tr>
                                   <td><?=$i++?></td>
-                                  <td><?=$m->id_panitia?></td>
                                   <td><?=$m->namalengkap?></td>
                                   <td><?=$m->nama_provinsi?></td>
                                   <td><?=$m->jumlah_materi?></td>
-                                  <td>
-                                    <a href="<?=base_url("Kelas/ubahJadwal/$m->id_kelas/$m->id")?>" class="btn btn-sm btn-primary update-data" ><i class="fas fa-pen"></i></a>
-                                    <button class="btn btn-sm btn-danger" onclick="konfirmasiHapus('<?=base_url("Jadwal/hapusJadwal/$m->id_kelas/$m->id")?>')"><i class="fas fa-trash"></i></button>
-                                  </td>
                                 </tr>
                                 <?php
                                 $id_panitia = $m->id_panitia;

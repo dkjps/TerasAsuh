@@ -1,37 +1,11 @@
-<div class="msg" style="display:none;">
-  <?php echo @$this->session->flashdata('msg'); ?>
-</div>
-
-<div class="box">
-  <div class="box-body">
-  <form>
-  <div class="form-row">
-    <div class="form-group col-md-6">
-      <label for="inputNamaPelatihan">Nama Kelas Pelatihan</label>
-      <input type="text" class="form-control" id="inputEmail4" placeholder="Nama Pelatihan">
-    </div>
-    <div class="form-group col-md-6">
-      <label for="inputTanggalPelatihan">Tanggal Mulai</label>
-
-      <input class="form-control" id="date" name="date" placeholder="MM/DD/YYY" type="text"/>
-    </div>
-  </div>
-
-
-  <div class="form-group col-md-12">
-    <label for="inputAddress">Deskripsi Pelatihan</label>
-    <textarea class="form-control" cols="40" id="textarea" name="textarea" rows="10" style="resize:none" placeholder="Pelatihan ini tentang . . ."></textarea>
-  </div>
-
-  <div class="form-group col-md-12">
-  <button type="submit" class="btn btn-primary">Tambah Pelatihan</button>
-  </div>
-
-</form>
-  </div>
-</div>
-
-<?php
-  $data['judul'] = 'TambahPelatihan';
-  $data['url'] = 'Pelatihan/addPelatihan';
-?>
+<?php $i=1; foreach ($materi as $m): ?>
+  <tr>
+    <td><?=$i++?></td>
+    <td> <a href="<?=base_url("Materi/detailMateri/$m->id_materi")?>"><?=$m->judul?></a> </td>
+    <td style="min-widtd:200px;"><?=$m->nama?></td>
+    <td style="min-widtd:150px;">
+      <a href="<?=base_url("Materi/ubahMateri/$m->id_materi")?>" class="btn btn-primary update-dataPegawai"><i class="fas fa-pen"></i></a>
+      <button class="btn btn-danger konfirmasiHapus-pegawai" onclick="konfirmasiHapus('<?=base_url("Materi/hapusMateri/$m->id_materi")?>')"><i class="fas fa-trash"></i></button>
+    </td>
+  </tr>
+<?php endforeach; ?>

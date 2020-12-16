@@ -22,20 +22,9 @@
           <th style="text-align: center;">Aksi</th>
         </tr>
       </thead>
-      <tbody id="data-pegawai">        
+      <tbody id="data-pegawai">
       </tbody>
     </table>
   </div>
   </div>
 </div>
-
-<?php echo $modal_tambah_pegawai; ?>
-
-<div id="tempat-modal"></div>
-
-<?php show_my_confirm('konfirmasiHapus', 'hapus-dataPegawai', 'Hapus Data Ini?', 'Ya, Hapus Data Ini'); ?>
-<?php
-  $data['judul'] = 'Pegawai';
-  $data['url'] = 'Pelatihan/homePelatihan';
-  echo show_my_modal('modals/modal_import', 'import-pegawai', $data);
-?>

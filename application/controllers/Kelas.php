@@ -22,6 +22,7 @@ class Kelas extends AUTH_Controller {
 		$data['detail'] = $this->GeneralApiModel->getWhereTransactional(array('id_kelas'=>$id_kelas),'kelas_pelatihan')->row();
 		$data['materi'] = $this->GeneralApiModel->getWhereTransactional(array('id_kelas'=>$id_kelas),'detail_kelas_pemateri')->result();
 		$data['pemateri'] = $this->GeneralApiModel->getKelasPemateri($id_kelas);
+
 		$this->load->view('kelas/detail_kelas', $data);
 	}
 
@@ -118,9 +119,9 @@ class Kelas extends AUTH_Controller {
 		$data['id_kelas'] = $id_kelas;
 
 		$data['kelas'] = $this->GeneralApiModel->getWhereTransactionalOrdered(array('1'=>1), 'nama', 'ASC', 'transactional_kelas')->result();
-		$data['materi'] = $this->GeneralApiModel->getWhereMasterOrdered(array('1'=>1), 'judul', 'ASC', 'masterdata_materi')->result();
+		// $data['materi'] = $this->GeneralApiModel->getWhereMasterOrdered(array('id_pelatihan'=>1), 'judul', 'ASC', 'masterdata_materi')->result();
 		$data['pemateri'] = $this->GeneralApiModel->getWhereTransactionalOrdered(array('1'=>1), 'namalengkap', 'ASC', 'user_pemateri_detail')->result();
-		$this->template->views('materi/materi_add', $data);
+		$this->template->views('jadwal/jadwal_add', $data);
 	}
 
 	public function ubahJadwal($id_kelas, $id){
@@ -146,7 +147,16 @@ class Kelas extends AUTH_Controller {
 		$data['pemateri'] = $this->GeneralApiModel->getWhereTransactionalOrdered(array('1'=>1), 'namalengkap', 'ASC', 'user_pemateri_detail')->result();
 		$data['detail'] = $this->GeneralApiModel->getWhereTransactional(array('id_jadwal'=>$id),'detail_kelas_pemateri')->row();
 
-		$this->template->views('materi/materi_add', $data);
+		$this->template->views('jadwal/jadwal_add', $data);
+	}
+
+	public function getMateri(){
+		$id_kelas = $this->input->post('id');
+		$kelas = $this->GeneralApiModel->getWhereTransactional(array('id'=>$id_kelas), 'transactional_kelas')->row();
+		if (!empty($kelas->id_pelatihan)) {
+			$materi = $this->GeneralApiModel->getWhereMasterOrdered(array('id_pelatihan'=>$kelas->id_pelatihan), 'judul', 'ASC', 'masterdata_materi')->result();
+			echo json_encode($materi);
+		}
 	}
 }
 
