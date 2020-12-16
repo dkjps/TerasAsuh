@@ -4,22 +4,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Pemateri extends AUTH_Controller {
 	public function __construct() {
 		parent::__construct();
-		$this->load->model('M_pegawai');
-		$this->load->model('M_posisi');
-		$this->load->model('M_kota');
+		$this->load->model('GeneralApiModel');
 	}
 
 	public function index() {
-		$data['userdata'] = $this->userdata;
-		$data['dataPegawai'] = $this->M_pegawai->select_all();
-		$data['dataPosisi'] = $this->M_posisi->select_all();
-		$data['dataKota'] = $this->M_kota->select_all();
-
-		$data['page'] = "Pelatihan";
-		$data['judul'] = "Daftar Pemateri";
-		$data['deskripsi'] = "Daftar pelatihan TerasAsuh";
-
-		$data['modal_tambah_pegawai'] = show_my_modal('modals/modal_tambah_pegawai', 'tambah-pegawai', $data);
+		$data['page'] = "pelatihan";
+		$data['title'] = "Daftar Pemateri";
 
 		$this->template->views('pemateri/home_pemateri', $data);
 	}
@@ -28,6 +18,8 @@ class Pemateri extends AUTH_Controller {
 		$data['page'] = "pemateri";
 		$data['title'] = "Tambah Pemateri";
 
+		$data['provinsi'] = $this->GeneralApiModel->getAllMaster('masterdata_provinsi')->result();
+		$data['pemateri'] = $this->GeneralApiModel->getWhereTransactionalOrdered(array('1'=>1), 'namalengkap', 'ASC', 'user_pemateri_detail')->result();
 		$this->template->views('pemateri/pemateri_add', $data);
 	}
 
