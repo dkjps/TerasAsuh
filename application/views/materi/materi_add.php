@@ -17,67 +17,49 @@ $id = $this->uri->segment(3);
           <div class="card">
             <div class="card-body">
               <div class="table-responsive">
-                <form class="form-horizontal">
-                  <div class="form-group">
-                    <label class="col-md-2 control-label" for="inputNamaPelatihan">Kelas</label>
-                    <div class="col-md-8">
-                      <select class="form-control" name="kelas" required>
-                        <option value="">Pilih Kelas</option>
-                        <?php
-                          foreach ($kelas as $k) {
-                            echo "<option value='$k->id'>$k->nama</option>";
-                          }
-                        ?>
-                      </select>
-                    </div>
+              <form class="form-horizontal">
+                <div class="form-group">
+                  <label class="col-md-2 control-label" for="inputNamaPelatihan">Kelas</label>
+                  <div class="col-md-8">
+                    <select readonly="readonly" class="form-control"></select>
+                  </div>
                   </div>
 
                   <div class="form-group">
-                    <label class="col-md-2 control-label" for="inputNamaPelatihan">Judul Materi</label>
-                    <div class="col-md-8">
-                      <select class="form-control" name="materi" required>
-                        <option value="">Pilih Materi</option>
-                        <?php
-                          foreach ($materi as $k) {
-                            echo "<option value='$k->id'>$k->judul</option>";
-                          }
-                        ?>
-                      </select>
-                    </div>
+                  <label class="col-md-2 control-label" for="inputNamaPelatihan">Judul Materi</label>
+                  <div class="col-md-8">
+                    <input type="text" class="form-control" id="namaKelas" placeholder="Nama Materi" required>
+                  </div>
                   </div>
 
                   <div class="form-group">
-                    <label class="col-md-2 control-label" for="inputNamaPelatihan">Pilih Pemateri</label>
-                    <div class="col-md-8">
-                      <select name="" id="" class="form-control">
-                        <option value="">Pilih Pemateri</option>
-                        <?php
-                          foreach ($pemateri as $k) {
-                            echo "<option value='$k->id'>$k->namalengkap</option>";
-                          }
-                        ?>
-                      </select>
-                    </div>
+                  <label class="col-md-2 control-label" for="inputNamaPelatihan">Pilih Pemateri</label>
+                  <div class="col-md-8">
+                    <select name="" id="" class="form-control">
+                      <option value="">pilih pemateri</option>
+                    </select>
+                  </div>
                   </div>
 
                   <div class="form-group">
-                    <label class="col-md-2 control-label" for="inputNamaPelatihan">Waktu Topik</label>
-                    <div class="col-md-3"style=>
-                      <span  class="form-text text-muted" >Tanggal Mulai</span>
-                      <input type="date" class="form-control" id="namaKelas" placeholder="Tanggal Mulai" required>
-                    </div>
-                    <div class="col-md-3" >
-                      <span class="form-text text-muted" >Jam Mulai</span>
-                      <input type="time" class="form-control" id="namaKelas" placeholder="Jam Mulai" required>
-                    </div>
+                  <label class="col-md-2 control-label" for="inputNamaPelatihan">Jadwal Pembelajaran</label>
+                  <div class="col-md-3"style=>
+                    <input type="date" class="form-control" id="namaKelas" placeholder="Tanggal Mulai" required>
+                    <span  class="form-text text-muted" >Tanggal Mulai</span>
+                  </div>
+                  <div class="col-md-3" >
+                    <input type="time" class="form-control" id="namaKelas" placeholder="Jam Mulai" required>
+                    <span class="form-text text-muted" >Jam Mulai</span>
+                  </div>
                   </div>
 
                   <div class="form-group">
-                    <div class="col-md-2"></div>
-                    <div class="col-md-8 text-center">
-                      <button type="button" class="btn btn-primary form-control">Simpan</button>
+                    <div class="col-md-12 text-center">
+                    <a href="<?php echo base_url('Kelas/detailKelas'); ?>" class="btn btn-danger">Kembali</a>
+                    <button type="button" class="btn btn-primary">Simpan Topik</button>
                     </div>
                   </div>
+
                 </form>
               </div>
             </div>

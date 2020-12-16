@@ -18,7 +18,9 @@ if (empty($menu)) {
           <ul class="sidebar-menu">
             <li class="menu-header">Dashboard</li>
             <li class="<?php echo $menu == 'dashboard' ? 'active' : ''; ?>"><a class="nav-link" href="<?php echo base_url(); ?>admin/dashboard"><i class="fas fa-fire"></i> <span>Dashboard</span></a></li>
-            <li class="menu-header">Main Menu</li>
+            
+<!-- Menu Admin Dashboard -->
+            <li class="menu-header">Admin Dashboard</li>
             <li class="dropdown <?php echo $menu == 'master' ? 'active' : ''; ?>">
               <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-globe-asia"></i> <span>Data Master</span></a>
               <ul class="dropdown-menu">
@@ -30,16 +32,52 @@ if (empty($menu)) {
                 <li class="<?php echo $page == 'keluarga-binaan' ? 'active' : ''; ?>"><a class="nav-link" href="<?php echo base_url(); ?>admin/master/master-keluarga-binaan">Data Keluarga Binaan</a></li>
               </ul>
             </li>
-            <li class="dropdown <?php echo $this->uri->segment(2) == 'pelatihan' ? 'active' : ''; ?>">
-              <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-graduation-cap"></i> <span>Data Pelatihan</span></a>
+
+<!-- Menu Operator -->
+            <li class="menu-header">Admin Operator</li>
+            <li class="<?php echo $page == 'pelatihan' ? 'active' : ''; ?>"><a class="nav-link" href="<?php echo base_url(); ?>pelatihan"><i class="fas fa-history"></i> <span>Data Pelatihan</span></a></li>     
+            <li class="dropdown <?php echo $menu == 'master' ? '' : ''; ?>">
+            <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-graduation-cap"></i> <span>Kelas dan Topik</span></a>
               <ul class="dropdown-menu">
-                <li class="<?php echo $this->uri->segment(3) == 'pelatihan-panitia' ? 'active' : ''; ?>"><a class="nav-link" href="<?php echo base_url(); ?>admin/pelatihan/pelatihan-panitia">Data Panitia</a></li>
-                <li class="<?php echo $this->uri->segment(3) == 'pelatihan-pretest' ? 'active' : ''; ?>"><a class="nav-link" href="<?php echo base_url(); ?>admin/pelatihan/pelatihan-pretest">Data Pretest</a></li>
-                <li class="<?php echo $this->uri->segment(3) == 'pelatihan-postest' ? 'active' : ''; ?>"><a class="nav-link" href="<?php echo base_url(); ?>admin/pelatihan/pelatihan-postest">Data Postest</a></li>
+                <li class="<?php echo $page == 'panitia' ? '' : ''; ?>"><a class="nav-link" href="<?php echo base_url(); ?>kelas">Daftar Kelas</a></li>
+                <li class="<?php echo $page == 'peserta' ? '' : ''; ?>"><a class="nav-link" href="<?php echo base_url(); ?>materi">Daftar Materi</a></li>
+                <li class="<?php echo $page == 'pelatihan' ? '' : ''; ?>"><a class="nav-link" href="<?php echo base_url(); ?>subMateri">Daftar Sub Materi</a></li>
               </ul>
             </li>
-            <li class="<?php echo $this->uri->segment(2) == 'skrining' ? 'active' : ''; ?>"><a class="nav-link" href="<?php echo base_url(); ?>admin/skrining"><i class="fas fa-check-circle"></i> <span>Data Skrining</span></a></li>
-            <li class="<?php echo $this->uri->segment(2) == 'aktivitas' ? 'active' : ''; ?>"><a class="nav-link" href="<?php echo base_url(); ?>admin/aktivitas"><i class="fas fa-history"></i> <span>Data Aktivitas</span></a></li>
+            <li class="dropdown <?php echo $menu == 'master' ? '' : ''; ?>">
+            <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-graduation-cap"></i> <span>Pemateri</span></a>
+              <ul class="dropdown-menu">
+                <li class="<?php echo $page == 'panitia' ? '' : ''; ?>"><a class="nav-link" href="<?php echo base_url(); ?>admin/master/master-panitia">Daftar Pemateri</a></li>
+                <li class="<?php echo $page == 'peserta' ? '' : ''; ?>"><a class="nav-link" href="<?php echo base_url(); ?>admin/master/master-peserta">Tambah Jadwal Topik</a></li>
+              </ul>
+            </li>
+            
+  <!-- Menu Pemateri -->
+            <li class="menu-header">Admin Pemateri</li>
+            <li class="<?php echo $this->uri->segment(2) == 'skrining' ? '' : ''; ?>"><a class="nav-link" href="<?php echo base_url(); ?>admin/skrining"><i class="fas fa-check-circle"></i> <span>Data Kelas</span></a></li>
+            <li class="<?php echo $this->uri->segment(2) == 'aktivitas' ? '' : ''; ?>"><a class="nav-link" href="<?php echo base_url(); ?>admin/aktivitas"><i class="fas fa-history"></i> <span>Jadwal Pelatihan</span></a></li>
+
+
+            <!-- Menu aktivitas -->
+            <li class="menu-header">Aktivitas</li>
+            <li class="dropdown <?php echo $menu == 'master' ? '' : ''; ?>">
+            <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-graduation-cap"></i> <span>Data Aktivitas</span></a>
+              <ul class="dropdown-menu">
+                <li class="<?php echo $page == 'panitia' ? '' : ''; ?>"><a class="nav-link" href="<?php echo base_url(); ?>admin/master/master-panitia">Aktivitas Hari Ini</a></li>
+                <li class="<?php echo $page == 'peserta' ? '' : ''; ?>"><a class="nav-link" href="<?php echo base_url(); ?>admin/master/master-peserta">Daftar Aktivitas</a></li>
+              </ul>
+            </li>
+
+      <!-- Menu akun -->
+      <li class="menu-header">Akun</li>
+            <li class="dropdown <?php echo $menu == 'master' ? '' : ''; ?>">
+            <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-graduation-cap"></i> <span>Data Akun</span></a>
+              <ul class="dropdown-menu">
+                <li class="<?php echo $page == 'panitia' ? '' : ''; ?>"><a class="nav-link" href="<?php echo base_url(); ?>admin/master/master-panitia">Pengaturan Akun</a></li>
+                <li class="<?php echo $page == 'peserta' ? '' : ''; ?>"><a class="nav-link" href="<?php echo base_url(); ?>admin/master/master-peserta">Keluar</a></li>
+              </ul>
+            </li>
+
           </ul>
         </aside>
       </div>
