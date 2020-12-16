@@ -8,12 +8,13 @@ class Jadwal extends AUTH_Controller {
 	}
 
 	public function index() {
-		$data['page'] = "materi";
-		$data['title'] = "Daftar Materi";
-		// $data['detail'] = $this->GeneralApiModel->getAllTransactional('kelas_pelatihan')->result();
+		$data['page'] = "Pelatihan";
+		$data['judul'] = "Daftar Pelatihan";
+		$data['deskripsi'] = "Daftar pelatihan TerasAsuh";
 
-		$data['materi'] = $this->GeneralApiModel->getAllTransactional('detail_kelas_pemateri')->result();
-		$this->template->views('materi/daftar_materi', $data);
+		$data['modal_tambah_pegawai'] = show_my_modal('modals/modal_tambah_pegawai', 'tambah-pegawai', $data);
+
+		$this->template->views('pelatihan/home', $data);
 	}
 
 	public function tambahJadwal(){

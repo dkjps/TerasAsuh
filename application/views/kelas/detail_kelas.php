@@ -15,12 +15,14 @@ $caption = array('Belum Buka', 'Daftar', 'Jalan', 'Selesai');
       <div class="row">
         <div class="col-12">
           <div class="card">
+            <div class="card-header">
+              <div class="col-md-12">
+                <?php echo @$this->session->flashdata('msg'); ?>
+              </div>
+            </div>
             <div class="card-body">
               <form>
                 <div class="form-row">
-                  <div class="col-md-12">
-                    <?php echo @$this->session->flashdata('msg'); ?>
-                  </div>
                   <div class="form-group col-md-4">
                     <label for="inputNamaPelatihan">Nama Pelatihan</label>
                     <span class="form-control"><?=(!empty($detail)?$detail->nama_pelatihan:'')?></span>
@@ -68,17 +70,14 @@ $caption = array('Belum Buka', 'Daftar', 'Jalan', 'Selesai');
                   </ul> -->
                   <nav>
                     <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                      <!-- <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#tab_materi" role="tab" aria-controls="nav-home" aria-selected="true">Daftar Materi</a> -->
-                      <!-- <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#tab_pemateri" role="tab" aria-controls="nav-profile" aria-selected="false">Daftar Pemateri</a> -->
+                      <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#tab_materi" role="tab" aria-controls="nav-home" aria-selected="true">Daftar Materi</a>
+                      <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#tab_pemateri" role="tab" aria-controls="nav-profile" aria-selected="false">Daftar Pemateri</a>
                     </div>
                   </nav>
                   <div class="tab-content">
                     <div class="tab-pane active" id="tab_materi">
-                      <div class="col-md-6" style="margin-top:10px; margin-bottom:5px;">
-                      </div>
-                      <div class="col-md-12" style="margin-top:10px; margin-bottom:5px; z-index:9999;">
-                        <h3 class="col-md-6 float-left">Daftar Jadwal</h3>
-                        <a href="<?=base_url('Kelas/tambahJadwal/'.(!empty($detail)?$detail->id_kelas:'')); ?>" class="btn btn-primary col-md-2 col-xs-12 float-right" style="margin-top:10px; margin-bottom:5px;"><i class="fas fa-plus"></i>  Tambah Jadwal</a>
+                      <div class="col col-md-12" style="margin-top:10px; margin-bottom:5px; z-index:9999;">
+                        <a href="<?=base_url('Kelas/tambahJadwal/'.(!empty($detail)?$detail->id_kelas:'')); ?>" class="btn btn-primary float-right" style="margin-top:10px; margin-bottom:5px;"><i class="fas fa-plus"></i>  Tambah Jadwal</a>
                       </div>
                       <div class="col col-md-12">
                         <!-- tabelTopik -->
@@ -103,8 +102,8 @@ $caption = array('Belum Buka', 'Daftar', 'Jalan', 'Selesai');
                                   <td><?=$m->namalengkap?></td>
                                   <td><?=$m->tgl_buka_materi?></td>
                                   <td style="min-width:100px;">
-                                    <a href="<?=base_url("Kelas/ubahJadwal/$m->id_kelas/$m->id")?>" class="btn btn-sm btn-primary update-data" ><i class="fas fa-pen"></i></a>
-                                    <button class="btn btn-sm btn-danger" onclick="konfirmasiHapus('<?=base_url("Jadwal/hapusJadwal/$m->id_kelas/$m->id")?>')"><i class="fas fa-trash"></i></button>
+                                    <a href="<?=base_url("Kelas/ubahJadwal/$m->id_kelas/$m->id_jadwal")?>" class="btn btn-sm btn-primary update-data" ><i class="fas fa-pen"></i></a>
+                                    <button class="btn btn-sm btn-danger" onclick="konfirmasiHapus('<?=base_url("Jadwal/hapusJadwal/$m->id_kelas/$m->id_jadwal")?>')"><i class="fas fa-trash"></i></button>
                                   </td>
                                 </tr>
                               <?php } ?>
@@ -119,7 +118,7 @@ $caption = array('Belum Buka', 'Daftar', 'Jalan', 'Selesai');
                     <div class="tab-pane" id="tab_pemateri">
                       <!-- tablePemateri -->
                       <div class="col col-md-12" style="z-index:999;">
-                        <a href="<?php echo base_url('Pemateri/tambahPemateri'); ?>" class="btn btn-primary float-right" style="margin-top:10px; margin-bottom:5px;"><i class="fas fa-plus"></i>  Tambah Pemateri</a>
+                        <a href="<?php echo base_url('Pemateri/tambahPemateri'); ?>" class="btn btn-primary float-right" style="margin-top:10px; margin-bottom:5px;"><i class="glyphicon glyphicon-plus-sign"></i>  Tambah Pemateri</a>
                       </div>
 
                       <div class="col col-md-12">
