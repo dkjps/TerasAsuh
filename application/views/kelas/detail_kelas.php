@@ -10,17 +10,14 @@ $caption = array('Belum Buka', 'Daftar', 'Jalan', 'Selesai');
   <section class="section">
     <div class="section-header">
       <h1><?=$title?></h1>
-      <div class="msg" style="display:none;">
-        <?php echo @$this->session->flashdata('msg'); ?>
-      </div>
     </div>
     <div class="section-body">
       <div class="row">
         <div class="col-12">
           <div class="card">
             <div class="card-header">
-              <h4></h4>
-              <div class="card-header-action">
+              <div class="col-md-12">
+                <?php echo @$this->session->flashdata('msg'); ?>
               </div>
             </div>
             <div class="card-body">
@@ -105,8 +102,8 @@ $caption = array('Belum Buka', 'Daftar', 'Jalan', 'Selesai');
                                   <td><?=$m->namalengkap?></td>
                                   <td><?=$m->tgl_buka_materi?></td>
                                   <td style="min-width:100px;">
-                                    <a href="<?=base_url("Kelas/ubahKelas/$m->id_kelas")?>" class="btn btn-sm btn-primary update-data" ><i class="fas fa-pen"></i></a>
-                                    <button class="btn btn-sm btn-danger" onclick="konfirmasiHapus('<?=base_url("Kelas/hapusKelas/$m->id_kelas")?>')"><i class="fas fa-trash"></i></button>
+                                    <a href="<?=base_url("Kelas/ubahJadwal/$m->id_kelas/$m->id")?>" class="btn btn-sm btn-primary update-data" ><i class="fas fa-pen"></i></a>
+                                    <button class="btn btn-sm btn-danger" onclick="konfirmasiHapus('<?=base_url("Jadwal/hapusJadwal/$m->id_kelas/$m->id")?>')"><i class="fas fa-trash"></i></button>
                                   </td>
                                 </tr>
                               <?php } ?>
@@ -150,6 +147,8 @@ $caption = array('Belum Buka', 'Daftar', 'Jalan', 'Selesai');
                                   <td><?=$m->nama_provinsi?></td>
                                   <td><?=$m->jumlah_materi?></td>
                                   <td>
+                                    <a href="<?=base_url("Kelas/ubahJadwal/$m->id_kelas/$m->id")?>" class="btn btn-sm btn-primary update-data" ><i class="fas fa-pen"></i></a>
+                                    <button class="btn btn-sm btn-danger" onclick="konfirmasiHapus('<?=base_url("Jadwal/hapusJadwal/$m->id_kelas/$m->id")?>')"><i class="fas fa-trash"></i></button>
                                   </td>
                                 </tr>
                                 <?php

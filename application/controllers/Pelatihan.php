@@ -98,8 +98,7 @@ class Pelatihan extends AUTH_Controller {
 		}
 		$data['page'] = "kelas";
 		$data['action'] = "tambah";
-		$data['judul'] = "Tambah Kelas";
-		$data['deskripsi'] = "Tambah kelas pelatihan TerasAsuh sesuai kebutuhan";
+		$data['title'] = "Tambah Kelas";
 
 		$data['pelatihan'] = $this->GeneralApiModel->getAllMaster('masterdata_pelatihan')->result();
 		$this->template->views('pelatihan/kelas_add', $data);
@@ -126,8 +125,7 @@ class Pelatihan extends AUTH_Controller {
 		}
 		$data['page'] = "kelas";
 		$data['action'] = "ubah";
-		$data['judul'] = "Ubah Kelas";
-		$data['deskripsi'] = "Ubah kelas pelatihan TerasAsuh sesuai kebutuhan";
+		$data['title'] = "Tambah Kelas";
 
 		$data['pelatihan'] = $this->GeneralApiModel->getAllMaster('masterdata_pelatihan')->result();
 		$data['detail'] = $this->GeneralApiModel->getWhereTransactional(array('id'=>$id_kelas),'transactional_kelas')->row();

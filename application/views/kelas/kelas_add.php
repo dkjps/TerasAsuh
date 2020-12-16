@@ -7,19 +7,11 @@ $id = $this->uri->segment(3);
   <section class="section">
     <div class="section-header">
       <h1><?=$title?></h1>
-      <div class="msg" style="display:none;">
-        <?php echo @$this->session->flashdata('msg'); ?>
-      </div>
     </div>
     <div class="section-body">
       <div class="row">
         <div class="col-12">
           <div class="card">
-            <div class="card-header">
-              <h4></h4>
-              <div class="card-header-action">              
-              </div>
-            </div>
             <div class="card-body">
               <div class="table-responsive">
                 <form class="form-horizontal" method="post" action="<?=base_url('Kelas/'.$action.'Kelas/'.$id)?>">

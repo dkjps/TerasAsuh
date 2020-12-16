@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class AdminController extends CI_Controller {
+class AdminController extends AUTH_Controller {
 
 	function __construct(){
 		parent::__construct();
@@ -9,7 +9,7 @@ class AdminController extends CI_Controller {
 		$this->api = 'http://api.mhscourses.ub-learningtechnology.com/api/admin';
 	}
 
-    public function lihatAdmin() {
+  public function lihatAdmin() {
 		$data = array(
 			'title' => "Dashboard",
 			'page' => 'dashboard'

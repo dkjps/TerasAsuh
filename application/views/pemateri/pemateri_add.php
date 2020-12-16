@@ -21,14 +21,36 @@ $id = $this->uri->segment(3);
                   <div class="form-group">
                     <label class="col-md-2 control-label" for="inputNamaPelatihan">Asal Provinsi</label>
                     <div class="col-md-8">
-                      <select  class="form-control"></select>
+                      <select  class="form-control" name="provinsi">
+                        <option value="">Pilih Provinsi</option>
+                        <?php
+                          foreach ($provinsi as $k) {
+                            if (!empty($detail) && $k->id==$detail->id_provinsi) {
+                              echo "<option value='$k->id' selected>$k->nama</option>";
+                            } else {
+                              echo "<option value='$k->id'>$k->nama</option>";
+                            }
+                          }
+                        ?>
+                      </select>
                     </div>
                   </div>
 
                   <div class="form-group">
                     <label class="col-md-2 control-label" for="inputNamaPelatihan">Pilih Pemateri</label>
                     <div class="col-md-8">
-                      <select  class="form-control" required></select>
+                      <select  class="form-control" name="pemateri" required>
+                        <option value="">Pilih Pemateri</option>
+                        <?php
+                          foreach ($pemateri as $k) {
+                            if (!empty($detail) && $k->id==$detail->id) {
+                              echo "<option value='$k->id' selected>$k->namalengkap</option>";
+                            } else {
+                              echo "<option value='$k->id'>$k->namalengkap</option>";
+                            }
+                          }
+                        ?>
+                      </select>
                     </div>
                   </div>
 
@@ -78,7 +100,6 @@ $id = $this->uri->segment(3);
 
                   <div class="form-group">
                     <div class="col-md-12 text-center">
-                      <a href="<?php echo base_url('Kelas/detailKelas'); ?>" class="btn btn-danger">Kembali</a>
                       <button type="button" class="btn btn-primary">Tambah Pemateri</button>
                     </div>
                   </div>

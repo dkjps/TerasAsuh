@@ -42,10 +42,16 @@ if ($this->uri->segment(2) == "" || $this->uri->segment(2) == "dashboard") { ?>
 </script>
 <!-- /END GA -->
 
-    <style>
-      .DTFC_LeftBodyLiner{overflow-y:unset !important}
-      .DTFC_RightBodyLiner{overflow-y:unset !important}
-    </style>
+<style>
+  /* .DTFC_LeftBodyLiner{overflow-y:unset !important}
+  .DTFC_RightBodyLiner{overflow-y:unset !important} */
+  .dataTables_filter{
+    float: right;
+  }
+  .dataTables_length{
+    display: none;
+  }
+</style>
 </head>
 <?php
 // if ($this->uri->segment(1) == "admin") {
