@@ -18,7 +18,7 @@ if (empty($menu)) {
           <ul class="sidebar-menu">
             <li class="menu-header">Dashboard</li>
             <li class="<?php echo $menu == 'dashboard' ? 'active' : ''; ?>"><a class="nav-link" href="<?php echo base_url(); ?>admin/dashboard"><i class="fas fa-fire"></i> <span>Dashboard</span></a></li>
-            
+
 <!-- Menu Admin Dashboard -->
             <li class="menu-header">Admin Dashboard</li>
             <li class="dropdown <?php echo $menu == 'master' ? 'active' : ''; ?>">
@@ -35,11 +35,12 @@ if (empty($menu)) {
 
 <!-- Menu Operator -->
             <li class="menu-header">Admin Operator</li>
-            <li class="<?php echo $page == 'pelatihan' ? 'active' : ''; ?>"><a class="nav-link" href="<?php echo base_url(); ?>pelatihan"><i class="fas fa-history"></i> <span>Data Pelatihan</span></a></li>     
+            <li class="<?php echo $page == 'pelatihan' ? 'active' : ''; ?>"><a class="nav-link" href="<?php echo base_url(); ?>pelatihan"><i class="fas fa-history"></i> <span>Data Pelatihan</span></a></li>
             <li class="dropdown <?php echo $menu == 'master' ? '' : ''; ?>">
             <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-graduation-cap"></i> <span>Kelas dan Topik</span></a>
               <ul class="dropdown-menu">
                 <li class="<?php echo $page == 'panitia' ? '' : ''; ?>"><a class="nav-link" href="<?php echo base_url(); ?>kelas">Daftar Kelas</a></li>
+                <li class="<?php echo $page == 'peserta' ? '' : ''; ?>"><a class="nav-link" href="<?php echo base_url("Jadwal"); ?>">Daftar Jadwal</a></li>
                 <li class="<?php echo $page == 'peserta' ? '' : ''; ?>"><a class="nav-link" href="<?php echo base_url(); ?>materi">Daftar Materi</a></li>
                 <li class="<?php echo $page == 'pelatihan' ? '' : ''; ?>"><a class="nav-link" href="<?php echo base_url(); ?>subMateri">Daftar Sub Materi</a></li>
               </ul>
@@ -51,7 +52,7 @@ if (empty($menu)) {
                 <li class="<?php echo $page == 'peserta' ? '' : ''; ?>"><a class="nav-link" href="<?php echo base_url(); ?>admin/master/master-peserta">Tambah Jadwal Topik</a></li>
               </ul>
             </li>
-            
+
   <!-- Menu Pemateri -->
             <li class="menu-header">Admin Pemateri</li>
             <li class="<?php echo $this->uri->segment(2) == 'skrining' ? '' : ''; ?>"><a class="nav-link" href="<?php echo base_url(); ?>admin/skrining"><i class="fas fa-check-circle"></i> <span>Data Kelas</span></a></li>

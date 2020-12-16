@@ -53,12 +53,17 @@ $route['default_controller'] = 'home';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
+<<<<<<< HEAD
 $route['login'] = 'auth/index';
 $route['auth'] = 'auth/index';
+=======
+// $route['login'] = 'auth/index';
+// $route['auth'] = 'auth/index';
+>>>>>>> parent of 92deef9... fix route 1:42:pm
 // $route['login'] = 'AuthController/login';
 // $route['auth'] = 'AuthController/login_process';
 //Admin Routes
-$route['dashboard'] = 'AdminController/lihatAdmin';
+// $route['dashboard'] = 'AdminController/lihatAdmin';
 $route['admin/dashboard'] = 'AdminController/lihatAdmin';
 $route['admin/dashboard-data'] = 'AdminController/dashboard';
 //MHS - COURSE Admin Routes

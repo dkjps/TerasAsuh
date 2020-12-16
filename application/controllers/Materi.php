@@ -22,7 +22,7 @@ class Materi extends AUTH_Controller {
 		$data['detail'] = $this->GeneralApiModel->getWhereTransactional(array('id_kelas'=>$id_kelas),'kelas_pelatihan')->row();
 		$data['materi'] = $this->GeneralApiModel->getWhereTransactional(array('id_kelas'=>$id_kelas),'detail_kelas_pemateri')->result();
 		$data['pemateri'] = $this->GeneralApiModel->getKelasPemateri($id_kelas);
-		$this->load->view('materi/detail_materi', $data);
+		$this->load->view('jadwal/detail_materi', $data);
 	}
 
 

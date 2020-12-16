@@ -99,7 +99,7 @@ $caption = array('Belum Buka', 'Daftar', 'Jalan', 'Selesai');
                               foreach ($materi as $m) { ?>
                                 <tr>
                                   <td><?=$i++?></td>
-                                  <td><?=$m->materi?></td>
+                                  <td><?=$m->judul_materi?></td>
                                   <td><?=$m->namalengkap?></td>
                                   <td><?=$m->tgl_buka_materi?></td>
                                   <td style="min-width:100px;">

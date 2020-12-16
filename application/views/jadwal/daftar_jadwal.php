@@ -34,7 +34,7 @@ $id = $this->uri->segment(3);
                             <th style="text-align: center;">Aksi</th>
                           </tr>
                         </thead>
-                        <tbody id="data-pegawai">        
+                        <tbody id="data-pegawai">
                         </tbody>
                       </table>
                     </div>

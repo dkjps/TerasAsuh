@@ -120,7 +120,7 @@ class Kelas extends AUTH_Controller {
 		$data['kelas'] = $this->GeneralApiModel->getWhereTransactionalOrdered(array('1'=>1), 'nama', 'ASC', 'transactional_kelas')->result();
 		$data['materi'] = $this->GeneralApiModel->getWhereMasterOrdered(array('1'=>1), 'judul', 'ASC', 'masterdata_materi')->result();
 		$data['pemateri'] = $this->GeneralApiModel->getWhereTransactionalOrdered(array('1'=>1), 'namalengkap', 'ASC', 'user_pemateri_detail')->result();
-		$this->template->views('materi/materi_add', $data);
+		$this->template->views('jadwal/jadwal_add', $data);
 	}
 
 	public function ubahJadwal($id_kelas, $id){
@@ -146,7 +146,7 @@ class Kelas extends AUTH_Controller {
 		$data['pemateri'] = $this->GeneralApiModel->getWhereTransactionalOrdered(array('1'=>1), 'namalengkap', 'ASC', 'user_pemateri_detail')->result();
 		$data['detail'] = $this->GeneralApiModel->getWhereTransactional(array('id_jadwal'=>$id),'detail_kelas_pemateri')->row();
 
-		$this->template->views('materi/materi_add', $data);
+		$this->template->views('jadwal/jadwal_add', $data);
 	}
 }
 
