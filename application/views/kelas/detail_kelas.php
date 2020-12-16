@@ -119,7 +119,7 @@ $caption = array('Belum Buka', 'Daftar', 'Jalan', 'Selesai');
                     <div class="tab-pane" id="tab_pemateri">
                       <!-- tablePemateri -->
                       <div class="col col-md-12" style="z-index:999;">
-                        <a href="<?php echo base_url('Pemateri/tambahPemateri'); ?>" class="btn btn-primary float-right" style="margin-top:10px; margin-bottom:5px;"><i class="glyphicon glyphicon-plus-sign"></i>  Tambah Pemateri</a>
+                        <a href="<?php echo base_url('Pemateri/tambahPemateri'); ?>" class="btn btn-primary float-right" style="margin-top:10px; margin-bottom:5px;"><i class="fas fa-plus"></i>  Tambah Pemateri</a>
                       </div>
 
                       <div class="col col-md-12">

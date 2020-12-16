@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class SubMateri extends AUTH_Controller {
+class Materi extends AUTH_Controller {
 	public function __construct() {
 		parent::__construct();
 		$this->load->model('GeneralApiModel');
@@ -12,7 +12,7 @@ class SubMateri extends AUTH_Controller {
 		$data['title'] = "Daftar Materi";
 		$data['detail'] = $this->GeneralApiModel->getAllTransactional('kelas_pelatihan')->result();
 
-		$this->template->views('subMateri/home_subMateri', $data);
+		$this->template->views('materi/daftar_materi', $data);
 	}
 
 	public function detailMateri($id_kelas) {
@@ -50,7 +50,7 @@ class SubMateri extends AUTH_Controller {
 		$data['deskripsi'] = "Tambah materi untuk pelatihan";
 
 		$data['pelatihan'] = $this->GeneralApiModel->getAllMaster('masterdata_pelatihan')->result();
-		$this->template->views('subMateri/subMateri_add', $data);
+		$this->template->views('materi/materi_add', $data);
 	}
 
 	public function ubahKelas($id_kelas){
