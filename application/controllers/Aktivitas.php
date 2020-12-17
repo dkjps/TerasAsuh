@@ -10,47 +10,33 @@ class Aktivitas extends AUTH_Controller {
 	}
 
 	public function index() {
-		$data['userdata'] = $this->userdata;
-		$data['dataPegawai'] = $this->M_pegawai->select_all();
-		$data['dataPosisi'] = $this->M_posisi->select_all();
-		$data['dataKota'] = $this->M_kota->select_all();
 
 		$data['page'] = "Pelatihan";
-		$data['judul'] = "Aktivitas Hari Ini";
+		$data['title'] = "Aktivitas Hari Ini";
 		$data['deskripsi'] = "Daftar pelatihan TerasAsuh";
 
-		$data['modal_tambah_pegawai'] = show_my_modal('modals/modal_tambah_pegawai', 'tambah-pegawai', $data);
 
 		$this->template->views('aktivitas/aktivitas_today', $data);
 	}
 
 	public function aktivitasDaftar() {
-		$data['userdata'] = $this->userdata;
-		$data['dataPegawai'] = $this->M_pegawai->select_all();
-		$data['dataPosisi'] = $this->M_posisi->select_all();
-		$data['dataKota'] = $this->M_kota->select_all();
 
 		$data['page'] = "Pelatihan";
-		$data['judul'] = "Daftar Aktivitas Anda";
+		$data['title'] = "Daftar Aktivitas Anda";
 		$data['deskripsi'] = "Daftar pelatihan TerasAsuh";
 
-		$data['modal_tambah_pegawai'] = show_my_modal('modals/modal_tambah_pegawai', 'tambah-pegawai', $data);
+
 
 		$this->template->views('aktivitas/home_aktivitas', $data);
 	}
 
 	public function tambahAktivitas(){
-        $data['userdata'] = $this->userdata;
-		$data['dataPegawai'] = $this->M_pegawai->select_all();
-		$data['dataPosisi'] = $this->M_posisi->select_all();
-		$data['dataKota'] = $this->M_kota->select_all();
-
+ 
 		$data['page'] = "tambahPelatihan";
-		$data['judul'] = "Tambah Aktivitas";
+		$data['title'] = "Tambah Aktivitas";
 		$data['deskripsi'] = "Tambah data pelatihan TerasAsuh sesuai kebutuhan";
 
-		$data['modal_tambah_pegawai'] = show_my_modal('modals/modal_tambah_pegawai', 'tambah-pegawai', $data);
-		$this->template->views('aktivitas/aktivitas_add');
+		$this->template->views('aktivitas/aktivitas_add', $data);
 	}
 
 	// public function tampil() {

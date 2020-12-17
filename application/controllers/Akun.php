@@ -10,38 +10,22 @@ class Akun extends AUTH_Controller {
 	}
 
 	public function index() {
-		$data['userdata'] = $this->userdata;
-		$data['dataPegawai'] = $this->M_pegawai->select_all();
-		$data['dataPosisi'] = $this->M_posisi->select_all();
-		$data['dataKota'] = $this->M_kota->select_all();
 
 		$data['page'] = "Pelatihan";
-		$data['judul'] = "Daftar Pelatihan";
+		$data['title'] = "Pengaturan Akun";
 		$data['deskripsi'] = "Daftar pelatihan TerasAsuh";
 
-		$data['modal_tambah_pegawai'] = show_my_modal('modals/modal_tambah_pegawai', 'tambah-pegawai', $data);
-
-		$this->template->views('pelatihan/home', $data);
+		$this->template->views('akun/pengaturan', $data);
 	}
 
-	public function tambahPelatihan(){
-        $data['userdata'] = $this->userdata;
-		$data['dataPegawai'] = $this->M_pegawai->select_all();
-		$data['dataPosisi'] = $this->M_posisi->select_all();
-		$data['dataKota'] = $this->M_kota->select_all();
+	public function ubahPasssword(){
 
 		$data['page'] = "tambahPelatihan";
-		$data['judul'] = "Tambah Data Pelatihan";
+		$data['title'] = "Ubah Password";
 		$data['deskripsi'] = "Tambah data pelatihan TerasAsuh sesuai kebutuhan";
-
-		$data['modal_tambah_pegawai'] = show_my_modal('modals/modal_tambah_pegawai', 'tambah-pegawai', $data);
-		$this->template->views('pelatihan/pelatihan_add');
+		$this->template->views('akun/ubahPassword');
 	}
 
-	// public function tampil() {
-	// 	$data['dataPegawai'] = $this->M_pegawai->select_all();
-	// 	// $this->load->view('pelatihan/data_tabel', $data);
-	// }
 
 	public function prosesTambah() {
 		$this->form_validation->set_rules('nama', 'Nama', 'trim|required');
