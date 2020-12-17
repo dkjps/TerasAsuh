@@ -20,6 +20,7 @@ class Materi extends AUTH_Controller {
 		$data['title'] = "Detail Materi";
 
 		$data['submateri'] = $this->GeneralApiModel->getWhereMaster(array('id_materi'=>$id_materi),'detail_sub_materi')->result();
+		$data['detail'] = $this->GeneralApiModel->getWhereTransactional(array('id_materi'=>$id_materi), 'detail_kelas_pemateri')->row();
 		$this->load->view('materi/detail_materi', $data);
 	}
 

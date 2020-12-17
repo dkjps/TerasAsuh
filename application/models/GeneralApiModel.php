@@ -257,4 +257,25 @@ class GeneralApiModel extends CI_Model {
         }
     }
 
+  	public function upload_file($filename){
+      $tipe = 0;
+  		$file_ext = pathinfo($filename,PATHINFO_EXTENSION);
+      if ($file_ext=="jpg" || $file_ext=="png" || $file_ext=="jpeg") {
+        $tipe = 1;
+      } elseif ($file_ext=="mp4" || $file_ext=="mov" || $file_ext=="wmv" || $file_ext=="mkv") {
+        $tipe = 2;
+      } elseif ($file_ext=="pdf") {
+        $tipe = 3;
+      }
+  		$new_name = time().'.'.$file_ext;
+
+      $config['upload_path'] = base_url("assets/materi");
+      // $config['allowed_types'] = 'jpg|png|jpeg|pdf';
+			$config['max_size']      = '0';
+  		$config['file_name'] = $new_name;
+
+  		$this->load->library('upload', $config, 'files');
+  		$this->files->initialize($config);
+  		$this->files->do_upload('files');  			
+  	}
 }

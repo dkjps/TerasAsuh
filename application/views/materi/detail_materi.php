@@ -26,11 +26,11 @@ $caption = array('Belum Buka', 'Daftar', 'Jalan', 'Selesai');
                 <div class="table-responsive">
                   <div class="form-group">
                     <label class="col-md-2 float-left">Pelatihan:</label>
-                    <h6 class="col-md-10 float-left"><?=$submateri[0]->nama_pelatihan?></h6>
+                    <h6 class="col-md-10 float-left"><?=($detail)?$detail->nama_pelatihan:''?></h6>
                   </div>
                   <div class="form-group">
                     <label class="col-md-2 float-left">Materi:</label>
-                    <h6 class="col-md-10 float-left"><?=$submateri[0]->materi?></h6>
+                    <h6 class="col-md-10 float-left"><?=($detail)?$detail->judul_materi:''?></h6>
                   </div>
                   <br><br><br><br><br>
                   <br>
@@ -49,7 +49,7 @@ $caption = array('Belum Buka', 'Daftar', 'Jalan', 'Selesai');
                           <td><?=$i++?></td>
                           <td><?=$s->subbab?></td>
                           <td><?=$s->deskripsi_subbab?></td>
-                          <td></td>
+                          <td><button class="btn btn-danger konfirmasiHapus-pegawai" onclick="konfirmasiHapus('<?=base_url("SubMateri/hapusSubMateri/$s->id_sub/$s->id_materi")?>')"><i class="fas fa-trash"></i></button></td>
                         </tr>
                       <?php endforeach; ?>
                     </tbody>

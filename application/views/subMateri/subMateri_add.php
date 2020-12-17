@@ -14,7 +14,8 @@ $id = $this->uri->segment(3);
 					<div class="card">
 						<div class="card-body">
 							<div class="table-responsive">
-								<form class="form-horizontal" method="post" action="<?=base_url("SubMateri/tambahSubMateri")?>">
+								<!-- <form class="form-horizontal" method="post" action="<?=base_url("SubMateri/tambahSubMateri")?>" enctype="multipart/form-data"> -->
+								<?php echo form_open_multipart('SubMateri/tambahSubMateri');?>
 									<div class="form-group col-md-12">
 										<div class="form-group col-md-6">
 											<label for="inputNamaPelatihan">Pelatihan</label>
@@ -40,16 +41,6 @@ $id = $this->uri->segment(3);
 											</select>
 										</div>
 
-										<div class="form-group col-md-6">
-											<label for="inputNamaPelatihan">Nama Pemateri</label>
-											<select class="form-control" name="pemateri">
-												<option value="">Pilih Pemateri</option>
-												<?php foreach ($pemateri as $p): ?>
-													<option value="<?=$p->id?>"><?=$p->namalengkap?></option>
-												<?php endforeach; ?>
-											</select>
-										</div>
-
 										<label class="col-md-2 control-label" for="inputNamaPelatihan">Tipe Materi</label>
 										<div class="col-md-6">
 											<select class="form-control" name="tipe" id="tipe" onchange="pilihTipe()" required>
@@ -68,21 +59,32 @@ $id = $this->uri->segment(3);
 									</div>
 
 
-									<div class="form-group col-md-12" id="file" style="display:none;">
-										<label class="col-md-2 control-label" for="inputNamaPelatihan">File Materi  <button class="btn btn-success" type="button" name="button">
-												<i class="fas fa-plus"></i>
-											</button>
-										</label>
-										<div class="col-md-6">
-											<input type="file" class="form-control" id="exampleInputFile" required>
+									<!-- <div class="form-group col-md-12" id="file"> -->
+										<div class="form-group col-md-12" id="file" style="display:none;">
+										<label class="col-md-2 control-label" for="inputNamaPelatihan">File Materi  <button class="btn btn-success" type="button" name="button" id="btnTambahFile">
+											<i class="fas fa-plus"></i>
+										</button>
+									</label>
+									<div class="col-md-6" id="file-materi-wrap">
+										<div class="file-wrap">
+											<div class="input-group">
+												<input type="file" name="files[]" class="form-control col-md-8">
+												<div class="input-group-prepend">
+													<!-- <div class="input-group-text">
+														<a href="#" class="btn btn-danger remove_field"><i class="fas fa-trash"></i></a>
+													</div> -->
+												</div>
+											</div>
+											<input type="text" class="form-control col-md-8" name="file_desk[]" value="" placeholder="Deskripsi File">
 										</div>
 									</div>
+								</div>
 
 								<div class="form-group col-md-12">
 									<button type="submit" name="submit" class="btn btn-primary col-md-6">Tambah Materi</button>
 								</div>
-
-							</form>
+							<!-- </form> -->
+							<?php echo form_close(); ?>
 						</div>
 					</div>
 				</div>
@@ -91,7 +93,36 @@ $id = $this->uri->segment(3);
 	</div>
 </section>
 </div>
+<script src="https://code.jquery.com/jquery-1.12.1.min.js"></script>
+
 <script type="text/javascript">
+var max_fields      = 10; //maximum input boxes allowed
+var wrapper   		= $("#file-materi-wrap"); //Fields wrapper
+var add_button      = $("#btnTambahFile"); //Add button ID
+
+var x = 1;
+$(add_button).click(function(e){ //on add input button click
+	e.preventDefault();
+	if(x < max_fields){ //max input box allowed
+		x++; //text box increment
+		$(wrapper).append(`<div class="file-wrap mt-2">
+		<div class="input-group">
+		<input type="file" name="files[]" class="form-control col-md-8">
+		<div class="input-group-prepend">
+		<div class="input-group-text">
+		<a href="#" class="btn btn-danger remove_field"><i class="fas fa-trash"></i></a>
+		</div>
+		</div>
+		</div>
+		<input type="text" class="form-control col-md-8" name="file_desk[]" value="" placeholder="Deskripsi File">
+		</div>`); //add input box
+	}
+});
+
+$(wrapper).on("click",".remove_field", function(e){ //user click on remove text
+	e.preventDefault(); $(this).parents('.file-wrap').remove(); x--;
+})
+
 function pilihTipe(){
 	var id = $('#tipe').val();
 	if (id[0]==1) {
@@ -101,46 +132,46 @@ function pilihTipe(){
 	}
 }
 </script>
-<script src="https://code.jquery.com/jquery-1.12.1.min.js"></script>
+
 <script type="text/javascript">
 if ($('#kelas').val()) {
-  $('#kelas').trigger('change');
+	$('#kelas').trigger('change');
 }
 
 function detailPelatihan(){
-  var id = $('#pelatihan').val();
+	var id = $('#pelatihan').val();
 	var url = "<?=base_url('SubMateri/detailPelatihan/');?>";
-  $.ajax({
-    url : url,
-    method : "POST",
-    data : {id: id},
-    // async : true,
-    dataType : 'json',
-    success: function(data){
-      console.log(data);
-      var materi = '';
-      var kelas = '';
-      var i;
-      if (data.materi.length==0) {
-        var materi = '<option value="">Materi Kosong</option>';
-      }
-      if (data.kelas.length==0) {
-        var kelas = '<option value="">Kelas Kosong</option>';
-      }
-      for(i=0; i<data.materi.length; i++){
-        materi += '<option value='+data.materi[i].id+'>'+data.materi[i].judul+'</option>';
-      }
-      for(i=0; i<data.kelas.length; i++){
-        kelas += '<option value='+data.kelas[i].id+'>'+data.kelas[i].nama+'</option>';
-      }
-      $('#materi').html(materi);
-      $('#kelas').html(kelas);
-    },
-    error: function (xhr, ajaxOptions, thrownError) {
-      console.log(xhr.status);
-      console.log(thrownError);
-    }
-  });
-  return false;
+	$.ajax({
+		url : url,
+		method : "POST",
+		data : {id: id},
+		// async : true,
+		dataType : 'json',
+		success: function(data){
+			console.log(data);
+			var materi = '';
+			var kelas = '';
+			var i;
+			if (data.materi.length==0) {
+				var materi = '<option value="">Materi Kosong</option>';
+			}
+			if (data.kelas.length==0) {
+				var kelas = '<option value="">Kelas Kosong</option>';
+			}
+			for(i=0; i<data.materi.length; i++){
+				materi += '<option value='+data.materi[i].id+'>'+data.materi[i].judul+'</option>';
+			}
+			for(i=0; i<data.kelas.length; i++){
+				kelas += '<option value='+data.kelas[i].id+'>'+data.kelas[i].nama+'</option>';
+			}
+			$('#materi').html(materi);
+			$('#kelas').html(kelas);
+		},
+		error: function (xhr, ajaxOptions, thrownError) {
+			console.log(xhr.status);
+			console.log(thrownError);
+		}
+	});
+	return false;
 }
 </script>

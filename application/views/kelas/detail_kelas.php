@@ -98,7 +98,7 @@ $caption = array('Belum Buka', 'Daftar', 'Jalan', 'Selesai');
                               foreach ($materi as $m) { ?>
                                 <tr>
                                   <td><?=$i++?></td>
-                                  <td><?=$m->judul_materi?></td>
+                                  <td><a href="<?=base_url("Materi/detailMateri/$m->id_materi")?>"><?=$m->judul_materi?></a></td>
                                   <td><?=$m->namalengkap?></td>
                                   <td><?=$m->tgl_buka_materi?></td>
                                   <td style="min-width:100px;">

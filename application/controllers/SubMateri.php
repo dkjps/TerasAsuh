@@ -16,10 +16,81 @@ class SubMateri extends AUTH_Controller {
 	}
 
 	public function tambahSubMateri(){
-		if (isset($_POST['submit'])) {			
+		if (isset($_POST['submit'])) {
+			$data['id_materi'] = $_POST['materi'];
+			$test = explode('-', $_POST['tipe']);
+			$data['is_test'] = $test[0];
+			$data['judul'] = $test[1];
+			$data['deskripsi'] = $_POST['deskripsi'];
+			$file_desk = $_POST['file_desk'];
+
+			if ($data['is_test']==0) {
+				$id_sub = $this->GeneralApiModel->insertIdMaster($data, 'masterdata_subbab_materi');
+
+				$files = $_FILES;
+
+				$jml = count($_FILES['files']['name']);
+
+				$path = "./assets/materi/";
+				$config['upload_path'] = $path;
+				$config['allowed_types'] = 'gif|jpg|png|jpeg|pdf|mp4|mkv|mov|wmv|ppt|pptx';
+				$config['max_size'] = '0';
+
+				$this->load->library('upload', $config);
+				$this->upload->initialize($config);
+
+				for ($i=0; $i < $jml; $i++) {
+					$filename = $files['files']['name'][$i];
+
+					$tipe = 0;
+					$file_ext = pathinfo($filename, PATHINFO_EXTENSION);
+					if ($file_ext=="jpg" || $file_ext=="png" || $file_ext=="jpeg") {
+						$tipe = 1;
+					} elseif ($file_ext=="mp4" || $file_ext=="mov" || $file_ext=="wmv" || $file_ext=="mkv" || $file_ext=="gif") {
+						$tipe = 2;
+					} elseif ($file_ext=="pdf") {
+						$tipe = 3;
+					}
+
+					$new_name = time().'-'.$filename;
+
+					$_FILES['files']['name'] = $new_name;
+          $_FILES['files']['type'] = $files['files']['type'][$i];
+          $_FILES['files']['tmp_name'] = $files['files']['tmp_name'][$i];
+          $_FILES['files']['error'] = $files['files']['error'][$i];
+          $_FILES['files']['size'] = $files['files']['size'][$i];
+
+					// $hos = "https://mhscourses.ub-learningtechnology.com/assets/materi/";
+
+					if ($this->upload->do_upload('files')) {
+						$this->session->set_flashdata('msg', '<div class="col-md-12 alert alert-success" role="alert">Tambah Sub Materi Sukses</div>');
+						var_dump($this->upload->data());
+					} else {
+						$this->session->set_flashdata('msg', '<div class="col-md-12 alert alert-danger" role="alert">'.$this->upload->display_errors().'</div>');
+						echo $this->upload->display_errors();
+					}
+
+					$sub['tipe'] = $tipe;
+					if ($tipe==0) {
+						$sub['isi'] = $file_desk[$i];
+					} else {
+						$sub['isi'] = base_url("assets/materi/").$new_name;
+					}
+					$sub['deskripsi'] = $file_desk[$i];
+					$sub['id_subbab_materi'] = $id_sub;
+
+					$this->GeneralApiModel->insertMaster($sub, 'masterdata_konten_materi');
+				}
+				// die();
+			} else {
+				 	$this->GeneralApiModel->insertMaster($data, 'masterdata_subbab_materi');
+			}
+
+			$this->session->set_flashdata('msg', '<div class="col-md-12 alert alert-success" role="alert">Tambah Sub Materi Sukses</div>');
+			redirect(base_url("Materi/detailMateri/".$data['id_materi']));
 		}
 
-
+		$data['action'] = 'tambah';
 		$data['page'] = "sub-materi";
 		$data['title'] = "Tambah Pelatihan";
 
@@ -29,12 +100,32 @@ class SubMateri extends AUTH_Controller {
 		$this->template->views('submateri/submateri_add', $data);
 	}
 
+	public function hapusSubMateri($id, $id_materi){
+		$where['id'] = $id;
+		$result = $this->GeneralApiModel->deleteMaster($where,'masterdata_subbab_materi');
+		$result2 = $this->GeneralApiModel->deleteMaster(array('id_subbab_materi'=>$id),'masterdata_konten_materi');
+		if ($result && $result2) {
+			$this->session->set_flashdata('msg', '<div class="col-md-12 alert alert-success" role="alert">Hapus Sub Materi Sukses</div>');
+			redirect(base_url("Materi/detailMateri/$id_materi"));
+		}
+	}
+
 	public function detailPelatihan(){
 		$id = $this->input->post('id');
 
 		$data['kelas'] = $this->GeneralApiModel->getWhereTransactional(array('id_pelatihan'=>$id),'transactional_kelas')->result();
 		$data['materi'] = $this->GeneralApiModel->getWhereMaster(array('id_pelatihan'=>$id),'masterdata_materi')->result();
 		echo json_encode($data);
+	}
+
+	private function set_upload_options(){
+		$config = array();
+		$config['upload_path'] = base_url("assets/materi");
+		$config['allowed_types'] = 'gif|jpg|png';
+		$config['max_size']      = '0';
+		$config['overwrite']     = FALSE;
+
+		return $config;
 	}
 }
 
