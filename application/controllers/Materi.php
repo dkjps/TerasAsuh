@@ -15,13 +15,11 @@ class Materi extends AUTH_Controller {
 		$this->template->views('materi/home', $data);
 	}
 
-	public function detailMateri($id_kelas) {
+	public function detailMateri($id_materi) {
 		$data['page'] = "materi";
 		$data['title'] = "Detail Materi";
 
-		$data['detail'] = $this->GeneralApiModel->getWhereTransactional(array('id_kelas'=>$id_kelas),'kelas_pelatihan')->row();
-		$data['materi'] = $this->GeneralApiModel->getWhereTransactional(array('id_kelas'=>$id_kelas),'detail_kelas_pemateri')->result();
-		$data['pemateri'] = $this->GeneralApiModel->getKelasPemateri($id_kelas);
+		$data['submateri'] = $this->GeneralApiModel->getWhereMaster(array('id_materi'=>$id_materi),'detail_sub_materi')->result();
 		$this->load->view('materi/detail_materi', $data);
 	}
 

@@ -15,8 +15,8 @@ $id = $this->uri->segment(3);
 						<div class="card-header">
 							<div class="col-md-12">
 								<?php echo @$this->session->flashdata('msg'); ?>
-								<a href="<?php echo base_url('subMateri/tambahMateri/'); ?>" class="btn btn-info float-right"
-									role="button" aria-pressed="true"><i class="fas fa-plus" style="padding-right:3px"></i> Tambah subMateri</a>
+								<a href="<?php echo base_url('SubMateri/tambahSubMateri/'); ?>" class="btn btn-info float-right"
+									role="button" aria-pressed="true"><i class="fas fa-plus" style="padding-right:3px"></i> Tambah Sub Materi</a>
 								</div>
 							</div>
 							<div class="card-body">
