@@ -119,7 +119,7 @@ $(add_button).click(function(e){ //on add input button click
 	}
 });
 
-$(wrapper).on("click",".remove_field", function(e){ //user click on remove text
+$(wrapper).on("click",".remove_field", function(e){ 
 	e.preventDefault(); $(this).parents('.file-wrap').remove(); x--;
 })
 
