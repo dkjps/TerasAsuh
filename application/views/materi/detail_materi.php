@@ -47,7 +47,7 @@ $caption = array('Belum Buka', 'Daftar', 'Jalan', 'Selesai');
                       <?php $i=1; foreach ($submateri as $s): ?>
                         <tr>
                           <td><?=$i++?></td>
-                          <td><?=$s->subbab?></td>
+                          <td><a href="<?=base_url("SubMateri/detailSubMateri/$s->id_sub")?>"><?=$s->subbab?></a></td>
                           <td><?=$s->deskripsi_subbab?></td>
                           <td><button class="btn btn-danger konfirmasiHapus-pegawai" onclick="konfirmasiHapus('<?=base_url("SubMateri/hapusSubMateri/$s->id_sub/$s->id_materi")?>')"><i class="fas fa-trash"></i></button></td>
                         </tr>

@@ -60,7 +60,7 @@ $id = $this->uri->segment(3);
 
 
 									<!-- <div class="form-group col-md-12" id="file"> -->
-										<div class="form-group col-md-12" id="file" style="display:none;">
+								<div class="form-group col-md-12" id="file" style="display:none;">
 										<label class="col-md-2 control-label" for="inputNamaPelatihan">File Materi  <button class="btn btn-success" type="button" name="button" id="btnTambahFile">
 											<i class="fas fa-plus"></i>
 										</button>

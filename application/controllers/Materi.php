@@ -24,7 +24,6 @@ class Materi extends AUTH_Controller {
 		$this->load->view('materi/detail_materi', $data);
 	}
 
-
 	public function tambahMateri(){
 		if (isset($_POST['submit'])) {
 			$data['judul'] = $_POST['materi'];
