@@ -168,8 +168,8 @@ $id_sub = $this->uri->segment(3);
                         <?php $i=1; foreach ($detail as $s): ?>
                           <tr>
                             <td><?=$i++?></td>
-                            <td><a href="<?=base_url("SubMateri/detailSoal/$s->id")?>"><?=$s->soal?></a></td>
-                            <td><button class="btn btn-danger konfirmasiHapus-pegawai" onclick="konfirmasiHapus('<?=base_url("SubMateri/hapusSoal/$s->id")?>')"><i class="fas fa-trash"></i></button></td>
+                            <td><a href="<?=base_url("SubMateri/detailSoal/$s->id/$s->id_subbab_materi")?>"><?=$s->soal?></a></td>
+                            <td class="text-center"><button class="btn btn-danger konfirmasiHapus-pegawai" onclick="konfirmasiHapus('<?=base_url("SubMateri/hapusSoal/$s->id/$s->id_subbab_materi")?>')"><i class="fas fa-trash"></i></button></td>
                           </tr>
                         <?php endforeach; ?>
                       </tbody>

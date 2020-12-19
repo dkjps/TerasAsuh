@@ -30,6 +30,16 @@ class SubMateri extends AUTH_Controller {
 		$this->load->view('submateri/detail_submateri', $data);
 	}
 
+	public function detailSoal($id, $id_sub) {
+		$data['page'] = "materi";
+		$data['title'] = "Detail Soal";
+
+		$data['soal'] = $this->GeneralApiModel->getWhereMaster(array('id'=>$id),'masterdata_test')->row();
+		$data['benar'] = $this->GeneralApiModel->getWhereMaster(array('id_test'=>$id, 'is_benar'=>1),'masterdata_pilihan_jawaban_test')->row();
+		$data['salah'] = $this->GeneralApiModel->getWhereMaster(array('id_test'=>$id, 'is_benar'=>0),'masterdata_pilihan_jawaban_test')->result();
+		$this->load->view('submateri/detail_soal', $data);
+	}
+
 	public function tambahSubMateri($id_materi){
 		if (isset($_POST['submit'])) {
 			$data['id_materi'] = $id_materi;
@@ -152,6 +162,37 @@ class SubMateri extends AUTH_Controller {
 			// die();
 			redirect(base_url("SubMateri/detailSubMateri/".$id_sub));
 		}
+	}
+
+	public function ubahSoal($id_soal, $id_sub){
+		if (isset($_POST['submit'])) {
+
+			$this->GeneralApiModel->updateMaster(array('soal'=>$_POST['soal']), array('id'=>$id_soal), 'masterdata_test');
+			$this->GeneralApiModel->deleteMaster(array('id_test'=>$id_soal), 'masterdata_pilihan_jawaban_test');
+
+			$benar['jawaban'] = $_POST['benar'];
+			$benar['is_benar'] = 1;
+			$benar['id_test'] = $id_soal;
+			$this->GeneralApiModel->insertMaster($benar, 'masterdata_pilihan_jawaban_test');
+
+			$answers = $_POST['answers'];
+			$jawaban = array();
+			foreach ($answers as $a) {
+				array_push($jawaban, array('jawaban'=>$a, 'is_benar'=>0, 'id_test'=>$id_soal));
+			}
+			// var_dump($jawaban);
+			$this->GeneralApiModel->insertBatchMaster($jawaban, 'masterdata_pilihan_jawaban_test');
+			$this->session->set_flashdata('msg', '<div class="col-md-12 alert alert-success" role="alert">Tambah Soal Sukses</div>');
+			// die();
+			redirect(base_url("SubMateri/detailSubMateri/".$id_sub));
+		}
+	}
+
+	public function hapusSoal($id_soal, $id_sub){
+		$this->GeneralApiModel->deleteMaster(array('id'=>$id_soal), 'masterdata_test');
+		$this->GeneralApiModel->deleteMaster(array('id_test'=>$id_soal), 'masterdata_pilihan_jawaban_test');
+		$this->session->set_flashdata('msg', '<div class="col-md-12 alert alert-success" role="alert">Hapus Soal Sukses</div>');
+		redirect(base_url("SubMateri/detailSubMateri/$id_sub"));
 	}
 
 	public function tambahMateriPembelajaran($id_sub){
