@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 $id_kelas = $this->uri->segment(4);
-$id_pelatihan = $this->uri->segment(3);  
+$id_pelatihan = $this->uri->segment(3);
 ?>
 <!-- Main Content -->
 <div class="main-content" id="halaman-pasien">
@@ -16,21 +16,21 @@ $id_pelatihan = $this->uri->segment(3);
             <div class="card-body">
               <div class="table-responsive">
                 <form class="form-horizontal" method="post" action="<?=base_url('Pelatihan/'.$action.'Kelas/'.$id_pelatihan.'/'.$id_kelas)?>">
-                  <div class="form-group">
+                  <!-- <div class="form-group">
                     <label class="col-md-2 control-label" for="inputNamaPelatihan">Pelatihan</label>
                     <div class="col-md-8">
-                      <select class="form-control" name="pelatihan">
+                      <select class="form-control" name="pelatihan"> -->
                         <?php
-                        foreach ($pelatihan as $p) {
-                          $id_pelatihan = (!empty($detail)?$detail->id_pelatihan:0);
-                          echo "<option value=".$p->id;
-                          echo ($p->id==$id_pelatihan?' selected':'');
-                          echo ">".$p->nama."</option>";
-                        }
+                        // foreach ($pelatihan as $p) {
+                        //   $id_pelatihan = (!empty($detail)?$detail->id_pelatihan:0);
+                        //   echo "<option value=".$p->id;
+                        //   echo ($p->id==$id_pelatihan?' selected':'');
+                        //   echo ">".$p->nama."</option>";
+                        // }
                         ?>
-                      </select>
+                      <!-- </select>
                     </div>
-                  </div>
+                  </div> -->
 
                   <div class="form-group">
                     <label class="col-md-2 control-label" for="inputNamaPelatihan">Nama Kelas</label>
@@ -42,7 +42,7 @@ $id_pelatihan = $this->uri->segment(3);
                   <div class="form-group">
                     <label class="col-md-2 control-label" for="inputNamaPelatihan">Kapasitas</label>
                     <div class="col-md-8">
-                      <input value="<?=(!empty($detail)?$detail->kapasitas:'')?>" type="number" class="form-control" name="kapasitas" placeholder="Kapasitas">
+                      <input value="<?=(!empty($detail)?$detail->kapasitas:1)?>" type="number" class="form-control" name="kapasitas" placeholder="Kapasitas" min="1">
                     </div>
                   </div>
 

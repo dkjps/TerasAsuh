@@ -55,7 +55,7 @@ $id_kelas = $this->uri->segment(3);
                   <div class="form-group">
                     <label class="col-md-2 control-label" for="inputNamaPelatihan">Judul Materi</label>
                     <div class="col-md-8">
-                      <input type="text" name="materi" class="col-md-8 form-control" value="<?=($detail?$detail->judul_materi:'')?>" placeholder="Jadwal Materi" <?=($detail?'readonly':'')?> required>
+                      <input type="text" name="materi" class="col-md-8 form-control" value="<?=(!empty($detail)?$detail->judul_materi:'')?>" placeholder="Judul Materi" <?=(!empty($detail)?'readonly':'')?> required>
                       <!-- <select class="form-control" name="materi" id="materi" required>
                         <option value="">Pilih Materi</option>
                       </select> -->

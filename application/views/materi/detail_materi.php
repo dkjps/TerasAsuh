@@ -40,6 +40,7 @@ $caption = array('Belum Buka', 'Daftar', 'Jalan', 'Selesai');
                         <th>#</th>
                         <th>Judul</th>
                         <th>Deksripsi</th>
+                        <th>Pemateri</th>
                         <th style="text-align: center;">Aksi</th>
                       </tr>
                     </thead>
@@ -49,6 +50,7 @@ $caption = array('Belum Buka', 'Daftar', 'Jalan', 'Selesai');
                           <td><?=$i++?></td>
                           <td><a href="<?=base_url("SubMateri/detailSubMateri/$s->id_sub")?>"><?=$s->subbab?></a></td>
                           <td><?=$s->deskripsi_subbab?></td>
+                          <td><?=$detail->namalengkap?></td>
                           <td><button class="btn btn-danger konfirmasiHapus-pegawai" onclick="konfirmasiHapus('<?=base_url("SubMateri/hapusSubMateri/$s->id_sub/$s->id_materi")?>')"><i class="fas fa-trash"></i></button></td>
                         </tr>
                       <?php endforeach; ?>

@@ -78,9 +78,9 @@ class Pelatihan extends AUTH_Controller {
 		$this->load->view('pelatihan/daftar_kelas', $data);
 	}
 
-	public function tambahKelas(){
+	public function tambahKelas($id_pelatihan){
 		if (isset($_POST['submit'])) {
-			$data['id_pelatihan'] = $_POST['pelatihan'];
+			$data['id_pelatihan'] = $id_pelatihan;
 			$data['nama'] = $_POST['kelas'];
 			$data['kapasitas'] = $_POST['kapasitas'];
 			$data['tgl_buka'] = $_POST['tgl_buka'];
@@ -106,7 +106,7 @@ class Pelatihan extends AUTH_Controller {
 
 	public function ubahKelas($id_pelatihan, $id_kelas){
 		if (isset($_POST['submit'])) {
-			$data['id_pelatihan'] = $_POST['pelatihan'];
+			$data['id_pelatihan'] = $id_pelatihan;
 			$data['nama'] = $_POST['kelas'];
 			$data['kapasitas'] = $_POST['kapasitas'];
 			$data['tgl_buka'] = $_POST['tgl_buka'];
@@ -125,7 +125,7 @@ class Pelatihan extends AUTH_Controller {
 		}
 		$data['page'] = "kelas";
 		$data['action'] = "ubah";
-		$data['title'] = "Tambah Kelas";
+		$data['title'] = "Ubah Kelas";
 
 		$data['pelatihan'] = $this->GeneralApiModel->getAllMaster('masterdata_pelatihan')->result();
 		$data['detail'] = $this->GeneralApiModel->getWhereTransactional(array('id'=>$id_kelas),'transactional_kelas')->row();

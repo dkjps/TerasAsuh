@@ -16,7 +16,7 @@ class Auth extends CI_Controller {
 		if ($session == '') {
 			$this->load->view('login', $data);
 		} else {
-			redirect('dashboard');
+			redirect('admin/dashboard');
 		}
 
 	}
@@ -47,7 +47,7 @@ class Auth extends CI_Controller {
 										$this->session->set_userdata('namalengkap', $result2->namalengkap);
 										$this->session->set_userdata('role', $result2->role);
 										$this->session->set_userdata('status', 1);
-										redirect(base_url("dashboard"));
+										redirect(base_url("admin/dashboard"));
 									}else{
 										$return = array(
 											'status'=>200,
@@ -89,7 +89,7 @@ class Auth extends CI_Controller {
 										$this->session->set_userdata('namalengkap', $result2->namalengkap);
 										$this->session->set_userdata('role', $result2->role);
 										$this->session->set_userdata('status', 1);
-										redirect(base_url("dashboard"));
+										redirect(base_url("admin/dashboard"));
 									}
 									else{
 										$return = array(
