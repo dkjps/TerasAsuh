@@ -10,7 +10,7 @@ class Kelas extends AUTH_Controller {
 	public function index() {
 		$data['page'] = "kelas";
 		$data['title'] = "Daftar Kelas";
-		$data['detail'] = $this->GeneralApiModel->getAllTransactional('kelas_pelatihan')->result();
+		$data['detail'] = $this->GeneralApiModel->getWhereTransactionalOrdered(array('1'=>1), 'nama_pelatihan,nama_kelas', 'ASC','kelas_pelatihan')->result();
 
 		$this->template->views('kelas/daftar_kelas', $data);
 	}
@@ -20,7 +20,7 @@ class Kelas extends AUTH_Controller {
 		$data['title'] = "Detail Kelas";
 
 		$data['detail'] = $this->GeneralApiModel->getWhereTransactional(array('id_kelas'=>$id_kelas),'kelas_pelatihan')->row();
-		$data['materi'] = $this->GeneralApiModel->getWhereTransactional(array('id_kelas'=>$id_kelas),'detail_kelas_pemateri')->result();
+		$data['materi'] = $this->GeneralApiModel->getWhereTransactionalOrdered(array('id_kelas'=>$id_kelas), 'tgl_buka_materi, judul_materi', 'ASC','detail_kelas_pemateri')->result();
 		$data['pemateri'] = $this->GeneralApiModel->getKelasPemateri($id_kelas);
 
 		$this->load->view('kelas/detail_kelas', $data);
@@ -64,8 +64,8 @@ class Kelas extends AUTH_Controller {
 			$this->load->helper('string');
 			$random = random_string('alnum', 6);
 			$data['kode_referal'] = $random;
-			$data['is_buka_pendaftaran'] = 0;
 			$data['statusdata'] = 0;
+			$data['is_buka_pendaftaran'] = 0;
 
 			$result = $this->GeneralApiModel->updateTransactional($data, array('id'=>$id_kelas), 'transactional_kelas');
 			if ($result) {
@@ -101,9 +101,16 @@ class Kelas extends AUTH_Controller {
 	}
 
 	public function tambahJadwal($id_kelas){
+		$kelas = $this->GeneralApiModel->getWhereTransactional(array('id_kelas'=>$id_kelas), 'kelas_pelatihan')->row();
 		if (isset($_POST['submit'])) {
-			$data['id_kelas'] = $_POST['kelas'];
-			$data['id_materi'] = $_POST['materi'];
+			$materi['id_pelatihan'] = $kelas->id_pelatihan;
+			$materi['judul'] = $_POST['materi'];
+			$materi['statusdata'] = 0;
+
+			$id_materi = $this->GeneralApiModel->insertIdMaster($materi, 'masterdata_materi');
+
+			$data['id_kelas'] = $id_kelas;
+			$data['id_materi'] = $id_materi;
 			$data['id_panitia'] = $_POST['pemateri'];
 			$data['tgl_buka_materi'] = $_POST['tgl'].' '.$_POST['jam'];
 			$result = $this->GeneralApiModel->insertTransactional($data, 'transactional_jadwal');
@@ -116,24 +123,24 @@ class Kelas extends AUTH_Controller {
 		$data['page'] = "materi";
 		$data['title'] = "Tambah Jadwal";
 
-		$data['id_kelas'] = $id_kelas;
 
-		$data['kelas'] = $this->GeneralApiModel->getWhereTransactionalOrdered(array('1'=>1), 'nama', 'ASC', 'transactional_kelas')->result();
-		// $data['materi'] = $this->GeneralApiModel->getWhereMasterOrdered(array('id_pelatihan'=>1), 'judul', 'ASC', 'masterdata_materi')->result();
+		// $data['kelas'] = $this->GeneralApiModel->getWhereTransactionalOrdered(array('1'=>1), 'nama', 'ASC', 'transactional_kelas')->result();
+		// $data['pelatihan'] = $this->GeneralApiModel->getAllMaster('masterdata_pelatihan')->result();
+		$data['kelas'] = $kelas->nama_kelas;
+		$data['pelatihan'] = $kelas->nama_pelatihan;
 		$data['pemateri'] = $this->GeneralApiModel->getWhereTransactionalOrdered(array('1'=>1), 'namalengkap', 'ASC', 'user_pemateri_detail')->result();
 		$this->template->views('jadwal/jadwal_add', $data);
 	}
 
 	public function ubahJadwal($id_kelas, $id){
+		$kelas = $this->GeneralApiModel->getWhereTransactional(array('id_kelas'=>$id_kelas), 'kelas_pelatihan')->row();
 		if (isset($_POST['submit'])) {
-			$data['id_kelas'] = $_POST['kelas'];
-			$data['id_materi'] = $_POST['materi'];
 			$data['id_panitia'] = $_POST['pemateri'];
 			$data['tgl_buka_materi'] = $_POST['tgl'].' '.$_POST['jam'];
 			$result = $this->GeneralApiModel->updateTransactional($data, array('id'=>$id), 'transactional_jadwal');
 			if ($result) {
 				$this->session->set_flashdata('msg', '<div class="col-md-12 alert alert-success" role="alert">Tambah Jadwal Sukses</div>');
-				redirect(base_url("Kelas/detailKelas/".$data['id_kelas']));
+				redirect(base_url("Kelas/detailKelas/".$id_kelas));
 			}
 		}
 		$data['action'] = "ubah";
@@ -142,12 +149,22 @@ class Kelas extends AUTH_Controller {
 
 		$data['id_kelas'] = $id_kelas;
 
-		$data['kelas'] = $this->GeneralApiModel->getWhereTransactionalOrdered(array('1'=>1), 'nama', 'ASC', 'transactional_kelas')->result();
-		$data['materi'] = $this->GeneralApiModel->getWhereMasterOrdered(array('1'=>1), 'judul', 'ASC', 'masterdata_materi')->result();
+		// $data['kelas'] = $this->GeneralApiModel->getWhereTransactionalOrdered(array('1'=>1), 'nama', 'ASC', 'transactional_kelas')->result();
+		// $data['materi'] = $this->GeneralApiModel->getWhereMasterOrdered(array('1'=>1), 'judul', 'ASC', 'masterdata_materi')->result();
+		$data['kelas'] = $kelas->nama_kelas;
+		$data['pelatihan'] = $kelas->nama_pelatihan;
 		$data['pemateri'] = $this->GeneralApiModel->getWhereTransactionalOrdered(array('1'=>1), 'namalengkap', 'ASC', 'user_pemateri_detail')->result();
 		$data['detail'] = $this->GeneralApiModel->getWhereTransactional(array('id_jadwal'=>$id),'detail_kelas_pemateri')->row();
 
 		$this->template->views('jadwal/jadwal_add', $data);
+	}
+
+	public function ubahStatusPendaftaran($status, $id_kelas){
+		$data['is_buka_pendaftaran'] = $status;
+		$this->session->set_flashdata('msg', '<div class="col-md-12 alert alert-success" role="alert">Ubah Status Pendaftaran Sukses</div>');
+
+		$result = $this->GeneralApiModel->updateTransactional($data, array('id'=>$id_kelas), 'transactional_kelas');
+		redirect(base_url("Kelas/detailKelas/".$id_kelas));
 	}
 
 	public function getMateri(){

@@ -15,82 +15,81 @@ $id = $this->uri->segment(3);
 						<div class="card-body">
 							<div class="table-responsive">
 								<!-- <form class="form-horizontal" method="post" action="<?=base_url("SubMateri/tambahSubMateri")?>" enctype="multipart/form-data"> -->
-								<?php echo form_open_multipart('SubMateri/tambahSubMateri');?>
-									<div class="form-group col-md-12">
-										<div class="form-group col-md-6">
-											<label for="inputNamaPelatihan">Pelatihan</label>
-											<select class="form-control" name="pelatihan" id="pelatihan" onchange="detailPelatihan()" required>
-												<option value="">Pilih Pelatihan</option>
-												<?php foreach ($pelatihan as $p): ?>
-													<option value="<?=$p->id?>"><?=$p->nama?></option>
-												<?php endforeach; ?>
-											</select>
-										</div>
+								<?php echo form_open_multipart('SubMateri/tambahSubMateri/'.$id);?>
+								<!-- <div class="form-group col-md-12">
+								<div class="form-group col-md-6">
+								<label for="inputNamaPelatihan">Pelatihan</label>
+								<select class="form-control" name="pelatihan" id="pelatihan" onchange="detailPelatihan()" required>
+								<option value="">Pilih Pelatihan</option> -->
+								<?php //foreach ($pelatihan as $p): ?>
+									<!-- <option value="<?php //echo $p->id?>"><?php //	echo $p->nama?></option> -->
+									<?php //endforeach; ?>
+									<!-- </select>
+								</div> -->
 
-										<div class="form-group col-md-6">
-											<label for="inputNamaPelatihan">Nama Kelas</label>
-											<select class="form-control" name="kelas" id="kelas" required>
-												<option value="">Pilih Kelas</option>
-											</select>
-										</div>
+								<!-- <div class="form-group col-md-6">
+								<label for="inputNamaPelatihan">Nama Kelas</label>
+								<select class="form-control" name="kelas" id="kelas" required>
+								<option value="">Pilih Kelas</option>
+							</select>
+						</div> -->
 
-										<div class="form-group col-md-6">
-											<label for="inputNamaPelatihan">Judul Materi</label>
-											<select class="form-control" name="materi" id="materi" required>
-												<option value="">Pilih Materi</option>
-											</select>
-										</div>
+						<div class="form-group col-md-6">
+							<label for="inputNamaPelatihan">Judul Materi</label>
+							<!-- <select class="form-control" name="materi" id="materi" required>
+							<option value="">Pilih Materi</option>
+						</select> -->
+						<input type="text" name="materi" class="col-md-8 form-control" value="<?=($detail?$detail->judul:'')?>" placeholder="Jadwal Materi" <?=($detail?'readonly':'')?> required>
+					</div>
 
-										<label class="col-md-2 control-label" for="inputNamaPelatihan">Tipe Materi</label>
-										<div class="col-md-6">
-											<select class="form-control" name="tipe" id="tipe" onchange="pilihTipe()" required>
-												<option value="1-Pre Test">Pre Test</option>
-												<option value="0-Materi Belajar">Materi Belajar</option>
-												<option value="1-Post Test">Post Test</option>
-											</select>
-										</div>
-									</div>
-
-									<div class="form-group col-md-12">
-										<label class="col-md-2 control-label" for="inputNamaPelatihan">Deskripsi Materi</label>
-										<div class="col-md-6">
-											<textarea class="form-control" rows="3" style="resize: none;" name="deskripsi"></textarea>
-										</div>
-									</div>
-
-
-									<!-- <div class="form-group col-md-12" id="file"> -->
-								<div class="form-group col-md-12" id="file" style="display:none;">
-										<label class="col-md-2 control-label" for="inputNamaPelatihan">File Materi  <button class="btn btn-success" type="button" name="button" id="btnTambahFile">
-											<i class="fas fa-plus"></i>
-										</button>
-									</label>
-									<div class="col-md-6" id="file-materi-wrap">
-										<div class="file-wrap">
-											<div class="input-group">
-												<input type="file" name="files[]" class="form-control col-md-8">
-												<div class="input-group-prepend">
-													<!-- <div class="input-group-text">
-														<a href="#" class="btn btn-danger remove_field"><i class="fas fa-trash"></i></a>
-													</div> -->
-												</div>
-											</div>
-											<input type="text" class="form-control col-md-8" name="file_desk[]" value="" placeholder="Deskripsi File">
-										</div>
-									</div>
-								</div>
-
-								<div class="form-group col-md-12">
-									<button type="submit" name="submit" class="btn btn-primary col-md-6">Tambah Materi</button>
-								</div>
-							<!-- </form> -->
-							<?php echo form_close(); ?>
+				<div class="form-group col-md-12">
+					<label class="control-label" for="inputNamaPelatihan">Tipe Materi</label>
+					<!-- <div class="col-md-6"> -->
+						<select class="form-control col-md-6" name="tipe" id="tipe" onchange="pilihTipe()" required>
+							<option value="1-Pre Test">Pre Test</option>
+							<option value="0-Materi Belajar">Materi Belajar</option>
+							<option value="1-Post Test">Post Test</option>
+						</select>
+					<!-- </div> -->
+				</div>
+				<div class="form-group col-md-12" id="file" style="display:none;">
+					<label class="col-md-2 control-label" for="inputNamaPelatihan">File Materi  <button class="btn btn-success" type="button" name="button" id="btnTambahFile">
+						<i class="fas fa-plus"></i>
+					</button>
+				</label>
+				<div class="col-md-6" id="file-materi-wrap">
+					<div class="file-wrap">
+						<div class="input-group">
+							<input type="file" name="files[]" class="form-control col-md-8">
+							<div class="input-group-prepend">
+								<!-- <div class="input-group-text">
+								<a href="#" class="btn btn-danger remove_field"><i class="fas fa-trash"></i></a>
+							</div> -->
 						</div>
 					</div>
+					<input type="text" class="form-control col-md-8" name="file_desk[]" value="" placeholder="Deskripsi File">
 				</div>
 			</div>
 		</div>
+
+				<div class="form-group col-md-12">
+					<label class="control-label" for="inputNamaPelatihan">Deskripsi Materi</label>
+					<!-- <div class="col-md-6"> -->
+						<textarea class="form-control col-md-6" rows="3" style="resize: none;" name="deskripsi"></textarea>
+					<!-- </div> -->
+				</div>
+
+		<div class="form-group col-md-12">
+			<button type="submit" name="submit" class="btn btn-primary col-md-6">Tambah Materi</button>
+		</div>
+		<!-- </form> -->
+		<?php echo form_close(); ?>
 	</div>
+</div>
+</div>
+</div>
+</div>
+</div>
 </section>
 </div>
 <script src="https://code.jquery.com/jquery-1.12.1.min.js"></script>
@@ -134,8 +133,8 @@ function pilihTipe(){
 </script>
 
 <script type="text/javascript">
-if ($('#kelas').val()) {
-	$('#kelas').trigger('change');
+if ($('#pelatihan').val()) {
+	$('#pelatihan').trigger('change');
 }
 
 function detailPelatihan(){

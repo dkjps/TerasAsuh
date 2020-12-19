@@ -10,7 +10,7 @@ class Materi extends AUTH_Controller {
 	public function index() {
 		$data['page'] = "materi";
 		$data['title'] = "Daftar Materi";
-		$data['materi'] = $this->GeneralApiModel->getAllMaster('detail_materi')->result();
+		$data['materi'] = $this->GeneralApiModel->getWhereMasterOrdered(array('1'=>1), 'nama, judul', 'ASC','detail_materi')->result();
 
 		$this->template->views('materi/home', $data);
 	}

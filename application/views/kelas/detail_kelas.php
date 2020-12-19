@@ -15,12 +15,12 @@ $caption = array('Belum Buka', 'Daftar', 'Jalan', 'Selesai');
       <div class="row">
         <div class="col-12">
           <div class="card">
-            <div class="card-header">
+            <!-- <div class="card-header">
               <div class="col-md-12">
-                <?php echo @$this->session->flashdata('msg'); ?>
               </div>
-            </div>
+            </div> -->
             <div class="card-body">
+              <?php echo @$this->session->flashdata('msg'); ?>
               <form>
                 <div class="form-row">
                   <div class="form-group col-md-4">
@@ -33,7 +33,7 @@ $caption = array('Belum Buka', 'Daftar', 'Jalan', 'Selesai');
                   </div>
                   <div class="form-group col-md-4">
                     <label for="inputTanggalPelatihan">Status Kelas</label>
-                    <span class="form-control btn btn-<?=$warna[$detail->status_kelas]?>">
+                    <span class="form-control text-center text-<?=$warna[$detail->status_kelas]?> border-<?=$warna[$detail->status_kelas]?>">
                       <?php echo $caption[$detail->status_kelas]; ?>
                     </span>
                   </div>
@@ -42,7 +42,7 @@ $caption = array('Belum Buka', 'Daftar', 'Jalan', 'Selesai');
                 <div class="form-row">
                   <div class="form-group col-md-2">
                     <label for="inputNamaPelatihan">Jumlah Materi</label>
-                    <span class="form-control"><?=(!empty($detail->jumlah_materi)?$detail->jumlah_materi:'0')?></span>
+                    <span class="form-control"><?=(!empty($materi)?count($materi):'0')?></span>
                   </div>
                   <div class="form-group col-md-2">
                     <label for="inputTanggalPelatihan">Jumlah Pemateri</label>
@@ -56,6 +56,17 @@ $caption = array('Belum Buka', 'Daftar', 'Jalan', 'Selesai');
                     <label for="inputTanggalPelatihan">Tanggal Selesai</label>
                     <span class="form-control"><?=(!empty($detail)?$detail->tgl_selesai:'')?></span>
                   </div>
+                  <?php if (!empty($detail) && ($detail->status_kelas==1 || $detail->status_kelas==2)): ?>
+
+                  <div class="form-group col-md-2">
+                    <label for="inputTanggalPelatihan">Pendaftaran</label>
+                    <?php if (!empty($detail) && $detail->is_buka_pendaftaran==0): ?>
+                      <button type="button" class="btn btn-sm btn-danger form-control" onclick="konfirmasiHapus('<?=base_url("Kelas/ubahStatusPendaftaran/1/$id")?>')">Tutup</button>
+                    <?php else: ?>
+                      <button type="button" class="btn btn-sm btn-success form-control" onclick="konfirmasiHapus('<?=base_url("Kelas/ubahStatusPendaftaran/0/$id")?>')">Buka</button>
+                    <?php endif; ?>
+                  </div>
+                <?php endif; ?>
                 </div>
               </form>
               <div class="tabbable-panel">
@@ -70,7 +81,7 @@ $caption = array('Belum Buka', 'Daftar', 'Jalan', 'Selesai');
                   </ul> -->
                   <nav>
                     <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                      <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#tab_materi" role="tab" aria-controls="nav-home" aria-selected="true">Daftar Materi</a>
+                      <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#tab_materi" role="tab" aria-controls="nav-home" aria-selected="true">Jadwal Materi</a>
                       <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#tab_pemateri" role="tab" aria-controls="nav-profile" aria-selected="false">Daftar Pemateri</a>
                     </div>
                   </nav>
@@ -88,7 +99,7 @@ $caption = array('Belum Buka', 'Daftar', 'Jalan', 'Selesai');
                                 <th>#</th>
                                 <th>Materi Pelatihan</th>
                                 <th>Nama Pemateri</th>
-                                <th>Tanggal</th>
+                                <th>Tanggal Buka</th>
                                 <th style="text-align: center; min-width:80px;">Aksi</th>
                               </tr>
                             </thead>

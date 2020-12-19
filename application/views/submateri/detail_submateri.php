@@ -18,30 +18,45 @@ $id_sub = $this->uri->segment(3);
             <div class="card-body">
               <div class="col col-md-12">
                 <?php if ($is_test==0): ?>
-                  <div class="table-responsive">
-                    <?php echo form_open_multipart('SubMateri/tambahMateriPembelajaran/'.$id_sub);?>
-                    <?php echo @$this->session->flashdata('msg'); ?>
-                    <div class="form-group col-md-12" id="file">
-                      <label class="col-md-2 control-label" for="inputNamaPelatihan">File Materi  <button class="btn btn-success" type="button" name="button" id="btnTambahFile">
-                        <i class="fas fa-plus"></i>
-                      </button>
-                    </label>
-                    <div class="col-md-6" id="file-materi-wrap">
-                      <div class="file-wrap">
-                        <div class="input-group">
-                          <input type="file" name="files[]" class="form-control col-md-8">
+                  <?php echo @$this->session->flashdata('msg'); ?>
+                  <div id="accordion">
+                    <div class="card">
+                      <div class="card-header" id="headingOne">
+                        <h5 class="mb-0">
+                          <button class="btn btn-primary" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                            Tambah Materi Belajar
+                          </button>
+                        </h5>
+                      </div>
+
+                      <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+                        <div class="card-body">
+                          <div class="table-responsive">
+                            <?php echo form_open_multipart('SubMateri/tambahMateriPembelajaran/'.$id_sub);?>
+                            <div class="form-group col-md-12" id="file">
+                              <label class="col-md-2 control-label" for="inputNamaPelatihan">File Materi  <button class="btn btn-success" type="button" name="button" id="btnTambahFile">
+                                <i class="fas fa-plus"></i>
+                              </button>
+                            </label>
+                            <div class="col-md-6" id="file-materi-wrap">
+                              <div class="file-wrap">
+                                <div class="input-group">
+                                  <input type="file" name="files[]" class="form-control col-md-8">
+                                </div>
+                                <input type="text" class="form-control col-md-8" name="file_desk[]" value="" placeholder="Deskripsi File">
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="form-group col-md-12">
+                            <button type="submit" name="submit" class="btn btn-info col-md-6">Tambah Materi</button>
+                          </div>
+                          <?php echo form_close(); ?>
                         </div>
-                        <input type="text" class="form-control col-md-8" name="file_desk[]" value="" placeholder="Deskripsi File">
+                        </div>
                       </div>
                     </div>
-                  </div>
-
-                  <div class="form-group col-md-12">
-                    <button type="submit" name="submit" class="btn btn-primary col-md-6">Tambah Materi</button>
-                  </div>
-                  <!-- </form> -->
-                  <?php echo form_close(); ?>
-                </div>
+                    </div>
               <?php else: ?>
                 <div class="table-responsive">
                   <?php echo @$this->session->flashdata('msg'); ?>
@@ -187,7 +202,7 @@ $(add_button).click(function(e){ //on add input button click
     <input type="file" name="files[]" class="form-control col-md-8">
     <div class="input-group-prepend">
     <div class="input-group-text">
-    <a hre  f="#" class="btn btn-danger remove_field"><i class="fas fa-trash"></i></a>
+    <a hre  f="#" class="btn btn-danger remove_field text-white"><i class="fas fa-trash"></i></a>
     </div>
     </div>
     </div>

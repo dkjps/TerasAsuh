@@ -30,9 +30,10 @@ class SubMateri extends AUTH_Controller {
 		$this->load->view('submateri/detail_submateri', $data);
 	}
 
-	public function tambahSubMateri(){
+	public function tambahSubMateri($id_materi){
 		if (isset($_POST['submit'])) {
-			$data['id_materi'] = $_POST['materi'];
+			$data['id_materi'] = $id_materi;
+			// $data['id_materi'] = $_POST['materi'];
 			$test = explode('-', $_POST['tipe']);
 			$data['is_test'] = $test[0];
 			$data['judul'] = $test[1];
@@ -67,7 +68,8 @@ class SubMateri extends AUTH_Controller {
 						$tipe = 3;
 					}
 
-					$new_name = time().'-'.$filename;
+					$trim = str_replace(" ","", $filename);
+					$new_name = time().'-'.$trim;
 
 					$_FILES['files']['name'] = $new_name;
           $_FILES['files']['type'] = $files['files']['type'][$i];
@@ -109,9 +111,9 @@ class SubMateri extends AUTH_Controller {
 		$data['page'] = "sub-materi";
 		$data['title'] = "Tambah Sub Materi";
 
-		$data['pelatihan'] = $this->GeneralApiModel->getAllMaster('masterdata_pelatihan')->result();
-		$data['pemateri'] = $this->GeneralApiModel->getWhereTransactionalOrdered(array('1'=>1), 'namalengkap', 'ASC', 'user_pemateri_detail')->result();
-
+		// $data['pelatihan'] = $this->GeneralApiModel->getAllMaster('masterdata_pelatihan')->result();
+		// $data['pemateri'] = $this->GeneralApiModel->getWhereTransactionalOrdered(array('1'=>1), 'namalengkap', 'ASC', 'user_pemateri_detail')->result();
+		$data['detail'] = $this->GeneralApiModel->getWhereMaster(array('id'=>$id_materi), 'masterdata_materi')->row();
 		$this->template->views('submateri/submateri_add', $data);
 	}
 
@@ -181,7 +183,8 @@ class SubMateri extends AUTH_Controller {
 						$tipe = 3;
 					}
 
-					$new_name = time().'-'.$filename;
+					$trim = str_replace(" ","", $filename);
+					$new_name = time().'-'.$trim;
 
 					$_FILES['files']['name'] = $new_name;
 					$_FILES['files']['type'] = $files['files']['type'][$i];

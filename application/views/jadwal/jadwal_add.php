@@ -17,36 +17,55 @@ $id_kelas = $this->uri->segment(3);
               <div class="table-responsive">
                 <form class="form-horizontal" method="post" action="<?=base_url('Kelas/'.$action.'Jadwal/'.$id_kelas.'/'.$id)?>">
                   <div class="form-group">
+                    <label class="col-md-2 control-label" for="inputNamaPelatihan">Pelatihan</label>
+                    <div class="col-md-8">
+                      <!-- <select class="form-control col-md-8" name="pelatihan" onchange="detailPelatihan()" id="pelatihan">
+                        <option value="">Pilih Pelatihan</option> -->
+                        <?php
+                        // foreach ($pelatihan as $p) {
+                        //   $id_pelatihan = (!empty($detail)?$detail->id_pelatihan:0);
+                        //   echo "<option value=".$p->id;
+                        //   echo ($p->id==$id_pelatihan?' selected':'');
+                        //   echo ">".$p->nama."</option>";
+                        // }
+                        ?>
+                      <!-- </select> -->
+                      <input type="text" name="" class="form-control col-md-8" value="<?=$pelatihan?>" disabled>
+                    </div>
+                  </div>
+
+                  <div class="form-group">
                     <label class="col-md-2 control-label" for="inputNamaPelatihan">Kelas</label>
                     <div class="col-md-8">
-                      <select class="form-control" name="kelas" id="kelas" onchange="loadMateri()" required>
-                        <option value="">Pilih Kelas</option>
+                      <!-- <select class="form-control col-md-8" name="kelas" id="kelas" onchange="loadMateri()" required>                         -->
                         <?php
-                          foreach ($kelas as $k) {
-                            if ($k->id==$id_kelas) {
-                              echo "<option value='$k->id' selected>$k->nama</option>";
-                            } else {
-                              echo "<option value='$k->id'>$k->nama</option>";
-                            }
-                          }
+                          // foreach ($kelas as $k) {
+                          //   if ($k->id==$id_kelas) {
+                          //     echo "<option value='$k->id' selected>$k->nama</option>";
+                          //   } else {
+                          //     echo "<option value='$k->id'>$k->nama</option>";
+                          //   }
+                          // }
                         ?>
-                      </select>
+                      <!-- </select> -->
+                      <input type="text" name="" class="form-control col-md-8" value="<?=$kelas?>" disabled>
                     </div>
                   </div>
 
                   <div class="form-group">
                     <label class="col-md-2 control-label" for="inputNamaPelatihan">Judul Materi</label>
                     <div class="col-md-8">
-                      <select class="form-control" name="materi" id="materi" required>
+                      <input type="text" name="materi" class="col-md-8 form-control" value="<?=($detail?$detail->judul_materi:'')?>" placeholder="Jadwal Materi" <?=($detail?'readonly':'')?> required>
+                      <!-- <select class="form-control" name="materi" id="materi" required>
                         <option value="">Pilih Materi</option>
-                      </select>
+                      </select> -->
                     </div>
                   </div>
 
                   <div class="form-group">
                     <label class="col-md-2 control-label" for="inputNamaPelatihan">Pilih Pemateri</label>
                     <div class="col-md-8">
-                      <select id="" class="form-control" name="pemateri">
+                      <select id="" class="form-control col-md-8" name="pemateri" required>
                         <option value="">Pilih Pemateri</option>
                         <?php
                           foreach ($pemateri as $k) {
@@ -94,36 +113,78 @@ $id_kelas = $this->uri->segment(3);
 </div>
 <script src="https://code.jquery.com/jquery-1.12.1.min.js"></script>
 <script type="text/javascript">
-if ($('#kelas').val()) {
-  $('#kelas').trigger('change');
+// if ($('#kelas').val()) {
+//   $('#kelas').trigger('change');
+// }
+//
+// function loadMateri(){
+//   var id = $('#kelas').val();
+//   console.log(id);
+//   $.ajax({
+//     url : "<?=base_url('Kelas/getMateri/');?>",
+//     method : "POST",
+//     data : {id: id},
+//     // async : true,
+//     dataType : 'json',
+//     success: function(data){
+//       console.log(data);
+//       var html = '';
+//       var i;
+//       if (data.length==0) {
+//         var html = '<option value="">Materi Kosong</option>';
+//       }
+//       for(i=0; i<data.length; i++){
+//         html += '<option value='+data[i].id+'>'+data[i].judul+'</option>';
+//       }
+//       $('#materi').html(html);
+//     },
+//     error: function (xhr, ajaxOptions, thrownError) {
+//       console.log(xhr.status);
+//       console.log(thrownError);
+//     }
+//   });
+//   return false;
+// }
+
+if ($('#pelatihan').val()) {
+	$('#pelatihan').trigger('change');
 }
 
-function loadMateri(){
-  var id = $('#kelas').val();
+function detailPelatihan(){
+	var id = $('#pelatihan').val();
+	var url = "<?=base_url('SubMateri/detailPelatihan/');?>";
   console.log(id);
-  $.ajax({
-    url : "<?=base_url('Kelas/getMateri/');?>",
-    method : "POST",
-    data : {id: id},
-    // async : true,
-    dataType : 'json',
-    success: function(data){
-      console.log(data);
-      var html = '';
-      var i;
-      if (data.length==0) {
-        var html = '<option value="">Materi Kosong</option>';
-      }
-      for(i=0; i<data.length; i++){
-        html += '<option value='+data[i].id+'>'+data[i].judul+'</option>';
-      }
-      $('#materi').html(html);
-    },
-    error: function (xhr, ajaxOptions, thrownError) {
-      console.log(xhr.status);
-      console.log(thrownError);
-    }
-  });
-  return false;
+	$.ajax({
+		url : url,
+		method : "POST",
+		data : {id: id},
+		// async : true,
+		dataType : 'json',
+		success: function(data){
+			console.log(data);
+			var materi = '';
+			var kelas = '';
+			var i;
+			// if (data.materi.length==0) {
+			// 	var materi = '<option value="">Materi Kosong</option>';
+			// }
+			if (data.kelas.length==0) {
+				var kelas = '<option value="">Kelas Kosong</option>';
+			}
+			// for(i=0; i<data.materi.length; i++){
+			// 	materi += '<option value='+data.materi[i].id+'>'+data.materi[i].judul+'</option>';
+			// }
+			for(i=0; i<data.kelas.length; i++){
+				kelas += '<option value='+data.kelas[i].id+'>'+data.kelas[i].nama+'</option>';
+			}
+			// $('#materi').html(materi);
+			$('#kelas').html(kelas);
+		},
+		error: function (xhr, ajaxOptions, thrownError) {
+			console.log(xhr.status);
+			console.log(thrownError);
+		}
+	});
+	return false;
 }
 </script>

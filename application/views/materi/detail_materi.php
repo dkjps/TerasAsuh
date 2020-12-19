@@ -16,9 +16,9 @@ $caption = array('Belum Buka', 'Daftar', 'Jalan', 'Selesai');
         <div class="col-12">
           <div class="card">
             <div class="card-header">
-              <?php echo @$this->session->flashdata('msg'); ?>
               <div class="col col-md-12" style="z-index:9999;">
-                <a href="<?=base_url('SubMateri/tambahSubMateri/')?>" class="btn btn-primary float-right" style="margin-top:10px; margin-bottom:5px;"><i class="fas fa-plus"></i>  Tambah Sub Materi</a>
+                <?php echo @$this->session->flashdata('msg'); ?>
+                <a href="<?=base_url('SubMateri/tambahSubMateri/'.$id)?>" class="btn btn-primary float-right" style="margin-top:10px; margin-bottom:5px;"><i class="fas fa-plus"></i>  Tambah Sub Materi</a>
               </div>
             </div>
             <div class="card-body">

@@ -23,7 +23,7 @@ class Pelatihan extends AUTH_Controller {
 		$pelatihan = $this->GeneralApiModel->getWhereMaster(array('id'=>$id),'masterdata_pelatihan')->row();
 		$data['title'] = "Detail $pelatihan->nama";
 
-		$data['detail'] = $this->GeneralApiModel->getWhereTransactional(array('id_pelatihan'=>$id),'kelas_pelatihan')->result();
+		$data['detail'] = $this->GeneralApiModel->getWhereTransactionalOrdered(array('id_pelatihan'=>$id), 'nama_kelas', 'ASC','kelas_pelatihan')->result();
 		$this->load->view('pelatihan/detail_pelatihan', $data);
 	}
 
