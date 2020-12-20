@@ -4,25 +4,30 @@ $id = $this->uri->segment(3);
 ?>
 
 <style>
-	.float {
-		position: fixed;
-		width: 60px;
-		height: 60px;
-		bottom: 40px;
-		right: 40px;
-		background-color: #0C9;
-		color: #FFF;
-		border-radius: 50px;
-		text-align: center;
-		box-shadow: 2px 2px 3px #999;
-    z-index: 1 ;
-    /* position:relative; */
-	}
+.float {
+	position: fixed;
+	width: 60px;
+	height: 60px;
+	bottom: 40px;
+	right: 40px;
+	background-color: #0C9;
+	color: #FFF;
+	border-radius: 50px;
+	text-align: center;
+	box-shadow: 2px 2px 3px #999;
+	z-index: 1 ;
+	/* position:relative; */
+}
 
-	.my-float {
-		margin-top: 22px;
-	}
+.my-float {
+	margin-top: 22px;
+}
 
+#artikel:hover{
+	transition: 0.1s;
+	background: #FAFAFA;
+	margin-left: 20px;
+}
 </style>
 
 
@@ -40,75 +45,30 @@ $id = $this->uri->segment(3);
 				<div class="card-body">
 					<div class="col col-md-12 text-center" style="padding: 0;">
 						<div class="col-md-12 text-center">
-							<h1><strong>Rabu</strong></h1>
+							<h1><strong><?=date('l')?></strong></h1>
 							<!-- <br> -->
-							<span>00 Juni 2020</span>
+							<span><?=date('d F yy'); ?></span>
 						</div>
 					</div>
 					<ul class="list-group list-group-flush">
 						<!-- item1 -->
-						<li class="list-group-item">
-							<p class="list-group-item-text float-right"><strong>08:30</strong></p>
-							<br>
-							<h4 class="list-group-item-heading">Judul Kegiatan</h4>
-							<p class="list-group-item-text">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ad non id sed
-								consectetur praesentium delectus repellendus eum maiores blanditiis eaque earum atque officia quaerat
-								autem
-								nam, harum quas quia tenetur?</p>
-							<br>
+						<?php foreach ($today as $t){ ?>
+						<li class="list-group-item rounded mt-3" style="border:1px solid black;" id="artikel">
+							<p class="list-group-item-text float-right"><strong><?=date("H:i",strtotime($t->jam))?></strong></p>
 
-							<div class="row">
-								<div class="col-6 text-center">
-									<small style="color:orange"><i class="fas fa-edit"></i> Ubah Data</small>
-								</div>
-								<div class="col-6 text-center ">
-									<small style="color:red"><i class="fas fa-trash"></i> Hapus Data</small>
-								</div>
-							</div>
-						</li>
-						<!-- item2 -->
-						<li class="list-group-item">
-							<p class="list-group-item-text float-right"><strong>08:30</strong></p>
-							<br>
-							<h4 class="list-group-item-heading">Judul Kegiatan</h4>
-							<p class="list-group-item-text">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ad non id sed
-								consectetur praesentium delectus repellendus eum maiores blanditiis eaque earum atque officia quaerat
-								autem
-								nam, harum quas quia tenetur?</p>
-							<br>
+							<h4 class="list-group-item-heading"><?=$t->nama?></h4>
+							<hr>
+							<p class="list-group-item-text text-justify" style="text-indent:20px;">
+								<?=$t->deskripsi?>
+							</p>
 
-							<div class="row">
-								<div class="col-6 text-center">
-									<small style="color:orange"><i class="fas fa-edit"></i> Ubah Data</small>
+							<div class="col-md-12">
+									<button type="button" onclick="konfirmasiHapus('<?=base_url("")?>')" class="float-right btn btn-danger text-white"><i class="fas fa-trash"></i> Hapus</button>
+									<a class="float-right btn btn-warning text-white mr-3"><i class="fas fa-edit"></i> Ubah</a>
 								</div>
-								<div class="col-6 text-center ">
-									<small style="color:red"><i class="fas fa-trash"></i> Hapus Data</small>
-								</div>
-							</div>
 						</li>
-						<!-- item3 -->
-						<li class="list-group-item">
-							<p class="list-group-item-text float-right"><strong>08:30</strong></p>
-							<br>
-							<h4 class="list-group-item-heading">Judul Kegiatan</h4>
-							<p class="list-group-item-text">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ad non id sed
-								consectetur praesentium delectus repellendus eum maiores blanditiis eaque earum atque officia quaerat
-								autem
-								nam, harum quas quia tenetur?</p>
-							<br>
-
-							<div class="row">
-								<div class="col-6 text-center">
-									<small style="color:orange"><i class="fas fa-edit"></i> Ubah Data</small>
-								</div>
-								<div class="col-6 text-center ">
-									<small style="color:red"><i class="fas fa-trash"></i> Hapus Data</small>
-								</div>
-							</div>
-						</li>
+					<?php } ?>
 					</ul>
-
-
 				</div>
 			</div>
 		</div>

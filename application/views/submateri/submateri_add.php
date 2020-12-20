@@ -80,7 +80,7 @@ $id = $this->uri->segment(3);
 				</div>
 
 		<div class="form-group col-md-12">
-			<button type="submit" name="submit" class="btn btn-primary col-md-6">Tambah Materi</button>
+			<button type="submit" name="submit" class="btn btn-primary col-md-6">Tambah Sub Materi</button>
 		</div>
 		<!-- </form> -->
 		<?php echo form_close(); ?>

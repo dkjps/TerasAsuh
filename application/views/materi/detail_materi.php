@@ -23,24 +23,31 @@ $caption = array('Belum Buka', 'Daftar', 'Jalan', 'Selesai');
             </div>
             <div class="card-body">
               <div class="col col-md-12">
-                <div class="table-responsive">
-                  <div class="form-group">
-                    <label class="col-md-2 float-left">Pelatihan:</label>
-                    <h6 class="col-md-10 float-left"><?=($detail)?$detail->nama_pelatihan:''?></h6>
-                  </div>
-                  <div class="form-group">
-                    <label class="col-md-2 float-left">Materi:</label>
-                    <h6 class="col-md-10 float-left"><?=($detail)?$detail->judul_materi:''?></h6>
-                  </div>
-                  <br><br><br><br><br>
+                  <table>
+                    <tr>
+                      <td style="width:70px;"><label class="">Pelatihan</label></td>
+                      <th style="width:50px;">:</th>
+                      <th><h6 class=""><a class="" href="<?php echo base_url("Pelatihan/detailPelatihan/$detail->id_pelatihan"); ?>"><?=($detail)?$detail->nama_pelatihan:''?></h6></a></th>
+                    </tr>
+                    <tr>
+                      <td style="width:70px;"><label class="">Materi</label></td>
+                      <th style="width:50px;">:</th>
+                      <th><h6 class=""><?=($detail)?$detail->judul_materi:''?></h6></th>
+                    </tr>
+                    <tr>
+                      <td style="width:70px;"><label class="">Pemateri</label></td>
+                      <th style="width:50px;">:</th>
+                      <th><h6 class=""><?=($detail)?$detail->namalengkap:''?></h6></th>
+                    </tr>
+                  </table>
                   <br>
+                <div class="table-responsive">
                   <table id="" class="table table-bordered table-striped">
                     <thead>
                       <tr>
                         <th>#</th>
                         <th>Judul</th>
                         <th>Deksripsi</th>
-                        <th>Pemateri</th>
                         <th style="text-align: center;">Aksi</th>
                       </tr>
                     </thead>
@@ -50,7 +57,6 @@ $caption = array('Belum Buka', 'Daftar', 'Jalan', 'Selesai');
                           <td><?=$i++?></td>
                           <td><a href="<?=base_url("SubMateri/detailSubMateri/$s->id_sub")?>"><?=$s->subbab?></a></td>
                           <td><?=$s->deskripsi_subbab?></td>
-                          <td><?=$detail->namalengkap?></td>
                           <td><button class="btn btn-danger konfirmasiHapus-pegawai" onclick="konfirmasiHapus('<?=base_url("SubMateri/hapusSubMateri/$s->id_sub/$s->id_materi")?>')"><i class="fas fa-trash"></i></button></td>
                         </tr>
                       <?php endforeach; ?>

@@ -17,7 +17,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         </div>
       </div> -->
 
-      <div class="modal fade" id="konfirmasiHapus" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+      <div class="modal fade" id="konfirmasiHapus" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true" style="width:60%; margin:auto;">
         <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
           <div class="modal-content">
             <div class="modal-header">

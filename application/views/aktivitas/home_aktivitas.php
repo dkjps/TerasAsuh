@@ -4,34 +4,35 @@ $id = $this->uri->segment(3);
 ?>
 
 <style>
-	ul.horizontal-slide {
-		margin: 0;
-		padding: 0;
-		width: 100%;
-		white-space: nowrap;
-		overflow-x: auto;
-	}
+.float {
+	position: fixed;
+	width: 60px;
+	height: 60px;
+	bottom: 40px;
+	right: 40px;
+	background-color: #0C9;
+	color: #FFF;
+	border-radius: 50px;
+	text-align: center;
+	box-shadow: 2px 2px 3px #999;
+	z-index: 1 ;
+	/* position:relative; */
+}
 
-	ul.horizontal-slide li[class*="span"] {
-    padding : 8px;
-		display: inline-block;
-		float: none;
-	}
+.my-float {
+	margin-top: 22px;
+}
 
-	ul.horizontal-slide li[class*="span"]:first-child {
-		margin-left: 0;
-	}
+#artikel:hover{
+	transition: 0.1s;
+	background: #FAFAFA;
+	margin-left: 20px;
+}
 
-	ul.horizontal-slide li.active {
-		color: #f4ba51;
-		border-style: solid;
-		border-width: 1px;
-	}
-
-
+#btnDate:hover{
+	cursor: pointer;
+}
 </style>
-
-
 
 <div class="main-content">
 	<section class="section">
@@ -41,126 +42,75 @@ $id = $this->uri->segment(3);
 				<?php echo @$this->session->flashdata('msg'); ?>
 			</div>
 		</div>
-
 		<div class="section-body">
-			<div class="body">
-				<div class="box-body">
-
-					<div class="container-fluid">
-						<ul class="horizontal-slide">
-
-							<li class="span2 col-xs-3 text-center active" style="margin-right:4px; margin-right:4px;">
-								<h4><strong>Rabu</strong></h1>
-									<span>01 Juni</span>
-							</li>
-
-							<li class="span2 col-xs-3 text-center" style="margin-right:4px; margin-right:4px;">
-								<h4><strong>Kamis</strong></h1>
-									<span>02 Juni</span>
-							</li>
-
-							<li class="span2 col-xs-3 text-center" style="margin-right:4px; margin-right:4px;">
-								<h4><strong>Jumat</strong></h1>
-									<span>03 Juni</span>
-							</li>
-
-							<li class="span2 col-xs-3 text-center" style="margin-right:4px; margin-right:4px;">
-								<h4><strong>Sabtu</strong></h1>
-									<span>04 Juni</span>
-							</li>
-
-							<li class="span2 col-xs-3 text-center" style="margin-right:4px; margin-right:4px;">
-								<h4><strong>Minggu</strong></h1>
-									<span>05 Juni</span>
-							</li>
-
-							<li class="span2 col-xs-3 text-center" style="margin-right:4px; margin-right:4px;">
-								<h4><strong>Senin</strong></h1>
-									<span>06 Juni</span>
-							</li>
-
-							<li class="span2 col-xs-3 text-center" style="margin-right:4px; margin-right:4px;">
-								<h4><strong>Selasa</strong></h1>
-									<span>07 Juni</span>
-							</li>
-
-							<li class="span2 col-xs-3 text-center" style="margin-right:4px; margin-right:4px;">
-								<h4><strong>Rabu</strong></h1>
-									<span>08 Juni</span>
-							</li>
-
-							<li class="span2 col-xs-3 text-center" style="margin-right:4px; margin-right:4px;">
-								<h4><strong>Kamis</strong></h1>
-									<span>09 Juni</span>
-							</li>
-						</ul>
-
+			<div class="card">
+				<div class="card-body">
+					<div class="col col-md-12 text-center" style="padding: 0;">
+						<div class="col-md-12 text-center">
+							<form class="" action="<?=base_url("Aktivitas/aktivitasDaftar")?>" method="post">
+								<div class="row">
+									<div class="form-group col-md-10">
+										<input class="form-control text-center border-secondary" type="date" name="tanggal" value="<?=(!empty($tgl)?date("Y-m-d", strtotime($tgl)):date("Y-m-d"))?>">
+									</div>
+									<div class="form-group col-md-2">
+										<input class="form-control btn btn-secondary" type="submit" name="submit" value="Cari">
+									</div>
+								</div>
+							</form>
+							<hr><br>
+							<div class="row" style="width: 400px; margin:auto;">
+									<form class="" action="<?=base_url("Aktivitas/aktivitasDaftar")?>" method="post">
+										<input style="display:none;" class="form-control text-center border-secondary" type="date" name="tanggal" value="<?=(!empty($prev)?date("Y-m-d", strtotime($prev)):date("Y-m-d"))?>">
+										<button id="btnDate" style="background:transparent; border:none;" class="text-secondary mr-3" type="submit" name="submit"><i style="font-size:35px;" class="fas fa-chevron-left"></i></button>
+									</form>
+									<!-- <div class="">
+								</div>
+								<div class=""> -->
+									<h1><strong><?=date('l', strtotime($tgl))?></strong></h1>
+								<!-- </div>
+								<div class=""> -->
+									<form class="" action="<?=base_url("Aktivitas/aktivitasDaftar")?>" method="post">
+										<input style="display:none;" class="form-control text-center border-secondary" type="date" name="tanggal" value="<?=(!empty($next)?date("Y-m-d", strtotime($next)):date("Y-m-d"))?>">
+										<button id="btnDate" style="background:transparent; border:none;" class="text-secondary ml-3" type="submit" name="submit"><i style="font-size:35px;" class="fas fa-chevron-right"></i></button>
+									</form>
+								<!-- </div> -->
+							</div>
+							<span class=""><?=date('d F yy', strtotime($tgl)); ?></span>
+						</div>
 					</div>
-					<br>
-
-					<div class="col-md-6 text-center">
-						<h4>Daftar Aktivitas</h4>
-					</div>
-
-
-					<ul class="list-group list-group-flush">
 						<!-- item1 -->
-						<li class="list-group-item">
-							<p class="list-group-item-text float-right"><strong>08:30</strong></p>
-							<br>
-							<h4 class="list-group-item-heading">Judul Kegiatan</h4>
-							<p class="list-group-item-text">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ad non id sed
-								consectetur praesentium delectus repellendus eum maiores blanditiis eaque earum atque officia quaerat
-								autem
-								nam, harum quas quia tenetur?</p>
-							<br>
+						<ul class="list-group list-group-flush">
+						<?php if ($today): ?>
+							<?php foreach ($today as $t){ ?>
+							<li class="list-group-item rounded mt-3" style="border:1px solid black; width:90%; margin:auto;" id="artikel">
+								<p class="list-group-item-text float-right"><strong><?=date("H:i",strtotime($t->jam))?></strong></p>
+								<h4 class="list-group-item-heading"><?=$t->nama?></h4>
+								<hr>
+								<p class="list-group-item-text text-justify" style="text-indent:20px;">
+									<?=$t->deskripsi?>
+								</p>
 
-							<div class="row">
-								<div class="col-12 text-center ">
-									<small style="color:red"><i class="fas fa-trash"></i> Hapus Data</small>
+								<div class="col-md-12">
+									<?php if ($visible): ?>
+										<button type="button" onclick="konfirmasiHapus('<?=base_url("")?>')" class="float-right btn btn-danger text-white"><i class="fas fa-trash"></i> Hapus</button>
+										<a class="float-right btn btn-warning text-white mr-3"><i class="fas fa-edit"></i> Ubah</a>
+									<?php endif; ?>
 								</div>
+							</li>
+						<?php } ?>
+						<?php else: ?>
+							<br>
+							<div class="alert alert-danger text-center">
+								Aktivitas Kosong
 							</div>
-						</li>
-						<!-- item2 -->
-						<li class="list-group-item">
-							<p class="list-group-item-text float-right"><strong>08:30</strong></p>
-							<br>
-							<h4 class="list-group-item-heading">Judul Kegiatan</h4>
-							<p class="list-group-item-text">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ad non id sed
-								consectetur praesentium delectus repellendus eum maiores blanditiis eaque earum atque officia quaerat
-								autem
-								nam, harum quas quia tenetur?</p>
-							<br>
-
-							<div class="row">
-								<div class="col-12 text-center ">
-									<small style="color:red"><i class="fas fa-trash"></i> Hapus Data</small>
-								</div>
-							</div>
-						</li>
-						<!-- item3 -->
-						<li class="list-group-item">
-							<p class="list-group-item-text float-right"><strong>08:30</strong></p>
-							<br>
-							<h4 class="list-group-item-heading">Judul Kegiatan</h4>
-							<p class="list-group-item-text">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ad non id sed
-								consectetur praesentium delectus repellendus eum maiores blanditiis eaque earum atque officia quaerat
-								autem
-								nam, harum quas quia tenetur?</p>
-							<br>
-
-							<div class="row">
-								<div class="col-12 text-center ">
-									<small style="color:red"><i class="fas fa-trash"></i> Hapus Data</small>
-								</div>
-							</div>
-						</li>
+						<?php endif; ?>
 					</ul>
-
-
 				</div>
 			</div>
-
 		</div>
 	</section>
 </div>
+
+<a href="<?php echo base_url('aktivitas/tambahAktivitas'); ?>" class="float">
+	<i class="fas fa-plus my-float"></i>
+</a>

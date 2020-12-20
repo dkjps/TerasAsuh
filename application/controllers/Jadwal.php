@@ -4,6 +4,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Jadwal extends AUTH_Controller {
 	public function __construct() {
 		parent::__construct();
+		date_default_timezone_set("Asia/Jakarta");
+    $this->dateToday = date("Y-m-d");
+    $this->timeToday = date("h:i:s");
 		$this->load->model('GeneralApiModel');
 	}
 
