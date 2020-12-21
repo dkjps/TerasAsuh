@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Pemateri_Jadwal extends AUTH_Controller {
+class PemateriJadwal extends AUTH_Controller {
 	public function __construct() {
 		parent::__construct();
 		$this->load->model('M_pegawai');
@@ -14,20 +14,18 @@ class Pemateri_Jadwal extends AUTH_Controller {
 		$data['userdata'] = $this->userdata;
 
 		$data['page'] = "Pelatihan";
-		$data['judul'] = "Ini Jadwal Pelatihan Panitia Pemateri";
+		$data['title'] = "Ini Jadwal Pemateri";
 		$data['deskripsi'] = "Daftar pelatihan TerasAsuh";
 
-		$this->template->views('pelatihan/home', $data);
+		$this->template->views('pemateri_jadwal/pemateri_home', $data);
 	}
 
-	public function detailPelatihan($id) {
+	public function detailJadwal() {
 		$data['page'] = "pelatihan";
-		$pelatihan = $this->GeneralApiModel->getWhereMaster(array('id'=>$id),'masterdata_pelatihan')->row();
-		$data['judul'] = "Detail $pelatihan->nama";
-		$data['deskripsi'] = "Detail pelatihan $pelatihan->deskripsi";
+		$data['title'] = "Detail Jadwal";
+		$data['deskripsi'] = "Detail Jadwal";
 
-		$data['detail'] = $this->GeneralApiModel->getWhereTransactional(array('id_pelatihan'=>$id),'kelas_pelatihan')->result();
-		$this->template->views('pelatihan/detail_pelatihan', $data);
+		$this->template->views('pemateri_jadwal/pemateri_editJadwal', $data);
 	}
 
 	public function tambahPelatihan(){
