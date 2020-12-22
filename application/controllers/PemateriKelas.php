@@ -1,33 +1,29 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Pemateri_Kelas extends AUTH_Controller {
+class PemateriKelas extends AUTH_Controller {
 	public function __construct() {
 		parent::__construct();
-		$this->load->model('M_pegawai');
-		$this->load->model('M_posisi');
-		$this->load->model('M_kota');
 		$this->load->model('GeneralApiModel');
 	}
 
 	public function index() {
-		$data['userdata'] = $this->userdata;
+		$data['page'] = "kelas";
+		$data['title'] = "Daftar Kelas Pemateri";
+		$data['detail'] = $this->GeneralApiModel->getAllTransactional('kelas_pelatihan')->result();
 
-		$data['page'] = "Pelatihan";
-		$data['judul'] = "Ini Daftar Kelas Pemateri";
-		$data['deskripsi'] = "Daftar pelatihan TerasAsuh";
-
-		$this->template->views('pelatihan/home', $data);
+		$this->template->views('pemateri_kelas/daftar_kelas', $data);
 	}
 
-	public function detailPelatihan($id) {
-		$data['page'] = "pelatihan";
-		$pelatihan = $this->GeneralApiModel->getWhereMaster(array('id'=>$id),'masterdata_pelatihan')->row();
-		$data['judul'] = "Detail $pelatihan->nama";
-		$data['deskripsi'] = "Detail pelatihan $pelatihan->deskripsi";
+	public function detailKelas($id_kelas) {
+		$data['page'] = "kelas";
+		$data['title'] = "Detail Kelas";
 
-		$data['detail'] = $this->GeneralApiModel->getWhereTransactional(array('id_pelatihan'=>$id),'kelas_pelatihan')->result();
-		$this->template->views('pelatihan/detail_pelatihan', $data);
+		$data['detail'] = $this->GeneralApiModel->getWhereTransactional(array('id_kelas'=>$id_kelas),'kelas_pelatihan')->row();
+		$data['materi'] = $this->GeneralApiModel->getWhereTransactional(array('id_kelas'=>$id_kelas),'detail_kelas_pemateri')->result();
+		$data['pemateri'] = $this->GeneralApiModel->getKelasPemateri($id_kelas);
+
+		$this->load->view('pemateri_kelas/detail_kelas', $data);
 	}
 
 	public function tambahPelatihan(){

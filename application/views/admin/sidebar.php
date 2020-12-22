@@ -54,8 +54,8 @@ if (empty($menu)) {
 
   <!-- Menu Pemateri -->
             <li class="menu-header">Admin Pemateri</li>
-            <li class="<?php echo $this->uri->segment(2) == 'skrining' ? '' : ''; ?>"><a class="nav-link" href="<?php echo base_url(); ?>admin/skrining"><i class="fas fa-check-circle"></i> <span>Data Kelas</span></a></li>
-            <li class="<?php echo $this->uri->segment(2) == 'aktivitas' ? '' : ''; ?>"><a class="nav-link" href="<?php echo base_url(); ?>admin/aktivitas"><i class="fas fa-history"></i> <span>Jadwal Pelatihan</span></a></li>
+            <li class="<?php echo $this->uri->segment(2) == 'skrining' ? '' : ''; ?>"><a class="nav-link" href="<?php echo base_url(); ?>PemateriKelas"><i class="fas fa-check-circle"></i> <span>Data Kelas</span></a></li>
+            <li class="<?php echo $this->uri->segment(2) == 'aktivitas' ? '' : ''; ?>"><a class="nav-link" href="<?php echo base_url(); ?>PemateriJadwal"><i class="fas fa-history"></i> <span>Jadwal Pelatihan</span></a></li>
 
 
             <!-- Menu aktivitas -->
