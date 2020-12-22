@@ -48,28 +48,28 @@ $id = $this->uri->segment(3);
 					<div class="col col-md-12 text-center" style="padding: 0;">
 						<div class="col-md-12 text-center">
 							<form class="" action="<?=base_url("Aktivitas/aktivitasDaftar")?>" method="post">
-								<div class="row">
-									<div class="form-group col-md-10">
-										<input class="form-control text-center border-secondary" type="date" name="tanggal" value="<?=(!empty($tgl)?date("Y-m-d", strtotime($tgl)):date("Y-m-d"))?>">
-									</div>
-									<div class="form-group col-md-2">
-										<input class="form-control btn btn-secondary" type="submit" name="submit" value="Cari">
-									</div>
+								<div class="row" style="">
+									<!-- <div class="form-group col-md-10"> -->
+										<input style="width:60%; margin-left:10%;" class="form-control text-center border-secondary" type="date" name="tanggal" value="<?=(!empty($tgl)?date("Y-m-d", strtotime($tgl)):date("Y-m-d"))?>">
+									<!-- </div>
+									<div class="form-group col-md-2"> -->
+										<button style="width:20%; margin-left:10px;" class="form-control btn btn-secondary" type="submit" name="submit"><i class="fas fa-search"></i> </button>
+									<!-- </div> -->
 								</div>
 							</form>
 							<hr><br>
-							<div class="row" style="width: 400px; margin:auto;">
-									<form class="" action="<?=base_url("Aktivitas/aktivitasDaftar")?>" method="post">
+							<div class="row" style="margin:auto;">
+									<form class="" action="<?=base_url("Aktivitas/aktivitasDaftar")?>" method="post" style="width:15%;">
 										<input style="display:none;" class="form-control text-center border-secondary" type="date" name="tanggal" value="<?=(!empty($prev)?date("Y-m-d", strtotime($prev)):date("Y-m-d"))?>">
 										<button id="btnDate" style="background:transparent; border:none;" class="text-secondary mr-3" type="submit" name="submit"><i style="font-size:35px;" class="fas fa-chevron-left"></i></button>
 									</form>
 									<!-- <div class="">
 								</div>
 								<div class=""> -->
-									<h1><strong><?=date('l', strtotime($tgl))?></strong></h1>
+									<h1 style="width:70%;"><strong><?=date('l', strtotime($tgl))?></strong></h1>
 								<!-- </div>
 								<div class=""> -->
-									<form class="" action="<?=base_url("Aktivitas/aktivitasDaftar")?>" method="post">
+									<form class="" action="<?=base_url("Aktivitas/aktivitasDaftar")?>" method="post" style="width:15%;">
 										<input style="display:none;" class="form-control text-center border-secondary" type="date" name="tanggal" value="<?=(!empty($next)?date("Y-m-d", strtotime($next)):date("Y-m-d"))?>">
 										<button id="btnDate" style="background:transparent; border:none;" class="text-secondary ml-3" type="submit" name="submit"><i style="font-size:35px;" class="fas fa-chevron-right"></i></button>
 									</form>

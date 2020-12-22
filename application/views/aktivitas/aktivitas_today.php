@@ -51,7 +51,7 @@ $id = $this->uri->segment(3);
 						</div>
 					</div>
 					<ul class="list-group list-group-flush">
-						<!-- item1 -->
+						<?php if ($today): ?>
 						<?php foreach ($today as $t){ ?>
 						<li class="list-group-item rounded mt-3" style="border:1px solid black;" id="artikel">
 							<p class="list-group-item-text float-right"><strong><?=date("H:i",strtotime($t->jam))?></strong></p>
@@ -63,11 +63,16 @@ $id = $this->uri->segment(3);
 							</p>
 
 							<div class="col-md-12">
-									<button type="button" onclick="konfirmasiHapus('<?=base_url("")?>')" class="float-right btn btn-danger text-white"><i class="fas fa-trash"></i> Hapus</button>
-									<a class="float-right btn btn-warning text-white mr-3"><i class="fas fa-edit"></i> Ubah</a>
+									<button type="button" onclick="konfirmasiHapus('<?=base_url("Aktivitas/hapusAktivitas/$t->id")?>')" class="float-right btn btn-danger text-white"><i class="fas fa-trash"></i> Hapus</button>
+									<a href="<?=base_url("Aktivitas/ubahAktivitas/$t->id")?>" class="float-right btn btn-warning text-white mr-3"><i class="fas fa-edit"></i> Ubah</a>
 								</div>
 						</li>
 					<?php } ?>
+					<?php else: ?>
+						<div class="alert alert-danger text-center">
+							Aktivitas Hari Ini Kosong
+						</div>
+					<?php endif; ?>
 					</ul>
 				</div>
 			</div>

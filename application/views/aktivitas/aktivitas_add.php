@@ -17,15 +17,15 @@ $id = $this->uri->segment(3);
 
 			<div class="box">
 				<div class="box-body">
-					<form method="post" action="<?=base_url("Aktivitas/tambahAktivitas/")?>">
+					<form method="post" action="<?=base_url("Aktivitas/$action"."Aktivitas/$id")?>">
 						<div class="form-row">
 							<div class="form-group col-md-6">
 								<label for="inputNamaPelatihan">Nama Aktivitas</label>
-								<input type="text" class="form-control" id="inputEmail4" name="nama" placeholder="Nama Aktivitas" required>
+								<input type="text" class="form-control" id="inputEmail4" name="nama" placeholder="Nama Aktivitas" value="<?=(!empty($detail)?$detail->nama:'');?>" required>
 							</div>
 							<?php
-								$tgl = (!empty($detail))?date("yy-m-d",strtotime($detail->tgl_buka_materi)):date("Y-m-d");
-								$jam = (!empty($detail))?date("H:i",strtotime($detail->tgl_buka_materi)):date("H:i");
+								$tgl = (!empty($detail))?date("yy-m-d",strtotime($detail->tanggal)):date("Y-m-d");
+								$jam = (!empty($detail))?date("H:i",strtotime($detail->jam)):date("H:i");
 							?>
 							<div class="form-group col-md-12">
 								<label for="inputTanggalPelatihan">Waktu Aktivitas</label>
@@ -37,7 +37,7 @@ $id = $this->uri->segment(3);
 								</div>
 								<div class="col-md-3">
 									<span class="form-text text-muted" >Jam</span>
-									<input type="time" class="form-control" id="namaKelas" name="jam" value="<?=$jam?>" readonly required>
+									<input type="time" class="form-control" id="namaKelas" name="jam" value="<?=$jam?>" required>
 								</div>
 							</div>
 							</div>
@@ -46,7 +46,7 @@ $id = $this->uri->segment(3);
 
 						<div class="form-group">
 							<label for="exampleFormControlTextarea1">Deskripsi Aktivitas</label>
-							<textarea class="form-control col-md-6" id="exampleFormControlTextarea1" name="deskripsi" rows="3" style="resize:none" required></textarea>
+							<textarea class="form-control col-md-6" id="exampleFormControlTextarea1" name="deskripsi" rows="3" style="resize:none" required><?=(!empty($detail)?$detail->deskripsi:'');?></textarea>
 						</div>
 
 						<!-- <div class="row"> -->

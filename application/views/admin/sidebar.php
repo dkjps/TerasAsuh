@@ -18,7 +18,7 @@ if (empty($menu)) {
           <ul class="sidebar-menu">
             <li class="menu-header">Dashboard</li>
             <li class="<?php echo $menu == 'dashboard' ? 'active' : ''; ?>"><a class="nav-link" href="<?php echo base_url(); ?>admin/dashboard"><i class="fas fa-fire"></i> <span>Dashboard</span></a></li>
-            
+
 <!-- Menu Admin Dashboard -->
             <li class="menu-header">Admin Dashboard</li>
             <li class="dropdown <?php echo $menu == 'master' ? 'active' : ''; ?>">
@@ -35,7 +35,7 @@ if (empty($menu)) {
 
 <!-- Menu Operator -->
             <li class="menu-header">Admin Operator</li>
-            <li class="<?php echo $page == 'pelatihan' ? 'active' : ''; ?>"><a class="nav-link" href="<?php echo base_url(); ?>pelatihan"><i class="fas fa-history"></i> <span>Data Pelatihan</span></a></li>     
+            <li class="<?php echo $page == 'pelatihan' ? 'active' : ''; ?>"><a class="nav-link" href="<?php echo base_url(); ?>pelatihan"><i class="fas fa-history"></i> <span>Data Pelatihan</span></a></li>
             <li class="dropdown <?php echo $menu == 'master' ? '' : ''; ?>">
             <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-graduation-cap"></i> <span>Kelas dan Topik</span></a>
               <ul class="dropdown-menu">
@@ -51,7 +51,7 @@ if (empty($menu)) {
                 <li class="<?php echo $page == 'peserta' ? '' : ''; ?>"><a class="nav-link" href="<?php echo base_url(); ?>pemateri/tambahJadwal">Atur Jadwal Pemateri</a></li>
               </ul>
             </li>
-            
+
   <!-- Menu Pemateri -->
             <li class="menu-header">Admin Pemateri</li>
             <li class="<?php echo $this->uri->segment(2) == 'skrining' ? '' : ''; ?>"><a class="nav-link" href="<?php echo base_url(); ?>admin/skrining"><i class="fas fa-check-circle"></i> <span>Data Kelas</span></a></li>
@@ -60,11 +60,11 @@ if (empty($menu)) {
 
             <!-- Menu aktivitas -->
             <li class="menu-header">Aktivitas</li>
-            <li class="dropdown <?php echo $menu == 'master' ? '' : ''; ?>">
+            <li class="dropdown <?php echo $menu == 'aktivitas' ? '' : ''; ?>">
             <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-graduation-cap"></i> <span>Data Aktivitas</span></a>
               <ul class="dropdown-menu">
-                <li class="<?php echo $page == 'panitia' ? '' : ''; ?>"><a class="nav-link" href="<?php echo base_url(); ?>aktivitas">Aktivitas Hari Ini</a></li>
-                <li class="<?php echo $page == 'peserta' ? '' : ''; ?>"><a class="nav-link" href="<?php echo base_url(); ?>aktivitas/aktivitasDaftar">Daftar Aktivitas</a></li>
+                <li class="<?php echo $page == 'today' ? '' : ''; ?>"><a class="nav-link" href="<?php echo base_url(); ?>aktivitas">Aktivitas Hari Ini</a></li>
+                <li class="<?php echo $page == 'allday' ? '' : ''; ?>"><a class="nav-link" href="<?php echo base_url(); ?>aktivitas/aktivitasDaftar">Daftar Aktivitas</a></li>
               </ul>
             </li>
 
