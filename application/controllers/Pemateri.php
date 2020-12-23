@@ -29,13 +29,16 @@ class Pemateri extends AUTH_Controller {
 
 		$data['provinsi'] = $this->GeneralApiModel->getAllMaster('masterdata_provinsi')->result();
 		$data['pemateri'] = $this->GeneralApiModel->getWhereTransactionalOrdered(array('1'=>1), 'namalengkap', 'ASC', 'user_pemateri_detail')->result();
-		$this->template->views('pemateri/pemateri_addJadwal', $data);
+		$this->template->views('pemateri/pemateri_aturJadwal', $data);
 	}
 
-	// public function tampil() {
-	// 	$data['dataPegawai'] = $this->M_pegawai->select_all();
-	// 	// $this->load->view('pelatihan/data_tabel', $data);
-	// }
+	public function aturJadwal(){
+		$data['action'] = "ubah";
+		$data['page'] = "pemateri";
+		$data['title'] = "Atur Jadwal";
+
+		$this->load->view('pemateri/atur_jadwal', $data);
+	}
 
 	public function prosesTambah() {
 		$this->form_validation->set_rules('nama', 'Nama', 'trim|required');
