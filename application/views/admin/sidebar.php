@@ -35,7 +35,7 @@ if (empty($menu)) {
 
 <!-- Menu Operator -->
             <li class="menu-header">Admin Operator</li>
-            <li class="<?php echo $page == 'pelatihan' ? 'active' : ''; ?>"><a class="nav-link" href="<?php echo base_url(); ?>pelatihan"><i class="fas fa-history"></i> <span>Data Pelatihan</span></a></li>
+            <li class="<?php echo $page == 'operator' ? 'active' : ''; ?>"><a class="nav-link" href="<?php echo base_url(); ?>pelatihan"><i class="fas fa-history"></i> <span>Data Pelatihan</span></a></li>
             <li class="dropdown <?php echo $menu == 'master' ? '' : ''; ?>">
             <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-graduation-cap"></i> <span>Kelas dan Topik</span></a>
               <ul class="dropdown-menu">
