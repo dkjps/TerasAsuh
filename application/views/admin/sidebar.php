@@ -74,16 +74,16 @@ if ($role==2) {
                 <li class="<?php echo $page == 'allday' ? 'active' : ''; ?>"><a class="nav-link" href="<?php echo base_url(); ?>aktivitas/aktivitasDaftar"><i class="fas fa-history"></i> <span>Daftar Aktivitas</span></a></li>
               <!-- </ul>
             </li> -->
-
+<hr>
       <!-- Menu akun -->
-      <li class="menu-header">Akun</li>
+      <!-- <li class="menu-header">Akun</li>
             <li class="dropdown <?php echo $menu == 'master' ? '' : ''; ?>">
             <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-graduation-cap"></i> <span>Data Akun</span></a>
-              <ul class="dropdown-menu">
+              <ul class="dropdown-menu"> -->
                 <li class="<?php echo $page == 'panitia' ? '' : ''; ?>"><a class="nav-link" href="<?php echo base_url(); ?>akun">Pengaturan Akun</a></li>
                 <li class="<?php echo $page == 'peserta' ? '' : ''; ?>"><a class="nav-link" href="<?php echo base_url(); ?>admin/master/master-peserta">Keluar</a></li>
-              </ul>
-            </li>
+              <!-- </ul>
+            </li> -->
 
           </ul>
         </aside>
