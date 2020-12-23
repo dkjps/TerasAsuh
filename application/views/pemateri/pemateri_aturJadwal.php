@@ -22,7 +22,30 @@ $id = $this->uri->segment(3);
 					</div>
 				</div>
 				<div class="card-body">
+
+					<b>Pilih Pemateri </b>
+					<br>
+					<div class="form-row">
+						<div class="form-group col-md-6">
+							<label class="col-md-2 " for="inputNamaPelatihan">Asal Pemateri</label>
+							<div class="col-md-2"></div>
+							<div class="col-md-12">
+								<select class="form-control" required></select>
+							</div>
+						</div>
+
+						<div class="form-group col-md-6">
+							<label class="col-md-2 " for="inputNamaPelatihan">Pilih Pemateri</label>
+							<div class="col-md-2"></div>
+							<div class="col-md-12">
+								<select class="form-control" required></select>
+							</div>
+						</div>
+
+					</div>
+
 					<b>Daftar Jadwal Pemateri </b>
+					<br>
 					<div class="table-responsive">
 						<table id="list-data" class="table table-bordered table-striped">
 							<thead>
