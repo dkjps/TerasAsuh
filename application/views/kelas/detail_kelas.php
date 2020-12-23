@@ -111,7 +111,7 @@ $caption = array('Belum Buka', 'Daftar', 'Jalan', 'Selesai');
                                   <td><?=$i++?></td>
                                   <td><a href="<?=base_url("Materi/detailMateri/$m->id_materi")?>"><?=$m->judul_materi?></a></td>
                                   <td><?=$m->namalengkap?></td>
-                                  <td><?=$m->tgl_buka_materi?></td>
+                                  <td style="min-width:150px;" class="text-center"><?=date('l, d F yy H:i', strtotime($m->tgl_buka_materi))?></td>
                                   <td style="min-width:100px;">
                                     <a href="<?=base_url("Kelas/ubahJadwal/$m->id_kelas/$m->id_jadwal")?>" class="btn btn-sm btn-primary update-data" ><i class="fas fa-pen"></i></a>
                                     <button class="btn btn-sm btn-danger" onclick="konfirmasiHapus('<?=base_url("Jadwal/hapusJadwal/$m->id_kelas/$m->id_jadwal")?>')"><i class="fas fa-trash"></i></button>

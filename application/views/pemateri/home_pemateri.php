@@ -13,25 +13,25 @@ $id_kelas = $this->uri->segment(3);
       <div class="row">
         <div class="col-12">
           <div class="card">
-            <div class="card-header">
-              <div class="col-md-12">
-                  <?php echo @$this->session->flashdata('msg'); ?>
-                  <a href="<?php echo base_url('Pemateri/tambahPemateri/'); ?>" class="btn btn-info float-right" role="button" aria-pressed="true"><i class="fas fa-plus" style="padding-right:3px"></i> Tambah Pemateri</a>
-              </div>
-            </div>
             <div class="card-body">
+              <!-- <a href="<?php echo base_url('Pemateri/tambahPemateri/'); ?>" class="btn btn-info float-right" role="button" aria-pressed="true"><i class="fas fa-plus" style="padding-right:3px"></i> Tambah Pemateri</a> -->
               <div class="table-responsive">
                 <table id="list-data" class="table table-bordered table-striped">
                   <thead>
                     <tr>
                       <th>ID Pemateri</th>
-                      <th>Nama Pemateri</th>
+                      <th> Nama Pemateri</th>
                       <th>Asal Provinsi</th>
                       <th>Jumlah Kelas</th>
-                      <th style="text-align: center;">Aksi</th>
                     </tr>
                   </thead>
-                  <tbody id="data-pegawai">                    
+                  <tbody id="data-pegawai">
+                    <?php foreach ($pemateri as $p): ?>
+                        <td><?=$p->id?></td>
+                        <td><a href="<?=base_url("Pemateri/jadwalPemateri/$p->id")?>"><?=$p->namalengkap?></a></td>
+                        <td><?=$p->nama_provinsi?></td>
+                        <td><?=$p->jumlah_kelas?></td>
+                    <?php endforeach; ?>
                   </tbody>
                 </table>
               </div>

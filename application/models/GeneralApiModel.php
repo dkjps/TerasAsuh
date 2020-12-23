@@ -276,6 +276,6 @@ class GeneralApiModel extends CI_Model {
 
   		$this->load->library('upload', $config, 'files');
   		$this->files->initialize($config);
-  		$this->files->do_upload('files');  			
+  		$this->files->do_upload('files');
   	}
 }
