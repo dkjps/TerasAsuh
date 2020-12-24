@@ -16,12 +16,6 @@ $id = $this->uri->segment(3);
       <div class="row">
         <div class="col-12">
           <div class="card">
-            <div class="card-header">
-              <h4></h4>
-              <div class="card-header-action">
-                <a href="<?php echo base_url('Pelatihan/tambahPelatihan/'); ?>" class="btn btn-info pull-right" role="button" aria-pressed="true"><i class="fas fa-plus" style="padding-right:3px"></i> Tambah Pelatihan</a>
-              </div>
-            </div>
             <div class="card-body">
               <div class="table-responsive">
                 <form method="post" action="<?=base_url('Pelatihan/'.$action.'Pelatihan/'.$id)?>">

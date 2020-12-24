@@ -56,7 +56,7 @@ $caption = array('Belum Buka', 'Daftar', 'Jalan', 'Selesai');
                     <label for="inputTanggalPelatihan">Tanggal Selesai</label>
                     <span class="form-control"><?=(!empty($detail)?$detail->tgl_selesai:'')?></span>
                   </div>
-                  <?php if (!empty($detail) && ($detail->status_kelas==1 || $detail->status_kelas==2)): ?>
+                  <?php if (!empty($detail) && ($detail->status_kelas==0 || $detail->status_kelas==1 || $detail->status_kelas==2)): ?>
 
                   <div class="form-group col-md-2">
                     <label for="inputTanggalPelatihan">Pendaftaran</label>

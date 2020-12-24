@@ -88,7 +88,7 @@ $id_kelas = $this->uri->segment(3);
                     ?>
                     <div class="col-md-3"style=>
                       <span  class="form-text text-muted" >Tanggal Mulai</span>
-                      <input type="date" class="form-control" id="namaKelas" name="tgl" value="<?=$tgl?>" required>
+                      <input type="date" class="form-control" id="namaKelas" min="<?=date('Y-m-d')?>" name="tgl" value="<?=$tgl?>" required>
                     </div>
                     <div class="col-md-3" >
                       <span class="form-text text-muted" >Jam Mulai</span>
