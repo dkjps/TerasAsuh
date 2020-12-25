@@ -38,7 +38,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <script src="<?php echo base_url(); ?>assets/js/admin/dashboard.js"></script>
   <?php
   //}elseif ($this->uri->segment(2) == "pasien"){?>
-  <script src="<?php echo base_url(); ?>assets/js/pasien.js"></script>
+  <!-- <script src="<?php echo base_url(); ?>assets/js/pasien.js"></script> -->
   <?php //} ?>
 
   <!-- Template JS File -->
@@ -93,10 +93,26 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </script>
 <script type="text/javascript">
 // $(document).ready(function(){
-  // $('#kelas').change(function(){
+// $('#kelas').change(function(){
 
-  // });
+// });
 // });
 </script>
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('<?=base_url("sw.js")?>');
+  });
+}
+</script>
+<!-- <script src="https://cdnjs.cloudflare.cm/ajax/libs/UpUp/1.0.0/upup.min.js"></script> -->
+<!-- <script>
+UpUp.start({
+  'cache-version' : 'v2',
+  'content-url': '<?=base_url($this->uri->segment(1))?>',
+  'content' : 'Cannot reach site. Please check your internet connection.',
+  'servlce-worker-url' : '/upup.sw.min.js'
+})
+</script> -->
 </body>
 </html>

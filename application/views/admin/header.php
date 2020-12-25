@@ -6,6 +6,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <head>
   <meta charset="UTF-8">
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
+  <meta name="Description" content="Deskripsi Singkat Situs" />
+  <!-- Mendeklarasikan warna yang muncul pada address bar Chrome versi seluler -->
+  <meta name="theme-color" content="#414f57" />
+  <!-- Mendeklarasikan ikon untuk iOS -->
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="apple-mobile-web-app-title" content="Nama Situs" />
+  <link rel="apple-touch-icon" href="path/to/icons/128x128.png" />
+  <!-- Mendeklarasikan ikon untuk Windows -->
+  <meta name="msapplication-TileImage" content="path/to/icons/128x128.png" />
+  <meta name="msapplication-TileColor" content="#000000" />
+
   <title><?php echo $title; ?> &mdash; MHS COURSE</title>
 
   <!-- General CSS Files -->
@@ -53,6 +65,7 @@ if ($this->uri->segment(2) == "" || $this->uri->segment(2) == "dashboard") { ?>
     display: none;
   }
 </style>
+<link rel="manifest" href="<?=base_url("manifest.json")?>">
 </head>
 <?php
 // if ($this->uri->segment(1) == "admin") {

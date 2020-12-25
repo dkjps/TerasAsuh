@@ -47,7 +47,7 @@ if ($role==2) {
             <!-- <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-graduation-cap"></i> <span>Kelas dan Materi</span></a>
               <ul class="dropdown-menu"> -->
                 <li class="<?php echo $page == 'kelas' ? 'active' : ''; ?>"><a class="nav-link" href="<?php echo base_url(); ?>kelas"><i class="fas fa-home"></i><span>Daftar Kelas</span></a></li>
-                <!-- <li class="<?php echo $page == 'materi' ? 'active' : ''; ?>"><a class="nav-link" href="<?php echo base_url(); ?>materi"><i class="fas fa-book"></i> <span>Daftar Materi</span></a></li> -->
+                <li class="<?php echo $page == 'materi' ? 'active' : ''; ?>"><a class="nav-link" href="<?php echo base_url(); ?>materi"><i class="fas fa-book"></i> <span>Daftar Materi</span></a></li>
                 <!-- <li class="<?php echo $page == 'sub-materi' ? '' : ''; ?>"><a class="nav-link" href="<?php echo base_url(); ?>subMateri">Daftar Sub Materi</a></li> -->
               <!-- </ul>
             </li> -->
