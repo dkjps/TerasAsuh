@@ -1,9 +1,9 @@
 module.exports = {
-  globDirectory: './dkjps-admin',
+  globDirectory: './',
   globPatterns: [
     '**/*.{html,json,js,css,woff}'
   ],
-  swDest: '/assets/sw.js',
+  swDest: './sw.js',
   runtimeCaching: [{
     urlPattern: /\.(?:png|jpg|jpeg|svg)$/,
     handler: 'NetworkFirst',
