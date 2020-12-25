@@ -14,4 +14,11 @@ module.exports = {
       },
     },
   }],
+  plugins: [
+    new GenerateSW({
+      clientsClaim: true,
+      skipWaiting: true,
+      exclude: [/swagger-ui/]
+    })
+  ]
 };

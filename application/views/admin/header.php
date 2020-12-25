@@ -65,7 +65,7 @@ if ($this->uri->segment(2) == "" || $this->uri->segment(2) == "dashboard") { ?>
     display: none;
   }
 </style>
-<link rel="manifest" href="<?=base_url("manifest.json")?>">
+<!-- <link rel="manifest" href="<?=base_url("manifest.json")?>"> -->
 </head>
 <?php
 // if ($this->uri->segment(1) == "admin") {

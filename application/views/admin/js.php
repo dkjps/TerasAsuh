@@ -91,33 +91,37 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   }
 
 </script>
-<script type="text/javascript">
-// $(document).ready(function(){
-// $('#kelas').change(function(){
 
-// });
-// });
-</script>
+
 <script>
 if ('serviceWorker' in navigator) {
-  window.addEventListener('load', () => {
-    navigator.serviceWorker.register('<?=base_url("sw.js")?>');
+  window.addEventListener('load', function() {
+    navigator.serviceWorker.register('/service-worker.js').then(function(registration) {
+      // Registration was successful
+      console.log('ServiceWorker registration successful with scope: ', registration.scope);
+    }, function(err) {
+      // registration failed :(
+      console.log('ServiceWorker registration failed: ', err);
+    });
   });
+}</script>
 
-  new WorkboxPlugin.GenerateSW({
-    clientsClaim: true,
-    skipWaiting: true,
-    exclude: [/swagger-ui/]
-  })
+<!-- <script>
+if ('serviceWorker' in navigator) {
+window.addEventListener('load', () => {
+navigator.serviceWorker.register('<?=base_url("sw.js")?>');
+});
+
 }
-</script>
+
+</script> -->
 <!-- <script src="https://cdnjs.cloudflare.cm/ajax/libs/UpUp/1.0.0/upup.min.js"></script> -->
 <!-- <script>
 UpUp.start({
-  'cache-version' : 'v2',
-  'content-url': '<?=base_url($this->uri->segment(1))?>',
-  'content' : 'Cannot reach site. Please check your internet connection.',
-  'servlce-worker-url' : '/upup.sw.min.js'
+'cache-version' : 'v2',
+'content-url': '<?=base_url($this->uri->segment(1))?>',
+'content' : 'Cannot reach site. Please check your internet connection.',
+'servlce-worker-url' : '/upup.sw.min.js'
 })
 </script> -->
 </body>
