@@ -1,5 +1,5 @@
 module.exports = {
-  globDirectory: './',
+  globDirectory: './dkjps-admin',
   globPatterns: [
     '**/*.{html,json,js,css,woff}'
   ],

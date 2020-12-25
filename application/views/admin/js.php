@@ -104,6 +104,12 @@ if ('serviceWorker' in navigator) {
     navigator.serviceWorker.register('<?=base_url("sw.js")?>');
   });
 }
+
+new WorkboxPlugin.GenerateSW({
+  clientsClaim: true,
+  skipWaiting: true,
+  exclude: [/swagger-ui/]
+})
 </script>
 <!-- <script src="https://cdnjs.cloudflare.cm/ajax/libs/UpUp/1.0.0/upup.min.js"></script> -->
 <!-- <script>
