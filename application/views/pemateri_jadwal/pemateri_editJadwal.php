@@ -1,6 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-$id = $this->uri->segment(3);
+// $id_materi = $this->uri->segment(3);
+$id_jadwal = $this->uri->segment(4);
 ?>
 
 <div class="main-content">
@@ -17,121 +18,94 @@ $id = $this->uri->segment(3);
 					<div class="card">
 						<div class="card-body">
 							<div class="col col-md-12">
-								<table>
-									<tbody>
+								<div class="col col-md-12">
+									<table>
 										<tr>
 											<td style="width:70px;"><label class="">Pelatihan</label></td>
 											<th style="width:50px;">:</th>
-											<th>
-												<h6 class=""><a class=""
-														href="https://mhscourses.ub-learningtechnology.com/Pelatihan/detailPelatihan/1">Pelatihan
-														COVID-19</a></h6>
-											</th>
+											<th><h6 class=""><a class="" href="<?php echo base_url("Pelatihan/detailPelatihan/$detail->id_pelatihan"); ?>"><?=($detail)?$detail->nama_pelatihan:''?></h6></a></th>
 										</tr>
 										<tr>
 											<td style="width:70px;"><label class="">Materi</label></td>
 											<th style="width:50px;">:</th>
-											<th>
-												<h6 class="">COVID-19</h6>
-											</th>
+											<th><h6 class=""><?=($detail)?$detail->judul_materi:''?></h6></th>
 										</tr>
 										<tr>
-											<td style="width:70px;"><label class="">Jumlah Peserta</label></td>
+											<td style="width:70px;"><label class="">Kelas</label></td>
 											<th style="width:50px;">:</th>
-											<th>
-												<h6 class="">10</h6>
-											</th>
+											<th><h6 class=""><?=($detail)?$detail->nama_kelas:''?></h6></th>
 										</tr>
-									</tbody>
-								</table>
-								<br>
-
-								<form>
-									<div class="form-horizontal">
-										<div class="form-group">
-											<label class="col-md-2 control-label" for="inputNamaPelatihan">Link
-												Meeting</label>
-											<div class="col-md-8">
-												<input type="text" class="form-control" id="namaKelas">
-											</div>
-										</div>
-
-										<div class="form-group">
-											<label class="col-md-2 control-label" for="inputNamaPelatihan">Password
-												Meeting</label>
-											<div class="col-md-8">
-												<input type="password" class="form-control" id="namaKelas">
-											</div>
-										</div>
-									</div>
-
-								</form>
-
-								<br>
-								<div class="table-responsive">
-									<table id="" class="table table-bordered table-striped">
-										<thead>
-											<tr>
-												<th>#</th>
-												<th>Judul</th>
-												<th>Deksripsi</th>
-												<th style="text-align: center;">Aksi</th>
-											</tr>
-										</thead>
-										<tbody id="data-pegawai">
-											<tr>
-												<td>1</td>
-												<td><a
-														href="https://mhscourses.ub-learningtechnology.com/SubMateri/detailSubMateri/4">pretest</a>
-												</td>
-												<td>soal singkat untuk mengetahui seberapa siap terhadap materi</td>
-												<td><button class="btn btn-danger konfirmasiHapus-pegawai"
-														onclick="konfirmasiHapus('https://mhscourses.ub-learningtechnology.com/SubMateri/hapusSubMateri/4/2')"><i
-															class="fas fa-trash"></i></button></td>
-											</tr>
-											<tr>
-												<td>2</td>
-												<td><a
-														href="https://mhscourses.ub-learningtechnology.com/SubMateri/detailSubMateri/5">Ringkasan
-														Materi (PDF)</a></td>
-												<td>materi powerpoint terkait data - data penting yang perlu diperoleh
-												</td>
-												<td><button class="btn btn-danger konfirmasiHapus-pegawai"
-														onclick="konfirmasiHapus('https://mhscourses.ub-learningtechnology.com/SubMateri/hapusSubMateri/5/2')"><i
-															class="fas fa-trash"></i></button></td>
-											</tr>
-											<tr>
-												<td>3</td>
-												<td><a
-														href="https://mhscourses.ub-learningtechnology.com/SubMateri/detailSubMateri/6">postest</a>
-												</td>
-												<td>soal untuk mengetahui bagaimana pemahaman terhadap materi</td>
-												<td><button class="btn btn-danger konfirmasiHapus-pegawai"
-														onclick="konfirmasiHapus('https://mhscourses.ub-learningtechnology.com/SubMateri/hapusSubMateri/6/2')"><i
-															class="fas fa-trash"></i></button></td>
-											</tr>
-										</tbody>
+										<!-- <tr>
+											<td style="width:70px;"><label class="">Pemateri</label></td>
+											<th style="width:50px;">:</th>
+											<th><h6 class=""><?=($detail)?$detail->namalengkap:''?></h6></th>
+										</tr> -->
 									</table>
-								</div>
-								<div class="col col-12 text-center">
-									<div class="col-12">
-										<button type="submit" class="btn btn-primary form-control" name="submit"><i
-												class="fas fa-download"></i> Download Materi</button>
-									</div>
 									<br>
-									<div class="col-12">
-										<button type="submit" class="btn btn-primary form-control" name="submit"><i
-												class="far fa-save"></i> Simpan</button>
+									<form action="<?=base_url("PemateriJadwal/ubahJadwal/$id_jadwal")?>" method="post">
+										<div class="form-horizontal">
+											<div class="form-group">
+												<label class="col-md-2 control-label" for="inputNamaPelatihan">Link Meeting</label>
+												<div class="row" style="margin:auto;">
+													<input style="width:90%;" type="text" name="link" class="form-control" id="link" value="<?=(!empty($detail->link_meet)?$detail->link_meet:'')?>">
+													<button style="width:10%;" type="button" name="button" class="btn btn-secondary" onclick="copyClipboard('link')"><i class="fas fa-copy"></i> </button>
+												</div>
+											</div>
+
+											<div class="form-group">
+												<label class="col-md-2 control-label" for="inputNamaPelatihan">Password Meeting</label>
+												<div class="row" style="margin:auto;">
+													<input style="width:90%;" type="text" name="password" class="form-control" id="pass" value="<?=(!empty($detail->password_meet)?$detail->password_meet:'')?>">
+													<button style="width:10%;" type="button" name="button" class="btn btn-secondary" onclick="copyClipboard('pass')"><i class="fas fa-copy"></i></button>
+												</div>
+											</div>
+											<div class="form-group">
+												<input type="submit" name="submit" value="Simpan" class="btn btn-success col-md-8">
+											</div>
+										</div>
+									</form>
+									<br><br>
+									<div class="table-responsive">
+										<table id="" class="table table-bordered table-striped">
+											<thead>
+												<tr>
+													<th>#</th>
+													<th>Judul</th>
+													<th>Deksripsi</th>
+												</tr>
+											</thead>
+											<tbody id="data-pegawai">
+												<?php $i=1; foreach ($submateri as $s): ?>
+													<tr>
+														<td><?=$i++?></td>
+														<td><a href="<?=base_url("SubMateri/detailSubMateri/$s->id_sub")?>"><?=$s->subbab?></a></td>
+														<td><?=$s->deskripsi_subbab?></td>
+													</tr>
+												<?php endforeach; ?>
+											</tbody>
+										</table>
 									</div>
-
-
-
 								</div>
+								<br>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-	</section>
+	</div>
+</section>
 </div>
+<script type="text/javascript">
+function copyClipboard(id){
+	/* Get the text field */
+	var copyText = document.getElementById(id);
+
+	/* Select the text field */
+	copyText.select();
+	copyText.setSelectionRange(0, 99999); /* For mobile devices */
+
+	/* Copy the text inside the text field */
+	document.execCommand("copy");
+}
+</script>

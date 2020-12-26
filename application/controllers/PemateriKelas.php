@@ -10,8 +10,8 @@ class PemateriKelas extends AUTH_Controller {
 	public function index() {
 		$data['page'] = "kelas";
 		$data['title'] = "Daftar Kelas Pemateri";
+		// $data['detail'] = $this->GeneralApiModel->getWhereTransactional(array('id_panitia'=>$_SESSION['id']),'kelas_pelatihan')->result();
 		$data['detail'] = $this->GeneralApiModel->getAllTransactional('kelas_pelatihan')->result();
-
 		$this->template->views('pemateri_kelas/daftar_kelas', $data);
 	}
 

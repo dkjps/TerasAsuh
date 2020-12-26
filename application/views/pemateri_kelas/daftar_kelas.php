@@ -15,33 +15,7 @@ $id = $this->uri->segment(3);
 			<div class="row">
 				<div class="col-12">
 					<div class="card">
-						<div class="card-header">
-            <div class="container">
-              <div class="row">
-                <div class="col">
-                Nama Pemateri : 
-                </div>
-                <div class="col">
-                ini Namanya 
-                </div>
-              </div>
-			  <div class="row">
-                <div class="col">
-                Total Kelas : 
-                </div>
-                <div class="col">
-                ini totalnya 
-                </div>
-              </div>
-			  <div class="row">
-                <div class="col">
-                Total Jadwal : 
-                </div>
-                <div class="col">
-                ini Totalnyaa
-                </div>
-              </div>
-            </div>
+						<div class="card-header">							
 
 
 						</div>

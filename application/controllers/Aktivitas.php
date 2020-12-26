@@ -20,21 +20,20 @@ class Aktivitas extends AUTH_Controller {
 		$this->template->views('aktivitas/aktivitas_today', $data);
 	}
 
-	public function aktivitasDaftar() {
+	public function aktivitasDaftar($tgl) {
 		$data['page'] = "allday";
 		$data['menu'] = "aktivitas";
 		$data['title'] = "Daftar Aktivitas Anda";
-		$data['deskripsi'] = "Daftar pelatihan TerasAsuh";
 
 		$data['visible'] = true;
-		$tgl = $this->dateToday;
-
-		if (isset($_POST['tanggal'])) {
-				if ($this->dateToday!=$_POST['tanggal']) {
-					$data['visible'] = false;
-				}
-				$tgl = $_POST['tanggal'];
-		}
+		// $tgl = $this->dateToday;
+		//
+		// if (isset($_GET['tanggal'])) {
+		// 		if ($this->dateToday!=$_GET['tanggal']) {
+		// 			$data['visible'] = false;
+		// 		}
+		// 		$tgl = $_GET['tanggal'];
+		// }
 
 		$data['tgl'] = $tgl;
 		$data['next'] = date('Y-m-d', strtotime($tgl.' +1days'));

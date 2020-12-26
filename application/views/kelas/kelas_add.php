@@ -54,7 +54,7 @@ $id = $this->uri->segment(3);
                       <strong>s/d</strong>
                     </div>
                     <div class="col-md-3" >
-                      <input value="<?=(!empty($detail)?$detail->tgl_selesai:'')?>" type="date" class="form-control" name="tgl_selesai" id="tglSelesai" placeholder="Tanggal Selesai Kelas" disabled required>
+                      <input value="<?=(!empty($detail)?$detail->tgl_selesai:'')?>" type="date" class="form-control" name="tgl_selesai" id="tglSelesai" placeholder="Tanggal Selesai Kelas" readonly required>
                     </div>
                   </div>
 
@@ -79,7 +79,7 @@ $id = $this->uri->segment(3);
   function setMin(){
     var today = $("#tglBuka").val();
     console.log(today);
-    document.getElementById("tglSelesai").disabled = false;
+    document.getElementById("tglSelesai").readOnly = false;
     document.getElementById("tglSelesai").setAttribute('min', today);
   }
 </script>

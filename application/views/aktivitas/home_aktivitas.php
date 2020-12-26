@@ -1,6 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 $id = $this->uri->segment(3);
+date_default_timezone_set("Asia/Jakarta");
 ?>
 
 <style>
@@ -47,7 +48,7 @@ $id = $this->uri->segment(3);
 				<div class="card-body">
 					<div class="col col-md-12 text-center" style="padding: 0;">
 						<div class="col-md-12 text-center">
-							<form class="" action="<?=base_url("Aktivitas/aktivitasDaftar")?>" method="post">
+							<form class="" action="<?=base_url("Aktivitas/aktivitasDaftar")?>" method="get">
 								<div class="row" style="">
 									<!-- <div class="form-group col-md-10"> -->
 										<input style="width:60%; margin-left:10%;" class="form-control text-center border-secondary" type="date" name="tanggal" value="<?=(!empty($tgl)?date("Y-m-d", strtotime($tgl)):date("Y-m-d"))?>">
@@ -59,18 +60,18 @@ $id = $this->uri->segment(3);
 							</form>
 							<hr><br>
 							<div class="row" style="margin:auto;">
-									<form class="" action="<?=base_url("Aktivitas/aktivitasDaftar")?>" method="post" style="width:15%;">
-										<input style="display:none;" class="form-control text-center border-secondary" type="date" name="tanggal" value="<?=(!empty($prev)?date("Y-m-d", strtotime($prev)):date("Y-m-d"))?>">
+									<form class="" action="<?=base_url("Aktivitas/aktivitasDaftar/$prev")?>" method="post" style="width:15%;">
+										<!-- <input style="display:none;" class="form-control text-center border-secondary" type="date" name="tanggal" value="<?=(!empty($prev)?date("Y-m-d", strtotime($prev)):date("Y-m-d"))?>"> -->
 										<button id="btnDate" style="background:transparent; border:none;" class="text-secondary mr-3" type="submit" name="submit"><i style="font-size:35px;" class="fas fa-chevron-left"></i></button>
 									</form>
 									<!-- <div class="">
 								</div>
 								<div class=""> -->
-									<h1 style="width:70%;"><strong><?=date('l', strtotime($tgl))?></strong></h1>
+									<h2 style="width:70%;"><strong><?=date('l', strtotime($tgl))?></strong></h2>
 								<!-- </div>
 								<div class=""> -->
-									<form class="" action="<?=base_url("Aktivitas/aktivitasDaftar")?>" method="post" style="width:15%;">
-										<input style="display:none;" class="form-control text-center border-secondary" type="date" name="tanggal" value="<?=(!empty($next)?date("Y-m-d", strtotime($next)):date("Y-m-d"))?>">
+									<form class="" action="<?=base_url("Aktivitas/aktivitasDaftar/$next")?>" method="post" style="width:15%;">
+										<!-- <input style="display:none;" class="form-control text-center border-secondary" type="date" name="tanggal" value="<?=(!empty($next)?date("Y-m-d", strtotime($next)):date("Y-m-d"))?>"> -->
 										<button id="btnDate" style="background:transparent; border:none;" class="text-secondary ml-3" type="submit" name="submit"><i style="font-size:35px;" class="fas fa-chevron-right"></i></button>
 									</form>
 								<!-- </div> -->

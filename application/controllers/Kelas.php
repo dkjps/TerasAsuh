@@ -132,6 +132,7 @@ class Kelas extends AUTH_Controller {
 		$data['kelas'] = $kelas->nama_kelas;
 		$data['pelatihan'] = $kelas->nama_pelatihan;
 		$data['pemateri'] = $this->GeneralApiModel->getWhereTransactionalOrdered(array('1'=>1), 'namalengkap', 'ASC', 'user_pemateri_detail')->result();
+		$data['tgl_buka'] = $this->GeneralApiModel->getWhereTransactional(array('id'=>$id_kelas),'transactional_kelas')->row()->tgl_buka;
 		$this->template->views('jadwal/jadwal_add', $data);
 	}
 
@@ -158,6 +159,7 @@ class Kelas extends AUTH_Controller {
 		$data['pelatihan'] = $kelas->nama_pelatihan;
 		$data['pemateri'] = $this->GeneralApiModel->getWhereTransactionalOrdered(array('1'=>1), 'namalengkap', 'ASC', 'user_pemateri_detail')->result();
 		$data['detail'] = $this->GeneralApiModel->getWhereTransactional(array('id_jadwal'=>$id),'detail_kelas_pemateri')->row();
+		$data['tgl_buka'] = $data['detail']->tgl_buka;
 
 		$this->template->views('jadwal/jadwal_add', $data);
 	}

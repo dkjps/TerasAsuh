@@ -30,7 +30,35 @@ $id = $this->uri->segment(3);
 
 </style>
 
+<script>
 
+  document.addEventListener('DOMContentLoaded', function() {
+    var calendarEl = document.getElementById('calendar');
+    var calendar = new FullCalendar.Calendar(calendarEl, {
+      initialDate: '2020-<?=date('m')?>-<?=date('d')?>',
+
+      // initialView: 'timeGridMonth',
+      headerToolbar: {
+        // left: 'prev,next today',
+				// right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek'
+        center: 'title',
+        left: 'prev,next',
+				right: 'dayGridMonth,timeGridWeek'
+      },
+      height: 'auto',
+      width: 'auto',
+      navLinks: true, // can click day/week names to navigate views
+      // editable: true,
+      // selectable: true,
+      // selectMirror: true,
+      nowIndicator: true,
+      events: <?php echo json_encode($jadwal, true); ?>
+    });
+
+    calendar.render();
+  });
+
+</script>
 
 <div class="main-content">
 	<section class="section">
@@ -44,8 +72,15 @@ $id = $this->uri->segment(3);
 		<div class="section-body">
 			<div class="body">
 				<div class="box-body">
-
-					<div class="container-fluid">
+					<div class="col-md-12 ml-5">
+						<li class="text-success">Sudah Selesai</li>
+						<li class="text-dark">Akan Datang</li>
+						<li class="text-danger">Link Meet Belum Ada</li>
+					</div>
+					<div class="table-responsive">
+						<div id='calendar'></div>
+					</div>
+					<!-- <div class="container-fluid">
 						<ul class="horizontal-slide">
 
 							<li class="span2 col-xs-3 text-center active" style="margin-right:4px; margin-right:4px;">
@@ -103,7 +138,7 @@ $id = $this->uri->segment(3);
 
 
 					<ul class="list-group list-group-flush">
-						<!-- item1 -->
+
 						<li class="list-group-item" onclick="location.href='<?php echo base_url(); ?>PemateriJadwal/detailJadwal'">
 							<div class="card text-white bg-success mb-3">
 								<div class="card-header">
@@ -133,7 +168,7 @@ $id = $this->uri->segment(3);
 								</div>
 							</div>
 						</li>
-						<!-- item2 -->
+
 						<li class="list-group-item">
 							<div class="card text-white bg-info mb-3">
 								<div class="card-header">
@@ -166,7 +201,6 @@ $id = $this->uri->segment(3);
 								</div>
 							</div>
 						</li>
-						<!-- item3 -->
 						<li class="list-group-item">
 							<div class="card text-white bg-info mb-3">
 								<div class="card-header">
@@ -196,8 +230,7 @@ $id = $this->uri->segment(3);
 								</div>
 							</div>
 						</li>
-					</ul>
-
+					</ul> -->
 
 				</div>
 			</div>

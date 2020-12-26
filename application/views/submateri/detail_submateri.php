@@ -148,7 +148,7 @@ $id_sub = $this->uri->segment(3);
                           <td><?=$s->deskripsi?></td>
                           <td style="min-width:150px;">
                             <?php if ($s->tipe!=0): ?>
-                              <a href="<?=$s->isi?>" class="btn btn-success"><i class="fas fa-download"></i></a>
+                              <a href="<?=$s->isi?>" target="_blank" class="btn btn-success"><i class="fas fa-download"></i></a>
                             <?php endif; ?>
                             <button class="btn btn-danger konfirmasiHapus-pegawai" onclick="konfirmasiHapus('<?=base_url("SubMateri/hapusMateriPembelajaran/$s->id/$s->id_subbab_materi")?>')"><i class="fas fa-trash"></i></button></td>
                           </tr>

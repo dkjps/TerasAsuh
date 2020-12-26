@@ -61,8 +61,8 @@ if ($role==2) {
 
   <!-- Menu Pemateri -->
             <li class="menu-header">Admin Pemateri</li>
-            <li class="<?php echo $this->uri->segment(2) == 'skrining' ? 'active' : ''; ?>"><a class="nav-link" href="<?php echo base_url(); ?>PemateriKelas"><i class="fas fa-check-circle"></i> <span>Data Kelas</span></a></li>
-            <li class="<?php echo $this->uri->segment(2) == 'aktivitas' ? 'active' : ''; ?>"><a class="nav-link" href="<?php echo base_url(); ?>PemateriJadwal"><i class="fas fa-history"></i> <span>Jadwal Pelatihan</span></a></li>
+            <!-- <li class="<?php echo $this->uri->segment(2) == 'skrining' ? 'active' : ''; ?>"><a class="nav-link" href="<?php echo base_url(); ?>PemateriKelas"><i class="fas fa-check-circle"></i> <span>Data Kelas</span></a></li> -->
+            <li class="<?php echo $page == 'jadwal' ? 'active' : ''; ?>"><a class="nav-link" href="<?php echo base_url(); ?>PemateriJadwal"><i class="fas fa-calendar"></i> <span>Jadwal Pelatihan</span></a></li>
 
 <hr>
             <!-- Menu aktivitas -->
@@ -70,8 +70,8 @@ if ($role==2) {
             <li class="dropdown <?php echo $menu == 'aktivitas' ? 'active' : ''; ?>">
             <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-graduation-cap"></i> <span>Data Aktivitas</span></a>
               <ul class="dropdown-menu"> -->
-                <li class="<?php echo $page == 'today' ? 'active' : ''; ?>"><a class="nav-link" href="<?php echo base_url(); ?>aktivitas"><i class="fas fa-history"></i> <span>Aktivitas Hari Ini</span></a></li>
-                <li class="<?php echo $page == 'allday' ? 'active' : ''; ?>"><a class="nav-link" href="<?php echo base_url(); ?>aktivitas/aktivitasDaftar"><i class="fas fa-history"></i> <span>Daftar Aktivitas</span></a></li>
+                <li class="<?php echo $page == 'today' ? 'active' : ''; ?>"><a class="nav-link" href="<?php echo base_url(); ?>aktivitas"><i class="fas fa-bicycle"></i> <span>Aktivitas Hari Ini</span></a></li>
+                <li class="<?php echo $page == 'allday' ? 'active' : ''; ?>"><a class="nav-link" href="<?php echo base_url(); ?>aktivitas/aktivitasDaftar/<?=date('Y-m-d')?>"><i class="fas fa-history"></i> <span>Daftar Aktivitas</span></a></li>
               <!-- </ul>
             </li> -->
 <hr>

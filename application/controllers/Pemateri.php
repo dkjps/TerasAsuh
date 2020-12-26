@@ -12,7 +12,18 @@ class Pemateri extends AUTH_Controller {
 		$data['page'] = "pemateri";
 		$data['title'] = "Daftar Pemateri";
 		$data['pemateri'] = $this->GeneralApiModel->getAllTransactional('user_pemateri_detail')->result();
+		$data['provinsi'] = $this->GeneralApiModel->getWhereMasterOrdered(array('1'=>1),'nama', 'ASC', 'masterdata_provinsi')->result();
 
+		$this->template->views('pemateri/home_pemateri', $data);
+	}
+
+	public function cariPemateri() {
+		$data['page'] = "pemateri";
+		$data['title'] = "Daftar Pemateri";
+		$data['pemateri'] = $this->GeneralApiModel->getWhereTransactionalOrdered(array('id_provinsi'=>$_GET['provinsi']),'namalengkap','ASC','user_pemateri_detail')->result();
+		$data['provinsi'] = $this->GeneralApiModel->getWhereMasterOrdered(array('1'=>1),'nama', 'ASC', 'masterdata_provinsi')->result();
+		$data['id_provinsi'] = $_GET['provinsi'];
+		
 		$this->template->views('pemateri/home_pemateri', $data);
 	}
 
