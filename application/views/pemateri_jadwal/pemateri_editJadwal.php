@@ -47,16 +47,16 @@ $id_jadwal = $this->uri->segment(4);
 											<div class="form-group">
 												<label class="col-md-2 control-label" for="inputNamaPelatihan">Link Meeting</label>
 												<div class="row" style="margin:auto;">
-													<input style="width:90%;" type="text" name="link" class="form-control" id="link" value="<?=(!empty($detail->link_meet)?$detail->link_meet:'')?>">
-													<button style="width:10%;" type="button" name="button" class="btn btn-secondary" onclick="copyClipboard('link')"><i class="fas fa-copy"></i> </button>
+													<input style="width:75%;" type="text" name="link" class="form-control" id="link" value="<?=(!empty($detail->link_meet)?$detail->link_meet:'')?>">
+													<button style="width:15%;" type="button" name="button" class="btn btn-secondary" onclick="copyClipboard('link')"><i class="fas fa-copy"></i> </button>
 												</div>
 											</div>
 
 											<div class="form-group">
 												<label class="col-md-2 control-label" for="inputNamaPelatihan">Password Meeting</label>
 												<div class="row" style="margin:auto;">
-													<input style="width:90%;" type="text" name="password" class="form-control" id="pass" value="<?=(!empty($detail->password_meet)?$detail->password_meet:'')?>">
-													<button style="width:10%;" type="button" name="button" class="btn btn-secondary" onclick="copyClipboard('pass')"><i class="fas fa-copy"></i></button>
+													<input style="width:75%;" type="text" name="password" class="form-control" id="pass" value="<?=(!empty($detail->password_meet)?$detail->password_meet:'')?>">
+													<button style="width:15%;" type="button" name="button" class="btn btn-secondary" onclick="copyClipboard('pass')"><i class="fas fa-copy"></i></button>
 												</div>
 											</div>
 											<div class="form-group">

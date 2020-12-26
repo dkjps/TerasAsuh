@@ -77,7 +77,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   margin-left: 20px;
 }
 .fc-direction-ltr{
-  padding: 20px;
+  /* padding: 20px; */
+  margin-left: 20px;
+}
+.fc .fc-toolbar-title{
+  font-size: 20px;
+  margin-left: 10px;
+}
+.card .card-header, .card .card-body, .card .card-footer {
+  background-color: transparent;
+  padding: 0;
 }
 </style>
 <link rel="manifest" href="<?=base_url("manifest.json")?>">

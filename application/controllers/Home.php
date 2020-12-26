@@ -8,14 +8,15 @@ class Home extends AUTH_Controller {
 	}
 
 	public function index() {
-		$data['jml_pelatihan'] 	= count($this->GeneralApiModel->getAllMaster('masterdata_pelatihan')->result());
-		$data['jml_kelas'] 	= count($this->GeneralApiModel->getAllTransactional('transactional_kelas')->result());
-		$data['jml_pemateri'] 	= count($this->GeneralApiModel->getAllTransactional('transactional_kelas')->result());		
-
-		$data['page'] 			= "home";
-		$data['judul'] 			= "Beranda";
-		$data['deskripsi'] 		= "Selamat Datang Panitia di TerasAsuh";
-		$this->template->views('home', $data);
+		// $data['jml_pelatihan'] 	= count($this->GeneralApiModel->getAllMaster('masterdata_pelatihan')->result());
+		// $data['jml_kelas'] 	= count($this->GeneralApiModel->getAllTransactional('transactional_kelas')->result());
+		// $data['jml_pemateri'] 	= count($this->GeneralApiModel->getAllTransactional('transactional_kelas')->result());
+		//
+		// $data['page'] 			= "home";
+		// $data['judul'] 			= "Beranda";
+		// $data['deskripsi'] 		= "Selamat Datang Panitia di TerasAsuh";
+		// $this->template->views('home', $data);
+		redirect('admin/dashboard');
 	}
 }
 

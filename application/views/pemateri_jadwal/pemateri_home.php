@@ -72,11 +72,11 @@ $id = $this->uri->segment(3);
 		<div class="section-body">
 			<div class="body">
 				<div class="box-body">
-					<div class="col-md-12 ml-5">
-						<li class="text-success">Sudah Selesai</li>
+					<div class="col-md-12 ml-3">
+						<li class="text-success">Sudah Dimulai</li>
 						<li class="text-dark">Akan Datang</li>
 						<li class="text-danger">Link Meet Belum Ada</li>
-					</div>
+					</div><br>
 					<div class="table-responsive">
 						<div id='calendar'></div>
 					</div>
