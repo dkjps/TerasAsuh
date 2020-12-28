@@ -92,9 +92,9 @@ $id_pelatihan = $this->uri->segment(3);
 
                   <div class="form-group">
                     <div class="col-md-2"></div>
-                    <div class="col-md-2 ">
+                    <div class="col-md-6 ">
                       <!-- <a href="<?php echo base_url('Pelatihan/detailPelatihan'); ?>" class="btn btn-danger">Kembali</a> -->
-                      <button type="submit" name="submit" class="btn btn-primary">Simpan Kelas</button>
+                      <button type="submit" name="submit" class="btn btn-primary btn-lg col-md-12">Simpan Kelas</button>
                     </div>
                   </div>
                 </form>

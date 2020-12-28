@@ -32,12 +32,12 @@ $caption = array('Belum Buka', 'Daftar', 'Jalan', 'Selesai');
                     <tr>
                       <td style="width:70px;"><label class="">Materi</label></td>
                       <th style="width:50px;">:</th>
-                      <th><h6 class=""><?=($detail)?$detail->judul_materi:''?></h6></th>
+                      <th><h6 class=""><a href="<?=base_url("Materi/detailMateri/$detail->id_materi")?>"><?=($detail)?$detail->judul_materi:''?></a></h6></th>
                     </tr>
                     <tr>
                       <td style="width:70px;"><label class="">Pemateri</label></td>
                       <th style="width:50px;">:</th>
-                      <th><h6 class=""><?=($detail)?$detail->namalengkap:''?></h6></th>
+                      <th><h6 class=""><a href="<?=base_url("Pemateri/jadwalPemateri/$detail->id_panitia")?>"> <?=($detail)?$detail->namalengkap:''?></a></h6></th>
                     </tr>
                   </table>
                   <br>

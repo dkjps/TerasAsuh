@@ -26,14 +26,14 @@ $id_jadwal = $this->uri->segment(4);
 											<th><h6 class=""><a class="" href="<?php echo base_url("Pelatihan/detailPelatihan/$detail->id_pelatihan"); ?>"><?=($detail)?$detail->nama_pelatihan:''?></h6></a></th>
 										</tr>
 										<tr>
-											<td style="width:70px;"><label class="">Materi</label></td>
-											<th style="width:50px;">:</th>
-											<th><h6 class=""><?=($detail)?$detail->judul_materi:''?></h6></th>
-										</tr>
-										<tr>
 											<td style="width:70px;"><label class="">Kelas</label></td>
 											<th style="width:50px;">:</th>
-											<th><h6 class=""><?=($detail)?$detail->nama_kelas:''?></h6></th>
+											<th><h6 class=""><a href="<?=base_url("Kelas/detailKelas/$detail->id_kelas")?>"> <?=($detail)?$detail->nama_kelas:''?></a></h6></th>
+										</tr>
+										<tr>
+											<td style="width:70px;"><label class="">Materi</label></td>
+											<th style="width:50px;">:</th>
+											<th><h6 class=""><a href="<?=base_url("Materi/detailMateri/$detail->id_materi")?>"><?=($detail)?$detail->judul_materi:''?></a></h6></th>
 										</tr>
 										<!-- <tr>
 											<td style="width:70px;"><label class="">Pemateri</label></td>
@@ -98,14 +98,9 @@ $id_jadwal = $this->uri->segment(4);
 </div>
 <script type="text/javascript">
 function copyClipboard(id){
-	/* Get the text field */
 	var copyText = document.getElementById(id);
-
-	/* Select the text field */
 	copyText.select();
 	copyText.setSelectionRange(0, 99999); /* For mobile devices */
-
-	/* Copy the text inside the text field */
 	document.execCommand("copy");
 }
 </script>

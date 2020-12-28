@@ -1,6 +1,14 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 ?>
+<script type="text/javascript">
+function copyClipboard(id){
+	var copyText = document.getElementById(id);
+	copyText.select();
+	copyText.setSelectionRange(0, 99999); /* For mobile devices */
+	document.execCommand("copy");
+}
+</script>
     <!-- <div class="modal fade" id="konfirmasiHapus" role="dialog">
         <div class="modal-dialog modal-md" role="document" style="margin-top:40vh;">
           <div class="modal-content">
@@ -33,6 +41,29 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           </div>
         </div>
       </div>
+
+      <div class="modal fade" id="bagiKode" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true" style="width:60%; margin:auto;">
+        <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLongTitle">Kode Referral</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body text-center">
+              <div class="row" style="margin:auto;">
+                <input style="width:75%;" type="text" name="link" class="form-control" id="kode_referal" readonly>
+                <button style="width:20%;" type="button" name="button" class="btn btn-secondary" onclick="copyClipboard('kode_referal')"><i class="fas fa-copy"></i> </button>
+              </div>
+            </div>
+            <div class="modal-footer text-center">
+              <button type="button" class="btn btn-danger" style="width:100px;" data-dismiss="modal">Tutup</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <footer class="main-footer">
         <div class="footer-left">
           Copyright &copy; 2020 <div class="bullet"></div> Developed By <a href="#">UB Learning Technology Laboratory</a>

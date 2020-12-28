@@ -90,6 +90,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     $('#konfirmasiHapus').modal('show');
   }
 
+  function bagiKode(kode){
+    $('#kode_referal').val(kode);
+    $('#bagiKode').modal('show');
+  }
+
 </script>
 
 

@@ -28,7 +28,7 @@ $id = $this->uri->segment(3);
                     <textarea class="form-control" cols="40" id="textarea" name="deskripsi" rows="10" style="resize:none" placeholder="Pelatihan ini tentang . . ." required><?=(!empty($detail)?$detail->deskripsi:'')?></textarea>
                   </div>
                   <div class="form-group col-md-12">
-                    <button type="submit" class="btn btn-primary" name="submit">Simpan</button>
+                    <button type="submit" class="btn btn-primary btn-lg col-md-12" name="submit">Simpan</button>
                   </div>
                 </form>
               </div>

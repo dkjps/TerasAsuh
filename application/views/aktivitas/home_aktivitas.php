@@ -94,7 +94,7 @@ date_default_timezone_set("Asia/Jakarta");
 								<div class="col-md-12">
 									<?php if ($visible): ?>
 										<button type="button" onclick="konfirmasiHapus('<?=base_url("")?>')" class="float-right btn btn-danger text-white"><i class="fas fa-trash"></i> Hapus</button>
-										<a class="float-right btn btn-warning text-white mr-3"><i class="fas fa-edit"></i> Ubah</a>
+										<a href="<?=base_url("Aktivitas/ubahAktivitas/$t->id")?>" class="float-right btn btn-warning text-white mr-3"><i class="fas fa-edit"></i> Ubah</a>
 									<?php endif; ?>
 								</div>
 							</li>

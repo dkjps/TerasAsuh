@@ -18,7 +18,7 @@
         </span>
       </td>
       <td class="text-center" style="min-width:200px;">
-        <button class="btn btn-warning update-dataPegawai" data-id="<?php echo $d->id_kelas; ?>"><i class="fas fa-share" style="padding-right:3px"></i></button>
+        <button onclick="bagiKode('<?=$d->kode_referal?>')" class="btn btn-warning update-dataPegawai" data-id="<?php echo $d->id_kelas; ?>"><i class="fas fa-share" style="padding-right:3px"></i></button>
         <a href="<?=base_url("pelatihan/ubahKelas/$d->id_kelas")?>" class="btn btn-primary update-dataPegawai" ><i class="fas fa-pen" style="padding-right:3px"></i></a>
         <button class="btn btn-danger konfirmasiHapus-pegawai" onclick="konfirmasiHapus('<?=base_url("Pelatihan/hapusKelas/$d->id_pelatihan/$d->id_kelas")?>')"><i class="fas fa-trash" style="padding-right:3px"></i> </button>
       </td>
