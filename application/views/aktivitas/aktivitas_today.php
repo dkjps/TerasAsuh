@@ -69,6 +69,7 @@ $id = $this->uri->segment(3);
 						</li>
 					<?php } ?>
 					<?php else: ?>
+						<br>
 						<div class="alert alert-danger text-center">
 							Aktivitas Hari Ini Kosong
 						</div>

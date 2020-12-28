@@ -86,7 +86,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 }
 .card .card-header, .card .card-body, .card .card-footer {
   background-color: transparent;
-  padding: 0;
+  padding: 10px;
 }
 </style>
 <link rel="manifest" href="<?=base_url("manifest.json")?>">

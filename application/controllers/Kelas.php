@@ -82,7 +82,8 @@ class Kelas extends AUTH_Controller {
 		$data['title'] = "Ubah Kelas ";
 
 
-		$data['detail'] = $this->GeneralApiModel->getWhereTransactional(array('id'=>$id_kelas),'transactional_kelas')->row();
+		// $data['detail'] = $this->GeneralApiModel->getWhereTransactional(array('id'=>$id_kelas),'transactional_kelas')->row();
+		$data['detail'] = $this->GeneralApiModel->getWhereTransactional(array('id_kelas'=>$id_kelas),'kelas_pelatihan')->row();
 		$this->template->views('kelas/kelas_add', $data);
 	}
 

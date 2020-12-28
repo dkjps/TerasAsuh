@@ -10,7 +10,9 @@
       <td style="min-width:0;"><?php echo $p->deskripsi; ?></td>
       <td class="text-center">
         <a href="<?=base_url("pelatihan/ubahPelatihan/$p->id")?>" class="btn btn-primary update-dataPegawai" data-id="<?php echo $p->id; ?>"><i class="fas fa-pen"></i></a>
-        <button class="btn btn-danger konfirmasiHapus-pegawai" onclick="konfirmasiHapus('<?=base_url("Pelatihan/hapusPelatihan/$p->id")?>')"><i class="fas fa-trash"></i></button>
+        <?php if ($cont->is_delete($p->id)): ?>
+          <button class="btn btn-danger konfirmasiHapus-pegawai" onclick="konfirmasiHapus('<?=base_url("Pelatihan/hapusPelatihan/$p->id")?>')"><i class="fas fa-trash"></i></button>
+        <?php endif; ?>
       </td>
     </tr>
     <?php

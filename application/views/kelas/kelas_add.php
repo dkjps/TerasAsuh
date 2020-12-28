@@ -34,7 +34,7 @@ $id = $this->uri->segment(3);
                   <div class="form-group">
                     <label class="col-md-2 control-label" for="inputNamaPelatihan">Nama Kelas</label>
                     <div class="col-md-8">
-                      <input value="<?=(!empty($detail)?$detail->nama:'')?>" type="text" class="form-control" name="kelas" placeholder="Nama Kelas" required>
+                      <input value="<?=(!empty($detail)?$detail->nama_kelas:'')?>" type="text" class="form-control" name="kelas" placeholder="Nama Kelas" required>
                     </div>
                   </div>
 
@@ -47,8 +47,30 @@ $id = $this->uri->segment(3);
 
                   <div class="form-group">
                     <label class="col-md-2 control-label" for="inputNamaPelatihan">Periode Kelas</label>
+                    <?php if (empty($detail) || $detail->status_kelas==0 || $detail->status_kelas==1): ?>
+                      <div class="col-md-3"style=>
+                        <input value="<?=(!empty($detail)?$detail->tgl_buka:'')?>" type="date" min="<?=date('Y-m-d')?>" class="form-control" name="tgl_buka" placeholder="Tanggal Mulai Kelas" id="tglBuka" onchange="setMin()" required>
+                      </div>
+                      <div class="col-md-2 text-center" style="margin-top: 4px; margin-bottom: 4px;">
+                        <strong>s/d</strong>
+                      </div>
+                      <div class="col-md-3" >
+                        <input value="<?=(!empty($detail)?$detail->tgl_selesai:'')?>" type="date" min="<?=date('Y-m-d')?>" class="form-control" name="tgl_selesai" id="tglSelesai" placeholder="Tanggal Selesai Kelas" required>
+                      </div>
+                    <?php endif; ?>
+                    <?php if (!empty($detail) && $detail->status_kelas==2): ?>
                     <div class="col-md-3"style=>
-                      <input value="<?=(!empty($detail)?$detail->tgl_buka:'')?>" type="date" min="<?=date('Y-m-d')?>" class="form-control" name="tgl_buka" placeholder="Tanggal Mulai Kelas" id="tglBuka" onchange="setMin()" required>
+                      <input value="<?=(!empty($detail)?$detail->tgl_buka:'')?>" type="date" class="form-control" name="tgl_buka" placeholder="Tanggal Mulai Kelas" id="tglBuka" onchange="setMin()" readonly required>
+                    </div>
+                    <div class="col-md-2 text-center" style="margin-top: 4px; margin-bottom: 4px;">
+                      <strong>s/d</strong>
+                    </div>
+                    <div class="col-md-3" >
+                      <input value="<?=(!empty($detail)?$detail->tgl_selesai:'')?>" type="date" min="<?=date('Y-m-d')?>" class="form-control" name="tgl_selesai" id="tglSelesai" placeholder="Tanggal Selesai Kelas" required>
+                    </div>
+                  <?php elseif (!empty($detail) && $detail->status_kelas==3): ?>
+                    <div class="col-md-3"style=>
+                      <input value="<?=(!empty($detail)?$detail->tgl_buka:'')?>" type="date" class="form-control" name="tgl_buka" placeholder="Tanggal Mulai Kelas" id="tglBuka" onchange="setMin()" readonly required>
                     </div>
                     <div class="col-md-2 text-center" style="margin-top: 4px; margin-bottom: 4px;">
                       <strong>s/d</strong>
@@ -56,6 +78,7 @@ $id = $this->uri->segment(3);
                     <div class="col-md-3" >
                       <input value="<?=(!empty($detail)?$detail->tgl_selesai:'')?>" type="date" class="form-control" name="tgl_selesai" id="tglSelesai" placeholder="Tanggal Selesai Kelas" readonly required>
                     </div>
+                  <?php endif; ?>
                   </div>
 
                   <div class="form-group">

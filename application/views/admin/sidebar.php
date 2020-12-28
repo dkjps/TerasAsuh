@@ -43,11 +43,11 @@ if ($role==2) {
 <!-- Menu Operator -->
             <li class="menu-header">Admin Operator</li>
             <li class="dropdown <?php echo $menu == 'master' ? 'active' : ''; ?>">
-              <li class="<?php echo $page == 'pelatihan' ? 'active' : ''; ?>"><a class="nav-link" href="<?php echo base_url(); ?>pelatihan"><i class="fas fa-history"></i> <span>Data Pelatihan</span></a></li>
+              <li class="<?php echo $page == 'pelatihan' ? 'active' : ''; ?>"><a class="nav-link" href="<?php echo base_url(); ?>pelatihan"><i class="fas fa-puzzle-piece"></i> <span>Data Pelatihan</span></a></li>
             <!-- <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-graduation-cap"></i> <span>Kelas dan Materi</span></a>
               <ul class="dropdown-menu"> -->
-                <li class="<?php echo $page == 'kelas' ? 'active' : ''; ?>"><a class="nav-link" href="<?php echo base_url(); ?>kelas"><i class="fas fa-home"></i><span>Daftar Kelas</span></a></li>
-                <li class="<?php echo $page == 'materi' ? 'active' : ''; ?>"><a class="nav-link" href="<?php echo base_url(); ?>materi"><i class="fas fa-book"></i> <span>Daftar Materi</span></a></li>
+                <!-- <li class="<?php echo $page == 'kelas' ? 'active' : ''; ?>"><a class="nav-link" href="<?php echo base_url(); ?>kelas"><i class="fas fa-home"></i><span>Daftar Kelas</span></a></li> -->
+                <!-- <li class="<?php echo $page == 'materi' ? 'active' : ''; ?>"><a class="nav-link" href="<?php echo base_url(); ?>materi"><i class="fas fa-book"></i> <span>Daftar Materi</span></a></li> -->
                 <!-- <li class="<?php echo $page == 'sub-materi' ? '' : ''; ?>"><a class="nav-link" href="<?php echo base_url(); ?>subMateri">Daftar Sub Materi</a></li> -->
               <!-- </ul>
             </li> -->
@@ -62,7 +62,7 @@ if ($role==2) {
   <!-- Menu Pemateri -->
             <li class="menu-header">Admin Pemateri</li>
             <!-- <li class="<?php echo $this->uri->segment(2) == 'skrining' ? 'active' : ''; ?>"><a class="nav-link" href="<?php echo base_url(); ?>PemateriKelas"><i class="fas fa-check-circle"></i> <span>Data Kelas</span></a></li> -->
-            <li class="<?php echo $page == 'jadwal' ? 'active' : ''; ?>"><a class="nav-link" href="<?php echo base_url(); ?>PemateriJadwal"><i class="fas fa-calendar"></i> <span>Jadwal Pelatihan</span></a></li>
+            <li class="<?php echo $page == 'jadwal' ? 'active' : ''; ?>"><a class="nav-link" href="<?php echo base_url(); ?>PemateriJadwal"><i class="fas fa-calendar"></i> <span>Jadwal Pemateri</span></a></li>
 
 <hr>
             <!-- Menu aktivitas -->
@@ -81,7 +81,7 @@ if ($role==2) {
             <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-graduation-cap"></i> <span>Data Akun</span></a>
               <ul class="dropdown-menu"> -->
                 <li class="<?php echo $page == 'panitia' ? '' : ''; ?>"><a class="nav-link" href="<?php echo base_url(); ?>akun">Pengaturan Akun</a></li>
-                <li class="<?php echo $page == 'peserta' ? '' : ''; ?>"><a class="nav-link" href="<?php echo base_url(); ?>admin/master/master-peserta">Keluar</a></li>
+                <li class="<?php echo $page == 'peserta' ? '' : ''; ?>"><a class="nav-link" href="<?php echo base_url("Auth/logout"); ?>">Keluar</a></li>
               <!-- </ul>
             </li> -->
 

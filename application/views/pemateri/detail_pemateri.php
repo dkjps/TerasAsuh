@@ -43,6 +43,7 @@ $caption = array('Belum Buka', 'Daftar', 'Jalan', 'Selesai');
                   <thead>
                     <tr>
                       <th>#</th>
+                      <th>Pelatihan</th>
                       <th>Kelas</th>
                       <th>Materi Pelatihan</th>
                       <th>Tanggal</th>
@@ -55,8 +56,9 @@ $caption = array('Belum Buka', 'Daftar', 'Jalan', 'Selesai');
                     foreach ($materi as $m) { ?>
                       <tr>
                         <td><?=$i++?></td>
-                        <td><?=$m->nama_kelas?></td>
-                        <td><?=$m->judul_materi?></td>
+                        <td><a href="<?=base_url("Pelatihan/detailPelatihan/$m->id_pelatihan")?>"><?=$m->nama_pelatihan?></a></td>
+                        <td><a href="<?=base_url("Kelas/detailKelas/$m->id_kelas")?>"><?=$m->nama_kelas?></a></td>
+                        <td><a href="<?=base_url("Materi/detailMateri/$m->id_materi")?>"><?=$m->judul_materi?></a></td>
                         <td style="min-width:150px;" class="text-center"><?=date('l, d F yy H:i', strtotime($m->tgl_buka_materi))?></td>
                         <td style="min-width:100px;">
                           <a href="<?=base_url("Kelas/detailKelas/$m->id_kelas/")?>" class="btn btn-sm btn-primary update-data" ><i class="fas fa-pen"></i></a>
