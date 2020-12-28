@@ -48,11 +48,19 @@ $caption = array('Belum Buka', 'Daftar', 'Jalan', 'Selesai');
                     <label for="inputTanggalPelatihan">Jumlah Pemateri</label>
                     <span class="form-control"><?=(!empty($detail->jumlah_pemateri)?$detail->jumlah_pemateri:'0')?></span>
                   </div>
-                  <div class="form-group col-md-4">
+                  <div class="form-group col-md-2">
+                    <label for="inputTanggalPelatihan">Jumlah Peserta</label>
+                    <span class="form-control"><?=(!empty($detail->jumlah_peserta)?$detail->jumlah_peserta:'0')?></span>
+                  </div>
+                  <div class="form-group col-md-2">
+                    <label for="inputTanggalPelatihan">Kapasitas</label>
+                    <span class="form-control"><?=(!empty($detail)?$detail->kapasitas:'')?></span>
+                  </div>
+                  <div class="form-group col-md-2">
                     <label for="inputTanggalPelatihan">Tanggal Buka</label>
                     <span class="form-control"><?=(!empty($detail)?$detail->tgl_buka:'')?></span>
                   </div>
-                  <div class="form-group col-md-4">
+                  <div class="form-group col-md-2">
                     <label for="inputTanggalPelatihan">Tanggal Selesai</label>
                     <span class="form-control"><?=(!empty($detail)?$detail->tgl_selesai:'')?></span>
                   </div>

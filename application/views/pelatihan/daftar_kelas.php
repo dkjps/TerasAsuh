@@ -12,6 +12,7 @@
       <td><?php echo ($d->jumlah_pemateri?$d->jumlah_pemateri:0); ?></td>
       <td><?php echo $d->tgl_buka; ?></td>
       <td><?php echo $d->tgl_selesai; ?></td>
+      <td><?php echo $d->kode_referal; ?></td>
       <td class="text-center">
         <span class="btn btn-<?=$warna[$d->status_kelas]?>">
         <?php echo $caption[$d->status_kelas]; ?>

@@ -35,6 +35,7 @@ $this->load->view('admin/header');
                             <th>Pemateri</th>
                             <th>Tgl Buka</th>
                             <th>Tgl Selesai</th>
+                            <th>Kode</th>
                             <th>Status</th>
                             <th style="text-align: center;">Aksi</th>
                           </tr>
