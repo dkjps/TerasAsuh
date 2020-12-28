@@ -88,6 +88,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   background-color: transparent;
   padding: 10px;
 }
+@media (max-width: 1024px){
+  .navbar {
+    left: 0px;
+    right: 15px;
+  }
+}
 </style>
 <link rel="manifest" href="<?=base_url("manifest.json")?>">
 </head>
