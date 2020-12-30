@@ -112,6 +112,6 @@ date_default_timezone_set("Asia/Jakarta");
 	</section>
 </div>
 
-<a href="<?php echo base_url('aktivitas/tambahAktivitas'); ?>" class="float">
+<!-- <a href="<?php echo base_url('aktivitas/tambahAktivitas'); ?>" class="float">
 	<i class="fas fa-plus my-float"></i>
-</a>
+</a> -->

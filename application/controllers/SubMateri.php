@@ -40,6 +40,24 @@ class SubMateri extends AUTH_Controller {
 		$this->load->view('submateri/detail_soal', $data);
 	}
 
+	public function ubahSubMateri($id_materi, $id_sub){
+		$detail = $this->GeneralApiModel->getWhereMaster(array('id_sub'=>$id_sub), 'detail_sub_materi')->row();
+		$data['judul'] = $detail->materi;
+		$data['deskripsi'] = $detail->deskripsi_subbab;
+		if (isset($_POST['submit'])) {
+			$update['deskripsi'] = $_POST['deskripsi'];
+			$this->GeneralApiModel->updateMaster($update, array('id'=>$id_sub), 'masterdata_subbab_materi');
+			redirect(base_url("Materi/detailMateri/$id_materi"));
+		}
+		$data['action'] = 'ubah';
+		$data['page'] = "sub-materi";
+		$data['title'] = "Ubah Sub Materi";
+
+		// $data['detail'] = $this->GeneralApiModel->getWhereMaster(array('id'=>$id_materi), 'masterdata_materi')->row();
+		$data['detail'] = $detail;
+		$this->template->views('submateri/submateri_add', $data);
+	}
+
 	public function tambahSubMateri($id_materi){
 		if (isset($_POST['submit'])) {
 			$data['id_materi'] = $id_materi;
@@ -47,6 +65,13 @@ class SubMateri extends AUTH_Controller {
 			$test = explode('-', $_POST['tipe']);
 			$data['is_test'] = $test[0];
 			$data['judul'] = $test[1];
+			if ($test[2]==0) {
+				$data['cdate'] = "2020-01-01";
+			} elseif ($test[2]==1) {
+				$date['cdate'] = date('Y-m-d h:i:s');
+			} else {
+				$data['cdate'] = "2120-01-01";
+			}
 			$data['deskripsi'] = $_POST['deskripsi'];
 			$file_desk = $_POST['file_desk'];
 
@@ -124,6 +149,8 @@ class SubMateri extends AUTH_Controller {
 		// $data['pelatihan'] = $this->GeneralApiModel->getAllMaster('masterdata_pelatihan')->result();
 		// $data['pemateri'] = $this->GeneralApiModel->getWhereTransactionalOrdered(array('1'=>1), 'namalengkap', 'ASC', 'user_pemateri_detail')->result();
 		$data['detail'] = $this->GeneralApiModel->getWhereMaster(array('id'=>$id_materi), 'masterdata_materi')->row();
+		$data['judul'] = $data['detail']->judul;
+		$data['deskripsi'] = '';
 		$this->template->views('submateri/submateri_add', $data);
 	}
 
@@ -276,6 +303,27 @@ class SubMateri extends AUTH_Controller {
 		$data['kelas'] = $this->GeneralApiModel->getWhereTransactional(array('id_pelatihan'=>$id),'transactional_kelas')->result();
 		$data['materi'] = $this->GeneralApiModel->getWhereMaster(array('id_pelatihan'=>$id),'masterdata_materi')->result();
 		echo json_encode($data);
+	}
+
+	public function naik($id_bawah, $id_atas, $id_materi){
+		$tgl_atas = $this->GeneralApiModel->getWhereMaster(array('id'=>$id_atas), 'masterdata_subbab_materi')->row()->cdate;
+		$tgl_bawah = $this->GeneralApiModel->getWhereMaster(array('id'=>$id_bawah), 'masterdata_subbab_materi')->row()->cdate;
+
+		// echo $tgl_bawah;
+		// echo "<br/>";
+		// echo $tgl_atas;
+		$this->GeneralApiModel->updateMaster(array('cdate'=>$tgl_atas), array('id'=>$id_bawah), 'masterdata_subbab_materi');
+		$this->GeneralApiModel->updateMaster(array('cdate'=>$tgl_bawah), array('id'=>$id_atas), 'masterdata_subbab_materi');
+		redirect(base_url("Materi/detailMateri/$id_materi"));
+	}
+
+	public function turun($id_atas, $id_bawah, $id_materi){
+		$tgl_atas = $this->GeneralApiModel->getWhereMaster(array('id'=>$id_atas), 'masterdata_subbab_materi')->row()->cdate;
+		$tgl_bawah = $this->GeneralApiModel->getWhereMaster(array('id'=>$id_bawah), 'masterdata_subbab_materi')->row()->cdate;
+
+		$this->GeneralApiModel->updateMaster(array('cdate'=>$tgl_bawah), array('id'=>$id_atas), 'masterdata_subbab_materi');
+		$this->GeneralApiModel->updateMaster(array('cdate'=>$tgl_atas), array('id'=>$id_bawah), 'masterdata_subbab_materi');
+		redirect(base_url("Materi/detailMateri/$id_materi"));
 	}
 
 	private function set_upload_options(){

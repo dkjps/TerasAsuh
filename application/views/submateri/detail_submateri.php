@@ -148,8 +148,8 @@ $id_sub = $this->uri->segment(3);
                           <td><?=$s->deskripsi?></td>
                           <td style="min-width:150px;">
                             <?php if ($s->tipe!=0): ?>
-                              <button type="button" name="button" class="btn btn-secondary" onclick="downloadFile('<?=$s->isi?>')"><i class="fas fa-download"></i></button>
-                              <a href="<?=$s->isi?>" target="_blank" class="btn btn-success"><i class="fas fa-download"></i></a>
+                              <!-- <button type="button" name="button" class="btn btn-secondary" onclick="downloadFile('<?=$s->isi?>')"><i class="fas fa-download"></i></button> -->
+                              <a href="<?=$s->isi?>" rel="noreferrer" target="_blank" class="btn btn-success"><i class="fas fa-download"></i></a>
                             <?php endif; ?>
                             <button class="btn btn-danger konfirmasiHapus-pegawai" onclick="konfirmasiHapus('<?=base_url("SubMateri/hapusMateriPembelajaran/$s->id/$s->id_subbab_materi")?>')"><i class="fas fa-trash"></i></button></td>
                           </tr>
@@ -244,6 +244,6 @@ $(wrap).on("click",".remove_field", function(e){
   e.preventDefault(); $(this).parents('.file-wrap').remove(); x--;
 })
 function downloadFile(link){
-  window.open(link);
+  window.open(link, '_blank');
 }
 </script>

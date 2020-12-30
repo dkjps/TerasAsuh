@@ -112,6 +112,9 @@ class Kelas extends AUTH_Controller {
 			$materi['statusdata'] = 0;
 
 			$id_materi = $this->GeneralApiModel->insertIdMaster($materi, 'masterdata_materi');
+			$this->GeneralApiModel->insertMaster(array('judul'=>'Pre Test', 'is_test'=>1, 'id_materi'=>$id_materi, 'cdate'=>'2020-01-01'), 'masterdata_subbab_materi');
+			$this->GeneralApiModel->insertMaster(array('judul'=>'Materi Belajar', 'is_test'=>0, 'id_materi'=>$id_materi, 'cdate'=>date('Y-m-d h:i:s')), 'masterdata_subbab_materi');
+			$this->GeneralApiModel->insertMaster(array('judul'=>'Post Test', 'is_test'=>1, 'id_materi'=>$id_materi, 'cdate'=>'2121-12-12'), 'masterdata_subbab_materi');
 
 			$data['id_kelas'] = $id_kelas;
 			$data['id_materi'] = $id_materi;

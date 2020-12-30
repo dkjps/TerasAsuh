@@ -94,6 +94,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     right: 15px;
   }
 }
+.fc-daygrid-dot-event .fc-event-title {
+    flex-grow: 0;
+}
 </style>
 <link rel="manifest" href="<?=base_url("manifest.json")?>">
 </head>

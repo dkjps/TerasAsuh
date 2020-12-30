@@ -17,6 +17,7 @@ $id = $this->uri->segment(3);
 
 			<div class="box">
 				<div class="box-body">
+					<div class="col-md-12">
 					<form method="post" action="<?=base_url("Aktivitas/$action"."Aktivitas/$id")?>">
 						<div class="form-row">
 							<div class="form-group col-md-6">
@@ -57,6 +58,7 @@ $id = $this->uri->segment(3);
 						<!-- </div> -->
 
 					</form>
+				</div>
 				</div>
 			</div>
 		</div>

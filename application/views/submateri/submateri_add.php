@@ -1,6 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 $id = $this->uri->segment(3);
+$id_sub = $this->uri->segment(4);
 ?>
 <!-- Main Content -->
 <div class="main-content" id="halaman-pasien">
@@ -15,7 +16,7 @@ $id = $this->uri->segment(3);
 						<div class="card-body">
 							<div class="table-responsive">
 								<!-- <form class="form-horizontal" method="post" action="<?=base_url("SubMateri/tambahSubMateri")?>" enctype="multipart/form-data"> -->
-								<?php echo form_open_multipart('SubMateri/tambahSubMateri/'.$id);?>
+								<?php echo form_open_multipart("SubMateri/$action"."SubMateri/$id/$id_sub");?>
 								<!-- <div class="form-group col-md-12">
 								<div class="form-group col-md-6">
 								<label for="inputNamaPelatihan">Pelatihan</label>
@@ -39,20 +40,31 @@ $id = $this->uri->segment(3);
 							<!-- <select class="form-control" name="materi" id="materi" required>
 							<option value="">Pilih Materi</option>
 						</select> -->
-						<input type="text" name="materi" class="col-md-8 form-control" value="<?=($detail?$detail->judul:'')?>" placeholder="Jadwal Materi" <?=($detail?'readonly':'')?> required>
+						<input type="text" name="materi" class="col-md-12 form-control" value="<?=($judul)?>" placeholder="Jadwal Materi" <?=($detail?'readonly':'')?> required>
 					</div>
 
-				<div class="form-group col-md-12">
-					<label class="control-label" for="inputNamaPelatihan">Tipe Materi</label>
-					<!-- <div class="col-md-6"> -->
-						<select class="form-control col-md-6" name="tipe" id="tipe" onchange="pilihTipe()" required>
-							<option value="1-Pre Test">Pre Test</option>
-							<option value="0-Materi Belajar">Materi Belajar</option>
-							<option value="1-Post Test">Post Test</option>
-						</select>
-					<!-- </div> -->
-				</div>
-				<div class="form-group col-md-12" id="file" style="display:none;">
+					<?php if ($action=='tambah'): ?>
+						<div class="form-group col-md-12">
+							<label class="control-label" for="inputNamaPelatihan">Tipe Materi</label>
+							<!-- <div class="col-md-6"> -->
+							<select class="form-control col-md-6" name="tipe" id="tipe" onchange="pilihTipe()" required>
+								<!-- <option value="1-Pre Test-0">Pre Test</option> -->
+								<option value="0-Materi Belajar-1">Materi Belajar</option>
+								<!-- <option value="1-Post Test-2">Post Test</option> -->
+							</select>
+							<!-- </div> -->
+						</div>
+					<?php else: ?>
+						<div class="form-group col-md-12">
+							<label class="control-label" for="inputNamaPelatihan">Tipe Materi</label>
+							<input type="text" name="submateri" value="<?=$detail->subbab?>" class="form-control col-md-6" disabled>
+						</div>
+					<?php endif; ?>
+					<?php if ($action=='tambah'): ?>
+				<div class="form-group col-md-12" id="file">
+					<?php else: ?>
+					<div class="form-group col-md-12" id="file" style="display:none;">
+					<?php endif; ?>
 					<label class="col-md-2 control-label" for="inputNamaPelatihan">File Materi  <button class="btn btn-success" type="button" name="button" id="btnTambahFile">
 						<i class="fas fa-plus"></i>
 					</button>
@@ -75,12 +87,12 @@ $id = $this->uri->segment(3);
 				<div class="form-group col-md-12">
 					<label class="control-label" for="inputNamaPelatihan">Deskripsi Materi</label>
 					<!-- <div class="col-md-6"> -->
-						<textarea class="form-control col-md-6" rows="3" style="resize: none;" name="deskripsi"></textarea>
+						<textarea class="form-control col-md-6" rows="3" style="resize: none;" name="deskripsi"><?=$deskripsi?></textarea>
 					<!-- </div> -->
 				</div>
 
 		<div class="form-group col-md-12">
-			<button type="submit" name="submit" class="btn btn-primary col-md-6">Tambah Sub Materi</button>
+			<button type="submit" name="submit" class="btn btn-primary col-md-6">Simpan</button>
 		</div>
 		<!-- </form> -->
 		<?php echo form_close(); ?>

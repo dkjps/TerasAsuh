@@ -19,7 +19,8 @@ class Materi extends AUTH_Controller {
 		$data['page'] = "materi";
 		$data['title'] = "Detail Materi";
 
-		$data['submateri'] = $this->GeneralApiModel->getWhereMaster(array('id_materi'=>$id_materi),'detail_sub_materi')->result();
+		$data['submateri'] = $this->GeneralApiModel->getWhereMasterOrdered(array('id_materi'=>$id_materi),'cdate', 'ASC','detail_sub_materi')->result();
+		$data['jumlah_materi'] = $this->GeneralApiModel->getWhereMasterOrdered(array('id_materi'=>$id_materi, 'is_test'=>0),'cdate', 'ASC','detail_sub_materi')->result();
 		$data['detail'] = $this->GeneralApiModel->getWhereTransactional(array('id_materi'=>$id_materi), 'detail_kelas_pemateri')->row();
 		$this->load->view('materi/detail_materi', $data);
 	}

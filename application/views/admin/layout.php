@@ -17,7 +17,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <div class="d-sm-none d-lg-inline-block">Hi, <?=$_SESSION['namalengkap']?></div></a>
             <div class="dropdown-menu dropdown-menu-right">
               <!-- <div class="dropdown-title">Logged in 5 min ago</div> -->
-              <div class="dropdown-title"><?=$_SESSION['namalengkap']?></div>
+              <div class="dropdown-title"><a href="<?php echo base_url(); ?>akun"><?=$_SESSION['namalengkap']?></a></div>
               <div class="dropdown-divider"></div>
               <a href="<?= base_url("Auth/logout"); ?>" class="dropdown-item has-icon text-danger">
                 <i class="fas fa-sign-out-alt"></i> Logout

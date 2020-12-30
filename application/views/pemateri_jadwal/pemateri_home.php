@@ -52,7 +52,7 @@ $id = $this->uri->segment(3);
       // selectable: true,
       // selectMirror: true,
       nowIndicator: true,
-      events: <?php echo json_encode($jadwal, true); ?>
+      //events: <?php //echo json_encode($jadwal, true); ?>
     });
 
     calendar.render();
