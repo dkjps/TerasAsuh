@@ -11,8 +11,8 @@ $this->load->view('admin/header');
     <div class="col-md-12">
       <div class="row">
         <!-- <div class="col-lg-3 col-md-6 col-sm-6"> -->
-        <div style="width:48%; margin-left:1%;">
-          <div class="card card-statistic-1">
+        <div style="width:48%; margin-left:1%;" class="text-center">
+          <div class="card card-statistic-1" style="padding:0 0 20px 0;">
             <!-- <div class="card-icon bg-primary">
               <i class="fas fa-chalkboard"></i>
             </div> -->
@@ -27,8 +27,8 @@ $this->load->view('admin/header');
           </div>
         </div>
         <!-- <div class="col-lg-3 col-md-6 col-sm-6"> -->
-        <div style="width:48%; margin-left:1%;">
-          <div class="card card-statistic-1">
+        <div style="width:48%; margin-left:1%;" class="text-center">
+          <div class="card card-statistic-1" style="padding:0 0 20px 0;">
             <!-- <div class="card-icon bg-danger">
               <i class="fas fa-users"></i>
             </div> -->
@@ -43,8 +43,8 @@ $this->load->view('admin/header');
           </div>
         </div>
         <!-- <div class="col-lg-3 col-md-6 col-sm-6"> -->
-        <div style="width:48%; margin-left:1%;">
-          <div class="card card-statistic-1">
+        <div style="width:48%; margin-left:1%;" class="text-center">
+          <div class="card card-statistic-1" style="padding:0 0 20px 0;">
             <!-- <div class="card-icon bg-warning">
               <i class="fas fa-hand-holding-heart"></i>
             </div> -->
@@ -59,8 +59,8 @@ $this->load->view('admin/header');
           </div>
         </div>
         <!-- <div class="col-lg-3 col-md-6 col-sm-6"> -->
-        <div style="width:48%; margin-left:1%;">
-          <div class="card card-statistic-1">
+        <div style="width:48%; margin-left:1%;" class="text-center">
+          <div class="card card-statistic-1" style="padding:0 0 20px 0;">
             <!-- <div class="card-icon bg-success">
               <i class="fas fa-theater-masks"></i>
             </div> -->

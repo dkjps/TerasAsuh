@@ -13,12 +13,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="default" />
   <meta name="apple-mobile-web-app-title" content="Nama Situs" />
+  <link rel="icon" href="<?=base_url('path/to/icons/1.png')?>">
   <link rel="apple-touch-icon" href="<?=base_url('path/to/icons/128x128.png')?>" />
   <!-- Mendeklarasikan ikon untuk Windows -->
   <meta name="msapplication-TileImage" content="<?=base_url("path/to/icons/128x128.png")?>" />
   <meta name="msapplication-TileColor" content="#000000" />
 
-  <title><?php echo $title; ?> &mdash; MHS COURSE</title>
+  <title><?php echo $title; ?> &mdash; TerasAsuh</title>
 
   <!-- General CSS Files -->
   <link rel="stylesheet" href="<?php echo base_url(); ?>assets/modules/bootstrap/css/bootstrap.min.css">
