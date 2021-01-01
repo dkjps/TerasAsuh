@@ -22,98 +22,183 @@ class Auth extends CI_Controller {
 	}
 
 	function login(){
-			$data = array(
-					'user' => $this->input->post('user'),
-					'password' => $this->input->post('password')
-			);
+		$data = array(
+			'user' => $this->input->post('user'),
+			'password' => $this->input->post('password')
+		);
 
-			if (filter_var($data['user'], FILTER_VALIDATE_EMAIL)) {
-					$result = $this->AuthApiModel->loginByEmail($data)->result();
-					if ($result) {
-							if (password_verify($data['password'], $result[0]->password)) {
-									$view = array(
-											'id' => $result[0]->id,
-											'role' => $result[0]->role
-									);
-									$result2 = $this->AuthApiModel->getViewByRole($view)->row();
-									if(!empty($result2)){
-										$return = array(
-											'status'=>200,
-											'message'=>'Sukses Login!',
-											'data'=>$result2
-										);
-										$this->session->set_userdata('id', $result2->id);
-										$this->session->set_userdata('email', $result2->email);
-										$this->session->set_userdata('namalengkap', $result2->namalengkap);
-										$this->session->set_userdata('role', $result2->role);
-										$this->session->set_userdata('status', 1);
-										redirect(base_url("admin/dashboard"));
-									}else{
-										$return = array(
-											'status'=>200,
-											'message'=>'Data Tidak Ada!',
-											'data'=>null
-										);
-									}
-							} else {
-								$return = array(
-									'status'=>200,
-									'message'=>'Password Salah',
-									'data'=>null
-								);
-							}
+		if (filter_var($data['user'], FILTER_VALIDATE_EMAIL)) {
+			$result = $this->AuthApiModel->loginByEmail($data)->result();
+			if ($result) {
+				if (password_verify($data['password'], $result[0]->password)) {
+					$view = array(
+						'id' => $result[0]->id,
+						'role' => $result[0]->role
+					);
+					if ($view['role']==2 || $view['role']==3 || $view['role']==4) {
+						$result2 = $this->AuthApiModel->getViewByRole($view)->row();
+						if(!empty($result2)){
+							$return = array(
+								'status'=>200,
+								'message'=>'Sukses Login!',
+								'data'=>$result2
+							);
+							$this->session->set_userdata('id', $result2->id);
+							$this->session->set_userdata('email', $result2->email);
+							$this->session->set_userdata('namalengkap', $result2->namalengkap);
+							$this->session->set_userdata('role', $result2->role);
+							$this->session->set_userdata('status', 1);
+							redirect(base_url("admin/dashboard"));
+						}else{
+							$return = array(
+								'status'=>200,
+								'message'=>'Data Tidak Ada!',
+								'data'=>null
+							);
+						}
 					} else {
 						$return = array(
 							'status'=>200,
-							'message'=>'Email Salah!',
+							'message'=>'Anda Bukan Panitia(Admin, Operator, Pemateri)!',
 							'data'=>null
 						);
 					}
+				} else {
+					$return = array(
+						'status'=>200,
+						'message'=>'Password Salah',
+						'data'=>null
+					);
+				}
 			} else {
-					$result = $this->AuthApiModel->loginByHp($data)->result();
-					if ($result) {
-							if (password_verify($data['password'], $result[0]->password)) {
-									$view = array(
-											'id' => $result[0]->id,
-											'role' => $result[0]->role
-									);
-									$result2 = $this->AuthApiModel->getViewByRole($view)->result();
-									if(!empty($result2)){
-										$return = array(
-											'status'=>200,
-											'message'=>'Sukses Login!',
-											'data'=>$result2[0]
-										);
-										$this->session->set_userdata('id', $result2->id);
-										$this->session->set_userdata('email', $result2->email);
-										$this->session->set_userdata('namalengkap', $result2->namalengkap);
-										$this->session->set_userdata('role', $result2->role);
-										$this->session->set_userdata('status', 1);
-										redirect(base_url("admin/dashboard"));
-									}
-									else{
-										$return = array(
-											'status'=>200,
-											'message'=>'Data Tidak Ada!',
-											'data'=>null
-										);
-									}
-							} else {
-								$return = array(
-									'status'=>200,
-									'message'=>'Password Salah!',
-									'data'=>null
-								);
-							}
+				$return = array(
+					'status'=>200,
+					'message'=>'Email Salah!',
+					'data'=>null
+				);
+			}
+		} else {
+			$result = $this->AuthApiModel->loginByHp($data)->result();
+			if ($result) {
+				if (password_verify($data['password'], $result[0]->password)) {
+					$view = array(
+						'id' => $result[0]->id,
+						'role' => $result[0]->role
+					);
+					if ($view['role']==2 || $view['role']==3 || $view['role']==4) {
+						$result2 = $this->AuthApiModel->getViewByRole($view)->result();
+						if(!empty($result2)){
+							$return = array(
+								'status'=>200,
+								'message'=>'Sukses Login!',
+								'data'=>$result2[0]
+							);
+							$this->session->set_userdata('id', $result2->id);
+							$this->session->set_userdata('email', $result2->email);
+							$this->session->set_userdata('namalengkap', $result2->namalengkap);
+							$this->session->set_userdata('role', $result2->role);
+							$this->session->set_userdata('status', 1);
+							redirect(base_url("admin/dashboard"));
+						} else {
+							$return = array(
+								'status'=>200,
+								'message'=>'Data Tidak Ada!',
+								'data'=>null
+							);
+						}
 					} else {
 						$return = array(
 							'status'=>200,
-							'message'=>'No HP Salah!',
+							'message'=>'Anda Bukan Panitia(Admin, Operator, Pemateri)!',
 							'data'=>null
 						);
 					}
+				} else {
+					$return = array(
+						'status'=>200,
+						'message'=>'Password Salah!',
+						'data'=>null
+					);
+				}
+			} else {
+				$return = array(
+					'status'=>200,
+					'message'=>'No HP Salah!',
+					'data'=>null
+				);
 			}
-			echo json_encode($return, JSON_PRETTY_PRINT);
+		}
+		echo json_encode($return, JSON_PRETTY_PRINT);
+	}
+
+	function login_web(){
+		$data = array(
+			'user' => $this->input->post('user'),
+			'password' => $this->input->post('password')
+		);
+
+		if (filter_var($data['user'], FILTER_VALIDATE_EMAIL)) {
+			$result = $this->AuthApiModel->loginByEmail($data)->result();
+			if ($result) {
+				if (password_verify($data['password'], $result[0]->password)) {
+					$view = array(
+						'id' => $result[0]->id,
+						'role' => $result[0]->role
+					);
+					if ($view['role']==2 || $view['role']==3 || $view['role']==4) {
+						$result2 = $this->AuthApiModel->getViewByRole($view)->row();
+						if(!empty($result2)){
+							$this->session->set_userdata('id', $result2->id);
+							$this->session->set_userdata('email', $result2->email);
+							$this->session->set_userdata('namalengkap', $result2->namalengkap);
+							$this->session->set_userdata('role', $result2->role);
+							$this->session->set_userdata('status', 1);
+							$this->session->set_flashdata('msg', '<div class="col-md-12 alert alert-success" role="alert">Sukses Login</div>');
+							redirect(base_url("admin/dashboard"));
+						}else{
+							$this->session->set_flashdata('msg', '<div class="col-md-12 alert alert-danger" role="alert">Data Tidak Ada</div>');
+						}
+					} else {
+						$this->session->set_flashdata('msg', '<div class="col-md-12 alert alert-danger" role="alert">Silakan Login menggunakan akun Panitia(Admin, Operator, Pemateri)!</div>');
+					}
+				} else {
+					$this->session->set_flashdata('msg', '<div class="col-md-12 alert alert-danger" role="alert">Password Salah!</div>');
+				}
+			} else {
+				$this->session->set_flashdata('msg', '<div class="col-md-12 alert alert-danger" role="alert">Email Salah!</div>');
+			}
+		} else {
+			$result = $this->AuthApiModel->loginByHp($data)->result();
+			if ($result) {
+				if (password_verify($data['password'], $result[0]->password)) {
+					$view = array(
+						'id' => $result[0]->id,
+						'role' => $result[0]->role
+					);
+					if ($view['role']==2 || $view['role']==3 || $view['role']==4) {
+						$result2 = $this->AuthApiModel->getViewByRole($view)->result();
+						if(!empty($result2)){
+							$this->session->set_userdata('id', $result2->id);
+							$this->session->set_userdata('email', $result2->email);
+							$this->session->set_userdata('namalengkap', $result2->namalengkap);
+							$this->session->set_userdata('role', $result2->role);
+							$this->session->set_userdata('status', 1);
+							$this->session->set_flashdata('msg', '<div class="col-md-12 alert alert-success" role="alert">Sukses Login</div>');
+							redirect(base_url("admin/dashboard"));
+						}else{
+							$this->session->set_flashdata('msg', '<div class="col-md-12 alert alert-danger" role="alert">Data Tidak Ada</div>');
+						}
+					} else {
+						$this->session->set_flashdata('msg', '<div class="col-md-12 alert alert-danger" role="alert">Silakan Login menggunakan akun Panitia(Admin, Operator, Pemateri)!</div>');
+					}
+				} else {
+					$this->session->set_flashdata('msg', '<div class="col-md-12 alert alert-danger" role="alert">Password Salah!</div>');
+				}
+			} else {
+				$this->session->set_flashdata('msg', '<div class="col-md-12 alert alert-danger" role="alert">Email Salah!</div>');
+			}
+		}
+		redirect(base_url("/"));
 	}
 
 	// public function login() {

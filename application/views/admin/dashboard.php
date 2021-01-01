@@ -10,6 +10,7 @@ $this->load->view('admin/header');
     </div>
     <div class="col-md-12">
       <div class="row">
+        <?php echo @$this->session->flashdata('msg'); ?>
         <!-- <div class="col-lg-3 col-md-6 col-sm-6"> -->
         <div style="width:48%; margin-left:1%;" class="text-center">
           <div class="card card-statistic-1" style="padding:0 0 20px 0;">

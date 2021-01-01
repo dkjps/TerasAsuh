@@ -57,12 +57,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           <div class="col-12 col-sm-8 offset-sm-2 col-md-6 offset-md-3 col-lg-6 offset-lg-3 col-xl-4 offset-xl-4">
             <div class="login-brand">
               <!-- <img src="base url/assets/img/stisla-fill.svg" alt="logo" width="100" class="shadow-light rounded-circle"> -->
-              <h3>MHS &dash; COURSES</h3>
+              <h3>TerasAsuh (Panitia)</h3>
             </div>
 
             <div class="card card-primary">
               <div class="card-body">
-                <form action="<?php echo base_url('Auth/login'); ?>" method="post">
+                <!-- <div class="msg" style="display:none;"> -->
+          				<?php echo @$this->session->flashdata('msg'); ?>
+          			<!-- </div> -->
+                <form action="<?php echo base_url('Auth/login_web'); ?>" method="post">
                   <div class="form-group has-feedback">
                     <input type="text" class="form-control" placeholder="Username" name="user">
                     <span class="glyphicon glyphicon-user form-control-feedback"></span>
