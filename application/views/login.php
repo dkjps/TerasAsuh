@@ -80,9 +80,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                       <button type="submit" class="btn btn-primary btn-block btn-flat form-control">Masuk</button>
                     <!-- </div> -->
                     <div class="col col-md-12" style="margin-top:4px; margin-bottom:4px;"></div>
-                    <div class="col col-md-12  text-center">
+                    <!-- <div class="col col-md-12  text-center">
                       <a class="btn" href="<?php echo base_url('Daftar'); ?>">Belum punya akun ? Daftar Disini</a>
-                    </div>
+                    </div> -->
                   </div>
                 </div>
               </div>

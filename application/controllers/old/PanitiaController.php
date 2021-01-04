@@ -11,14 +11,15 @@ class PanitiaController extends CI_Controller {
 	//---------------- FUNGSI UNTUK Admin Panitia ---------------------
 
     public function index() {
-		
+
 	}
 
 	public function halamanMasterPanitia(){
 		$data = array(
-			'title' => "Master Data Panitia"
+			'title' => "Master Data Panitia",
+			'page' => "panitia"
 		);
-		
+
 		$this->load->view('admin/master-panitia', $data);
 	}
 
@@ -26,13 +27,13 @@ class PanitiaController extends CI_Controller {
 		$url = $this->api.'/master/list-panitia';
 		$request = $this->ClientModel->requestDataGet($url);
 		echo json_encode($request);
-	} 
+	}
 
 	public function halamanPelatihanPanitia(){
 		$data = array(
 			'title' => "Data Pelatihan Panitia"
 		);
-		
+
 		$this->load->view('admin/pelatihan-panitia', $data);
 		//print_r("test");
 	}
