@@ -83,12 +83,13 @@ $id_kelas = $this->uri->segment(3);
                   <div class="form-group">
                     <label class="col-md-2 control-label" for="inputNamaPelatihan">Waktu</label>
                     <?php
-                    $tgl = (!empty($detail))?date("yy-m-d",strtotime($detail->tgl_buka_materi)):date("Y-m-d", strtotime($tgl_buka));
+                    // $tgl = (!empty($detail))?date("Y-m-d",strtotime($detail->tgl_buka_materi)):date("Y-m-d", strtotime($tgl_buka));
+                    $tgl = date("Y-m-d");
                     $jam = (!empty($detail))?date("H:i",strtotime($detail->tgl_buka_materi)):date("H:i");
                     ?>
                     <div class="col-md-3"style=>
                       <span  class="form-text text-muted" >Tanggal Mulai</span>
-                      <input type="date" class="form-control" id="namaKelas" min="<?=date("Y-m-d",strtotime($tgl_buka))?>" name="tgl" value="<?=$tgl?>" required>
+                      <input type="date" class="form-control" id="namaKelas" min="<?=date("Y-m-d",strtotime($tgl))?>" name="tgl" value="<?=$tgl?>" required>
                     </div>
                     <div class="col-md-3" >
                       <span class="form-text text-muted" >Jam Mulai</span>

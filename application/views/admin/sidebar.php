@@ -35,8 +35,8 @@ if ($role==2) {
                 <li class="<?php echo $page == 'peserta' ? 'active' : ''; ?>"><a class="nav-link" href="<?php echo base_url(); ?>master/peserta"><i class="fas fa-bookmark"></i> <span>Data Peserta</span></a></li>
                 <!-- <li class="<?php echo $page == 'pelatihan' ? 'active' : ''; ?>"><a class="nav-link" href="<?php echo base_url(); ?>pelatihan"><i class="fas fa-bookmark"></i> <span>Data Pelatihan</span></a></li>
                 <li class="<?php echo $page == 'kelas' ? 'active' : ''; ?>"><a class="nav-link" href="<?php echo base_url(); ?>kelas"><i class="fas fa-bookmark"></i> <span>Data Kelas</a></span></li> -->
-                <li class="<?php echo $page == 'kader' ? 'active' : ''; ?>"><a class="nav-link" href="<?php echo base_url(); ?>admin/master/master-kader"><i class="fas fa-bookmark"></i> <span>Data Kader</span></a></li>
-                <li class="<?php echo $page == 'keluarga-binaan' ? 'active' : ''; ?>"><a class="nav-link" href="<?php echo base_url(); ?>master/keluargabinaan"><i class="fas fa-bookmark"></i> <span>Data Keluarga Binaan</span></a></li>
+                <li class="<?php echo $page == 'kader' ? 'active' : ''; ?>"><a class="nav-link" href="<?php echo base_url(); ?>master/Kader"><i class="fas fa-bookmark"></i> <span>Data Kader</span></a></li>
+                <li class="<?php echo $page == 'keluarga' ? 'active' : ''; ?>"><a class="nav-link" href="<?php echo base_url(); ?>master/keluargabinaan"><i class="fas fa-bookmark"></i> <span>Data Keluarga Binaan</span></a></li>
                 <li class="<?php echo $page == 'faq' ? 'active' : ''; ?>"><a class="nav-link" href="<?php echo base_url(); ?>master/Faq"><i class="fas fa-bookmark"></i> <span>Data FAQ</span></a></li>
                 <li class="<?php echo $page == 'institusi' ? 'active' : ''; ?>"><a class="nav-link" href="<?php echo base_url(); ?>master/Institusi"><i class="fas fa-bookmark"></i> <span>Data Institusi</span></a></li>
               <!-- </ul> -->

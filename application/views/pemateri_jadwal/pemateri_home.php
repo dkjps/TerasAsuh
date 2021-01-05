@@ -35,7 +35,8 @@ $id = $this->uri->segment(3);
   document.addEventListener('DOMContentLoaded', function() {
     var calendarEl = document.getElementById('calendar');
     var calendar = new FullCalendar.Calendar(calendarEl, {
-      initialDate: '2020-<?=date('m')?>-<?=date('d')?>',
+      // initialDate: '<?=date('yyyy')?>-<?=date('m')?>-<?=date('d')?>',
+      initialDate: '<?=date('Y-m-d')?>',
 
       // initialView: 'timeGridMonth',
       headerToolbar: {
@@ -47,12 +48,12 @@ $id = $this->uri->segment(3);
       },
       height: 'auto',
       width: 'auto',
-      navLinks: true, // can click day/week names to navigate views
+      // navLinks: true, // can click day/week names to navigate views
       // editable: true,
       // selectable: true,
       // selectMirror: true,
       nowIndicator: true,
-      //events: <?php //echo json_encode($jadwal, true); ?>
+			events: <?=json_encode($jadwal)?>
     });
 
     calendar.render();
@@ -72,6 +73,9 @@ $id = $this->uri->segment(3);
 		<div class="section-body">
 			<div class="body">
 				<div class="box-body">
+					<!-- <pre>
+						<?php //var_dump($jadwal); ?>
+					</pre> -->
 					<div class="col-md-12 ml-3">
 						<li class="text-success">Sudah Dimulai</li>
 						<li class="text-dark">Akan Datang</li>

@@ -12,11 +12,11 @@ $this->load->view('admin/header');
             <div class="row">
               <div class="col-12">
                 <div class="card">
-                  <div class="card-header">
+                  <!-- <div class="card-header">
                     <div class="card-header-action">
                     </div>
-                  </div>
-                  <div class="card-body">
+                  </div> -->
+                  <div class="card-body"><br>
                     <div class="table-responsive">
                       <table class="table table-striped" id="list-data">
                       <thead>

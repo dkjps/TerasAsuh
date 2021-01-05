@@ -12,27 +12,28 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <div class="col-12">
           <div class="card">
             <!-- <div class="card-header">
-              <div class="card-header-action">
-              </div>
-            </div> -->
-            <br>
-            <div class="card-body">
-              <div class="table-responsive">
-                <table class="table table-striped" id="list-data">
-                  <thead>
-                    <tr>
-                      <th>No</th>
-                      <th>Nama Lengkap</th>
-                      <th>Email</th>
-                      <th>No. HP</th>
-                      <th>Jenis Kelamin</th>
-                      <th>Tanggal Lahir</th>
-                      <th>Provinsi</th>
-                      <th>Kota</th>
-                      <!-- <th>Action</th> -->
-                    </tr>
-                  </thead>
-                  <?php $i=1; foreach ($peserta as $p): ?>
+            <div class="card-header-action">
+          </div>
+        </div> -->
+        <br>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table table-striped" id="list-data">
+              <thead>
+                <tr>
+                  <th>No</th>
+                  <th>Nama Lengkap</th>
+                  <th>Email</th>
+                  <th>No. HP</th>
+                  <th>Jenis Kelamin</th>
+                  <th>Tanggal Lahir</th>
+                  <th>Provinsi</th>
+                  <th>Kota</th>
+                  <!-- <th>Action</th> -->
+                </tr>
+              </thead>
+              <tbody>                
+                <?php $i=1; foreach ($peserta as $p): ?>
                   <tr>
                     <th><?=$i++?></th>
                     <td><a href="<?=base_url("master/Peserta/detailPeserta/$p->id")?>"><?=$p->namalengkap?></a></td>
@@ -44,12 +45,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <td><?=$p->nama_kota?></td>
                   </tr>
                 <?php endforeach; ?>
-              </table>
-            </div>
+              </tbody>
+            </table>
           </div>
         </div>
       </div>
     </div>
   </div>
+</div>
 </section>
 </div>

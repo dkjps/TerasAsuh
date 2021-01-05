@@ -29,13 +29,13 @@ $this->load->view('admin/header');
                   <tr>
                     <td style="width:120px;"><label class="">Tgl Join</label></td>
                     <th style="width:30px;">:</th>
-                    <th><h6 class=""><?=($detail)?$detail->tgl_join:''?></h6></th>
+                    <th><h6 class=""><?=($detail)?date('d F yy', strtotime($detail->tgl_join)):''?></h6></th>
                   </tr>
                 </table>
               </div>
             <!-- <div class="card-header-action">
             </div> -->
-            </div>        
+            </div>
         <div class="card-body">
           <div class="table-responsive">
             <table class="table table-striped" id="list-data">
