@@ -28,19 +28,19 @@ if ($role==2) {
 
 <!-- Menu Admin Dashboard -->
             <li class="menu-header">Admin Dashboard</li>
-            <li class="dropdown <?php echo $menu == 'admin' ? 'active' : ''; ?>">
-              <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-globe-asia"></i> <span>Data Master</span></a>
-              <ul class="dropdown-menu">
-                <li class="<?php echo $page == 'panitia' ? 'active' : ''; ?>"><a class="nav-link" href="<?php echo base_url(); ?>master/Panitia">Data Panitia</a></li>
-                <li class="<?php echo $page == 'peserta' ? 'active' : ''; ?>"><a class="nav-link" href="<?php echo base_url(); ?>admin/master/master-peserta">Data Peserta</a></li>
-                <!-- <li class="<?php echo $page == 'pelatihan' ? 'active' : ''; ?>"><a class="nav-link" href="<?php echo base_url(); ?>pelatihan">Data Pelatihan</a></li>
-                <li class="<?php echo $page == 'kelas' ? 'active' : ''; ?>"><a class="nav-link" href="<?php echo base_url(); ?>kelas">Data Kelas</a></li> -->
-                <li class="<?php echo $page == 'kader' ? 'active' : ''; ?>"><a class="nav-link" href="<?php echo base_url(); ?>admin/master/master-kader">Data Kader</a></li>
-                <li class="<?php echo $page == 'keluarga-binaan' ? 'active' : ''; ?>"><a class="nav-link" href="<?php echo base_url(); ?>admin/master/master-keluarga-binaan">Data Keluarga Binaan</a></li>
-                <li class="<?php echo $page == 'faq' ? 'active' : ''; ?>"><a class="nav-link" href="<?php echo base_url(); ?>master/Faq">Data FAQ</a></li>
-                <li class="<?php echo $page == 'institusi' ? 'active' : ''; ?>"><a class="nav-link" href="<?php echo base_url(); ?>master/Institusi">Data Institusi</a></li>
-              </ul>
-            </li>
+            <!-- <li class="dropdown <?php echo $menu == 'admin' ? 'active' : ''; ?>"> -->
+              <!-- <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-globe-asia"></i> <span>Data Master</span></a> -->
+              <!-- <ul class="dropdown-menu"> -->
+                <li class="<?php echo $page == 'panitia' ? 'active' : ''; ?>"><a class="nav-link" href="<?php echo base_url(); ?>master/Panitia"><i class="fas fa-bookmark"></i> <span>Data Panitia</span></a></li>
+                <li class="<?php echo $page == 'peserta' ? 'active' : ''; ?>"><a class="nav-link" href="<?php echo base_url(); ?>master/peserta"><i class="fas fa-bookmark"></i> <span>Data Peserta</span></a></li>
+                <!-- <li class="<?php echo $page == 'pelatihan' ? 'active' : ''; ?>"><a class="nav-link" href="<?php echo base_url(); ?>pelatihan"><i class="fas fa-bookmark"></i> <span>Data Pelatihan</span></a></li>
+                <li class="<?php echo $page == 'kelas' ? 'active' : ''; ?>"><a class="nav-link" href="<?php echo base_url(); ?>kelas"><i class="fas fa-bookmark"></i> <span>Data Kelas</a></span></li> -->
+                <li class="<?php echo $page == 'kader' ? 'active' : ''; ?>"><a class="nav-link" href="<?php echo base_url(); ?>admin/master/master-kader"><i class="fas fa-bookmark"></i> <span>Data Kader</span></a></li>
+                <li class="<?php echo $page == 'keluarga-binaan' ? 'active' : ''; ?>"><a class="nav-link" href="<?php echo base_url(); ?>master/keluargabinaan"><i class="fas fa-bookmark"></i> <span>Data Keluarga Binaan</span></a></li>
+                <li class="<?php echo $page == 'faq' ? 'active' : ''; ?>"><a class="nav-link" href="<?php echo base_url(); ?>master/Faq"><i class="fas fa-bookmark"></i> <span>Data FAQ</span></a></li>
+                <li class="<?php echo $page == 'institusi' ? 'active' : ''; ?>"><a class="nav-link" href="<?php echo base_url(); ?>master/Institusi"><i class="fas fa-bookmark"></i> <span>Data Institusi</span></a></li>
+              <!-- </ul> -->
+            <!-- </li> -->
 
 <!-- Menu Operator -->
             <li class="menu-header">Admin Operator</li>

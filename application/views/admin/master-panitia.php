@@ -62,11 +62,7 @@ if (isset($_GET['role'])) {
                         <td><?=$p->nohp?></td>
                         <td><?=($p->jenis_kelamin==0?'L':'P')?></td>
                         <td><?=$p->tgl_lahir?></td>
-                        <td><span class="btn btn-<?=$warna[$p->role]?>"><?=$role[$p->role]?></span></td>
-                        <!-- <td>
-                          <a href="<?=base_url("master/Panitia/ubahPanitia/$p->id")?>" class="btn btn-primary update-dataPegawai"><i class="fas fa-pen"></i></a>
-                          <button class="btn btn-danger konfirmasiHapus-pegawai" onclick="konfirmasiHapus('<?=base_url("master/Panitia/hapusPanitia/$p->id")?>')"><i class="fas fa-trash"></i></button>
-                        </td> -->
+                        <td><span class="btn btn-<?=$warna[$p->role]?>"><?=$role[$p->role]?></span></td>                        
                       </tr>
                     <?php endforeach; ?>
                   </tbody>

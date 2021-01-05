@@ -13,32 +13,40 @@ $this->load->view('admin/header');
               <div class="col-12">
                 <div class="card">
                   <div class="card-header">
-                    <h4>Tabel Data Keluarga Binaan</h4>
                     <div class="card-header-action">
-                        <a href="#" class="btn btn-md btn-primary disabled">
-                            <i class="fas fa-plus" style="padding-right:3px"></i>
-                            <span style="font-size:10pt;">
-                                Tambah Data Keluarga Binaan
-                            </span>
-                        </a>
                     </div>
                   </div>
                   <div class="card-body">
                     <div class="table-responsive">
-                      <table class="table table-striped" id="table-master-keluarga-binaan">
-                      <thead>                                 
+                      <table class="table table-striped" id="list-data">
+                      <thead>
                           <tr>
                             <th>No</th>
-                            <th>Nama Lengkap</th>
+                            <th>Nama Kepala</th>
+                            <th>No KK</th>
                             <th>Email</th>
                             <th>No. HP</th>
                             <th>Jenis Kelamin</th>
                             <th>Tanggal Lahir</th>
                             <th>Provinsi</th>
                             <th>Kota</th>
-                            <th>Action</th>
                           </tr>
                         </thead>
+                        <tbody>
+                          <?php $i=1; if(!empty($keluarga)){ for($j=0; $j<count($keluarga); $j++){ foreach($keluarga[$j] as $k): ?>
+                            <tr>
+                              <th><?=$i++?></th>
+                              <td><a href="<?=base_url("master/KeluargaBinaan/detail/$k->nomor_kk")?>"><?=$k->namalengkap?></a></td>
+                              <td><?=$k->nomor_kk?></td>
+                              <td><?=$k->email?></td>
+                              <td><?=$k->nohp?></td>
+                              <td><?=($k->jenis_kelamin==0?'L':'P')?></td>
+                              <td><?=$k->tgl_lahir?></td>
+                              <td><?=$k->nama_provinsi?></td>
+                              <td><?=$k->nama_kota?></td>
+                            </tr>
+                          <?php endforeach; }} ?>
+                        </tbody>
                       </table>
                     </div>
                   </div>
@@ -48,4 +56,3 @@ $this->load->view('admin/header');
           </div>
     </section>
 </div>
-<?php $this->load->view('admin/footer'); ?>

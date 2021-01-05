@@ -10,21 +10,22 @@ class KeluargaBinaanController extends CI_Controller {
 
 	//---------------- FUNGSI UNTUK PUSAT ---------------------
 
-    public function index() {
-		
+  public function index() {
+
 	}
 
 	public function halamanMasterKeluargaBinaan(){
 		$data = array(
-			'title' => "Master Data Keluarga Binaan"
+			'title' => "Master Data Keluarga Binaan",
+			'page' => "keluarga"
 		);
-		
+
 		$this->load->view('admin/master-keluarga-binaan', $data);
 	}
-	
+
 	public function getDatatableMasterKeluargaBinaan(){
 		$url = $this->api.'/master/list-keluarga-binaan';
 		$request = $this->ClientModel->requestDataGet($url);
 		echo json_encode($request);
-	} 
+	}
 }
