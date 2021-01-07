@@ -7,6 +7,7 @@ $id_pelatihan = $this->uri->segment(3);
 <div class="main-content" id="halaman-pasien">
   <section class="section">
     <div class="section-header">
+      <a href="javascript:window.history.go(-1);" class="fas fa-chevron-left text-dark" style="font-size:20px; margin-left:25px;"></a>
       <h1><?=$title?></h1>
     </div>
     <div class="section-body">

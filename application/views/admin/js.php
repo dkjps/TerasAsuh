@@ -88,12 +88,27 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   function konfirmasiHapus(link){
     $('#btnYa').attr('href', link);
     $('#konfirmasiHapus').modal('show');
+    $('#lblkonfirmasi').html('Konfirmasi Hapus?');
+  }
+
+  function statusPendaftaran(link, pesan){
+    $('#btnYa').attr('href', link);
+    $('#konfirmasiHapus').modal('show');
+    $('#lblkonfirmasi').html('Ingin '+pesan+" Pendaftaran?");
   }
 
   function bagiKode(kode){
     $('#kode_referal').val(kode);
     $('#bagiKode').modal('show');
+    $('#lblcopy').hide();
   }
+
+  $( "#tambahJawaban" ).click(function() {
+    $('#jawabans').append(`<div class="form-group">
+    <label for="exampleInputPassword1">Jawaban</label>
+    <input type="text" class="form-control" name="jawaban[]" placeholder="Jawaban">
+    </div> `)
+  });
 
 </script>
 

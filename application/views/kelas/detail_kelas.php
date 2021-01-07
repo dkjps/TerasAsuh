@@ -9,6 +9,7 @@ $caption = array('Belum Buka', 'Daftar', 'Jalan', 'Selesai');
 <div class="main-content" id="halaman-pasien">
   <section class="section">
     <div class="section-header">
+      <a href="javascript:window.history.go(-1);" class="fas fa-chevron-left text-dark" style="font-size:20px; margin-left:25px;"></a>
       <h1><?=$title?></h1>
     </div>
     <div class="section-body">
@@ -69,9 +70,9 @@ $caption = array('Belum Buka', 'Daftar', 'Jalan', 'Selesai');
                   <div class="form-group col-md-2">
                     <label for="inputTanggalPelatihan">Pendaftaran</label>
                     <?php if (!empty($detail) && $detail->is_buka_pendaftaran==0): ?>
-                      <button type="button" class="btn btn-sm btn-danger form-control" onclick="konfirmasiHapus('<?=base_url("Kelas/ubahStatusPendaftaran/1/$id")?>')">Tutup</button>
+                      <button type="button" class="btn btn-sm btn-danger form-control" onclick="statusPendaftaran('<?=base_url("Kelas/ubahStatusPendaftaran/1/$id")?>', 'Buka')">Tutup</button>
                     <?php else: ?>
-                      <button type="button" class="btn btn-sm btn-success form-control" onclick="konfirmasiHapus('<?=base_url("Kelas/ubahStatusPendaftaran/0/$id")?>')">Buka</button>
+                      <button type="button" class="btn btn-sm btn-success form-control" onclick="statusPendaftaran('<?=base_url("Kelas/ubahStatusPendaftaran/0/$id")?>', 'Tutup')">Buka</button>
                     <?php endif; ?>
                   </div>
                 <?php endif; ?>

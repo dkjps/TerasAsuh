@@ -8,6 +8,7 @@ $id = $this->uri->segment(3);
 <div class="main-content">
 	<section class="section">
 		<div class="section-header">
+			<a href="javascript:window.history.go(-1);" class="fas fa-chevron-left text-dark" style="font-size:20px; margin-left:25px;"></a>
 			<h1><?=$title?></h1>
 			<div class="msg" style="display:none;">
 				<?php echo @$this->session->flashdata('msg'); ?>
@@ -51,9 +52,10 @@ $id = $this->uri->segment(3);
 						</div>
 
 						<!-- <div class="row"> -->
-							<div class="col col-md-6 text-center">
-								<a href="<?=base_url("Aktivitas")?>" class="btn btn-danger"><i class="fa fa-undo"></i> Kembali</a>
-								<button type="submit" name="submit" class="btn btn-primary"><i class="fas fa-plus"></i> Simpan</button>
+							<!-- <div class="col col-md-12 text-center"> -->
+								<div class="form-group">
+								<!-- <a href="<?=base_url("Aktivitas")?>" class="btn btn-danger"><i class="fa fa-undo"></i> Kembali</a> -->
+								<button type="submit" name="submit" class="btn btn-primary col-md-6"><i class="fas fa-plus"></i> Simpan</button>
 							</div>
 						<!-- </div> -->
 

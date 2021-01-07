@@ -9,6 +9,7 @@ $this->load->view('admin/header');
 <div class="main-content" id="halaman-pasien">
     <section class="section">
         <div class="section-header">
+          <a href="javascript:window.history.go(-1);" class="fas fa-chevron-left text-dark" style="font-size:20px; margin-left:25px;"></a>
             <h1><?=$title?></h1>
             <div class="msg" style="display:none;">
               <?php echo @$this->session->flashdata('msg'); ?>
@@ -21,7 +22,7 @@ $this->load->view('admin/header');
                   <div class="card-header">
                     <h4></h4>
                     <div class="card-header-action">
-                        <a href="<?php echo base_url('Pelatihan/tambahKelas/'.$id); ?>" class="btn btn-info pull-right" role="button" aria-pressed="true"><i class="fas fa-plus" style="padding-right:3px"></i> Tambah Kelas</a>
+                        <a href="<?php echo base_url('Pelatihan/tambahKelas/'.$id); ?>" class="btn btn-info float-right" role="button" aria-pressed="true"><i class="fas fa-plus" style="padding-right:3px"></i> Tambah Kelas</a>
                     </div>
                   </div>
                   <div class="card-body">

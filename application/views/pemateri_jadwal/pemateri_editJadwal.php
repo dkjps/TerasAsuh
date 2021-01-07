@@ -7,6 +7,7 @@ $id_jadwal = $this->uri->segment(4);
 <div class="main-content">
 	<section class="section">
 		<div class="section-header">
+			<a href="javascript:window.history.go(-1);" class="fas fa-chevron-left text-dark" style="font-size:20px; margin-left:25px;"></a>
 			<h1><?=$title?></h1>
 			<div class="msg" style="display:none;">
 				<?php echo @$this->session->flashdata('msg'); ?>

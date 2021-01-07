@@ -27,6 +27,7 @@ if ($role==2) {
             <li class="<?php echo $menu == 'admin' ? 'active' : ''; ?>"><a class="nav-link" href="<?php echo base_url(); ?>admin/dashboard"><i class="fas fa-fire"></i> <span>Dashboard</span></a></li>
 
 <!-- Menu Admin Dashboard -->
+            <?php if ($role==2): ?>
             <li class="menu-header">Admin Dashboard</li>
             <!-- <li class="dropdown <?php echo $menu == 'admin' ? 'active' : ''; ?>"> -->
               <!-- <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-globe-asia"></i> <span>Data Master</span></a> -->
@@ -39,9 +40,11 @@ if ($role==2) {
                 <li class="<?php echo $page == 'keluarga' ? 'active' : ''; ?>"><a class="nav-link" href="<?php echo base_url(); ?>master/KeluargaBinaan"><i class="fas fa-bookmark"></i> <span>Data Keluarga Binaan</span></a></li>
                 <li class="<?php echo $page == 'faq' ? 'active' : ''; ?>"><a class="nav-link" href="<?php echo base_url(); ?>master/Faq"><i class="fas fa-bookmark"></i> <span>Data FAQ</span></a></li>
                 <li class="<?php echo $page == 'institusi' ? 'active' : ''; ?>"><a class="nav-link" href="<?php echo base_url(); ?>master/Institusi"><i class="fas fa-bookmark"></i> <span>Data Institusi</span></a></li>
+                <li class="<?php echo $page == 'aktivitas' ? 'active' : ''; ?>"><a class="nav-link" href="<?php echo base_url(); ?>master/Aktivitas"><i class="fas fa-bookmark"></i> <span>Data Soal Aktivitas</span></a></li>
               <!-- </ul> -->
             <!-- </li> -->
-
+            <?php endif; ?>
+            <?php if ($role==3): ?>
 <!-- Menu Operator -->
             <li class="menu-header">Admin Operator</li>
             <li class="dropdown <?php echo $menu == 'master' ? 'active' : ''; ?>">
@@ -60,11 +63,14 @@ if ($role==2) {
                 <!-- <li class="<?php echo $page == 'peserta' ? 'active' : ''; ?>"><a class="nav-link" href="<?php echo base_url(); ?>pemateri/tambahJadwal">Atur Jadwal Pemateri</a></li> -->
               <!-- </ul> -->
             </li>
+            <?php endif; ?>
 
-  <!-- Menu Pemateri -->
+            <?php if ($role==4): ?>
+            <!-- Menu Pemateri -->
             <li class="menu-header">Admin Pemateri</li>
             <!-- <li class="<?php echo $this->uri->segment(2) == 'skrining' ? 'active' : ''; ?>"><a class="nav-link" href="<?php echo base_url(); ?>PemateriKelas"><i class="fas fa-check-circle"></i> <span>Data Kelas</span></a></li> -->
             <li class="<?php echo $page == 'jadwal' ? 'active' : ''; ?>"><a class="nav-link" href="<?php echo base_url(); ?>PemateriJadwal"><i class="fas fa-calendar"></i> <span>Jadwal Pemateri</span></a></li>
+          <?php endif; ?>
 
 <hr>
             <!-- Menu aktivitas -->

@@ -7,6 +7,7 @@ $id_sub = $this->uri->segment(4);
 <div class="main-content" id="halaman-pasien">
 	<section class="section">
 		<div class="section-header">
+			<a href="javascript:window.history.go(-1);" class="fas fa-chevron-left text-dark" style="font-size:20px; margin-left:25px;"></a>
 			<h1><?=$title?></h1>
 		</div>
 		<div class="section-body">
@@ -79,7 +80,7 @@ $id_sub = $this->uri->segment(4);
 							</div> -->
 						</div>
 					</div>
-					<input type="text" class="form-control col-md-8" name="file_desk[]" value="" placeholder="Deskripsi File">
+					<input type="text" class="form-control col-md-8" name="file_desk[]" value="" placeholder="Deskripsi File" required>
 				</div>
 			</div>
 		</div>
@@ -125,7 +126,7 @@ $(add_button).click(function(e){ //on add input button click
 		</div>
 		</div>
 		</div>
-		<input type="text" class="form-control col-md-8" name="file_desk[]" value="" placeholder="Deskripsi File">
+		<input type="text" class="form-control col-md-8" name="file_desk[]" value="" placeholder="Deskripsi File" required>
 		</div>`);
 	}
 });

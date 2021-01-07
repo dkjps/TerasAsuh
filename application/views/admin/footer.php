@@ -8,6 +8,14 @@ function copyClipboard(id){
 	copyText.setSelectionRange(0, 99999); /* For mobile devices */
 	document.execCommand("copy");
 }
+
+function copyReff(id){
+	var copyText = document.getElementById(id);
+	copyText.select();
+	copyText.setSelectionRange(0, 99999); /* For mobile devices */
+	document.execCommand("copy");
+	$('#lblcopy').show();
+}
 </script>
     <!-- <div class="modal fade" id="konfirmasiHapus" role="dialog">
         <div class="modal-dialog modal-md" role="document" style="margin-top:40vh;">
@@ -29,7 +37,7 @@ function copyClipboard(id){
         <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLongTitle">Konfirmasi</h5>
+              <h5 class="modal-title" id="lblkonfirmasi">Konfirmasi</h5>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
@@ -54,8 +62,9 @@ function copyClipboard(id){
             <div class="modal-body text-center">
               <div class="row" style="margin:auto;">
                 <input style="width:75%;" type="text" name="link" class="form-control" id="kode_referal" readonly>
-                <button style="width:20%;" type="button" name="button" class="btn btn-secondary" onclick="copyClipboard('kode_referal')"><i class="fas fa-copy"></i> </button>
+                <button style="width:20%;" type="button" name="button" class="btn btn-secondary" onclick="copyReff('kode_referal')"><i class="fas fa-copy"></i> </button>
               </div>
+							<span style="color:green; display:none;" id="lblcopy">Sukses Copy!</span>
             </div>
             <div class="modal-footer text-center">
               <button type="button" class="btn btn-danger" style="width:100px;" data-dismiss="modal">Tutup</button>
@@ -73,5 +82,4 @@ function copyClipboard(id){
       </footer>
     </div>
   </div>
-
 <?php $this->load->view('admin/js'); ?>

@@ -62,7 +62,7 @@ if (isset($_GET['role'])) {
                         <td><?=$p->nohp?></td>
                         <td><?=($p->jenis_kelamin==0?'L':'P')?></td>
                         <td><?=$p->tgl_lahir?></td>
-                        <td><span class="btn btn-<?=$warna[$p->role]?>"><?=$role[$p->role]?></span></td>                        
+                        <td><span class="btn btn-<?=$warna[$p->role]?>"><?=$role[$p->role]?></span></td>
                       </tr>
                     <?php endforeach; ?>
                   </tbody>
