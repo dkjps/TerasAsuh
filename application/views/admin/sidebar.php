@@ -17,10 +17,10 @@ if ($role==2) {
       <div class="main-sidebar sidebar-style-2">
         <aside id="sidebar-wrapper">
           <div class="sidebar-brand">
-            <a href="<?php echo base_url(); ?>admin/dashboard">MHS &mdash; Courses</a>
+            <a href="<?php echo base_url(); ?>admin/dashboard">TerasAsuh</a>
           </div>
           <div class="sidebar-brand sidebar-brand-sm">
-            <a href="<?php echo base_url(); ?>admin/dashboard">MHS</a>
+            <a href="<?php echo base_url(); ?>admin/dashboard">Home</a>
           </div>
           <ul class="sidebar-menu">
             <li class="menu-header">Dashboard</li>
@@ -88,8 +88,8 @@ if ($role==2) {
             <li class="dropdown <?php echo $menu == 'master' ? '' : ''; ?>">
             <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-graduation-cap"></i> <span>Data Akun</span></a>
               <ul class="dropdown-menu"> -->
-                <li class="<?php echo $page == 'panitia' ? '' : ''; ?>"><a class="nav-link" href="<?php echo base_url(); ?>akun">Pengaturan Akun</a></li>
-                <li class="<?php echo $page == 'peserta' ? '' : ''; ?>"><a class="nav-link" href="<?php echo base_url("Auth/logout"); ?>">Keluar</a></li>
+                <li class="<?php echo $page == 'panitia' ? '' : ''; ?>"><a class="nav-link" href="<?php echo base_url(); ?>akun"><i class="fas fa-cog"></i> <span>Pengaturan Akun</span></a></li>
+                <li class="<?php echo $page == 'peserta' ? '' : ''; ?>"><a class="nav-link" href="<?php echo base_url("Auth/logout"); ?>"><i class="fas fa-door-open"></i> <span>Keluar</span></a></li>
               <!-- </ul>
             </li> -->
 
